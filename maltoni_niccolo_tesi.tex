@@ -1,0 +1,130 @@
+%% Direttive TeXworks:
+% !TeX root = ./maltoni_niccolo_tesi.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = arara
+% !TEX TS-program = arara
+% !TeX spellcheck = it-IT
+
+%% Direttive Arara:
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: frontespizio
+%! arara: bibtex
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+
+\documentclass[%
+    a4paper,        % specifica il formato A4 (default: letter)
+    12pt,           % specifica la dimensione del carattere a 12
+    openright,      % serve per aprire i capitoli sulla destra
+    oneside,        % serve per fare fronteretro
+    % draft,        % evidenzia i punti in cui il testo sborda dai margini con delle barre nere, va tolta nella versione definitiva % TODO utile per il controllo
+    titlepage       % opzione necessaria per il pacchetto frontespizio
+]{book}
+
+\usepackage{a4wide}             % consente di avere più spazio nell'A4
+\usepackage[english,italian]{%
+    babel,          % serve per scrivere Indice, Capitolo, etc in Italiano
+    varioref        % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
+}
+\usepackage[T1]{fontenc}        % serve per impostare la codifica di output del font come Latin1 (T1)
+\usepackage{lmodern}            % necessario per risolvere un errore col font, si può usare times o lmodern (o probabilmente anche altro)
+%\usepackage{lmodern}           % catica un variante Latin Modern prodotto dal GUST (gruppo utenti di TEX polacco)
+%\usepackage{newtxtext}         % insieme a {newtxmath} carica font Times, Times Italic e Helvetica
+%\usepackage{newtxmath}         % insieme a {newtxtext} carica font Times, Times Italic e Helvetica
+\usepackage{textcomp}           % serve per fornire supporto ai Text Companion fonts
+\usepackage[utf8]{inputenc}     % serve per impostare la codifica di input del font come UTF8 (codifica di questo file .tex)
+\usepackage{indentfirst}        % serve per avere l'indentazione all'inizio di capitoli, sezioni, etc
+\usepackage{setspace}           % serve a fornire comandi di interlinea standard, alternativi a \linespread{}
+\usepackage{fancyhdr}           % serve per impaginare bene la tesi
+%\usepackage{refcheck}          % serve per controllare l’utilizzo dei \label e dei \ref, va tolta nella versione definitiva    %TODO utile per il controllo
+%\usepackage{showkeys}          % serve per mostrare le etichette, va tolta nella versione definitiva                           %TODO utile per il controllo
+\usepackage{xcolor}             % serve per la gestione dei colori nel testo
+\usepackage{graphicx}           % serve per includere immagini e grafici
+\usepackage[%
+    write,          % alternativa a nowrite, crea il file *-frn.tex
+    %nowrite,       % alternativa a write, non crea il file *-frn.tex
+    standard,       % alternativa a suftesi, crea un frontespizio standard
+    %signatures,    % lascia fra i nomi dei relatori lo spazio per le loro firme
+    %noadvisor,     % opzione per non mostrare il relatore
+    swapnames,      % scambia la posizione dei nomi di relatori e candidato
+    normal          % alternativa a sans, utilizza un font "normale"
+    %sans,          % alternativa a normal, utilizza un font senza grazie
+    %norules,       % eliminano i filetti fra il nome dell’ateneo e quello della facoltà e sopra l’indicazione dell’anno accademico
+    %nouppercase,   % disabilita il maiuscoletto nel nome della facoltà
+    %noinputenc,    % disabilita la trascrizione dell'inputenc nel preambolo
+    %onlyinclude    % disabilita tutte le altre opzioni
+]{frontespizio}                 % serve a costruire un buon frontespizio
+%\usepackage{fncychap}          % serve a personalizzare il formato dei titoli dei capitoli
+%\usepackage[]{titlesec}        % una volta definito lo stile nel preambolo con \titleformat formatta i \chapter{}
+%\usepackage{enumitem}          % serve a personalizzare liste enumerate, itemize e description
+%\usepackage{minitoc}           % serve a creare mini-indici all'inizio di capitoli particolarmente complessi
+%\usepackage{epigraph}          % serve a creare epigrafi
+%\usepackage{amssymb}           % abilita i font matematici forniti dall’American Mathematical Society, carica anche {amsfonts}
+%\usepackage{mathtools}         % carica {amsmath} e fornisce estensioni per il miglioramento della struttura informativa e della stampa fi formule matematiche
+%\usepackage{relsize}           % consente di assegnare dimensioni relative con i comandi \smaller e \larger
+%\usepackage{latexsym}
+
+\onehalfspacing                 % Imposta interlinea a 1,5 ed equivale a \linespread{1,5}
+
+%% TODO capire e poi decidere se inserire o no
+%% produce un buon layout con fancyhdr %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\pagestyle{fancy}\addtolength{\headwidth}{20pt}
+%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+%\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+%\cfoot{}
+%
+%\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+
+%% Definisce l'environment abstract per la classe book
+\newenvironment{abstract}%
+    {\cleardoublepage%
+        \thispagestyle{empty}%
+        \null \vfill\begin{center}%
+            \bfseries \abstractname \end{center}}%
+    {\vfill\null}
+
+%\hyphenation{}                 % Permette di sillabare bene le parole, TODO inserire se necessario
+
+\setcounter{secnumdepth}{2}     % Numera fino alla sottosezione nel corpo del testo
+\setcounter{tocdepth}{3}        % Numera fino alla sotto-sottosezione nell'indice
+%\pdfoptionpdfminorversion=7    % TODO Dovrebbe risolvere il problema di inclusione di pdf 1.5 in 1.4, ma non funziona
+
+%\usepackage[a-1b]{pdfx}        % Permette di generare PDF/A con specifica 1b, TODO verificare
+                                % La chiamata deve essere ritardata il più possibile, ma deve essere prima di hyperref
+
+%\usepackage{hyperref}
+%\hypersetup{                   % Parametri hyperref da Beccari_Pdf_archiviabile, TODO verificare
+%	pdfpagemode={UseOutlines},
+%	bookmarksopen,
+%	pdfstartview={FitH},
+%	colorlinks,
+%	linkcolor={blue},
+%	citecolor={green},
+%	urlcolor={blue},
+%	% bookmarks=true,
+%	hidelinks% ,
+%	% pdftitle={%
+%		% Progettazione object oriented di un’interfaccia grafica JavaFX per il simulatore Alchemist%
+%    % },
+%    % pdfauthor={Niccolò Maltoni}
+%}
+
+\begin{document}
+    \frontmatter
+    \input{tex/frontmatter/frontespizio.tex}
+    % \input{tex/frontmatter/dedica.tex}
+    \input{tex/frontmatter/abstract.tex}
+    \tableofcontents
+    % \listoffigures
+    % \listoftables
+
+    \mainmatter
+    \input{tex/mainmatter/capitolo1.tex}
+    \input{tex/mainmatter/capitolo2.tex}
+    \input{tex/mainmatter/capitolo3.tex}
+    % \input{tex/frontmatter/appendice.tex}
+
+    \backmatter
+    \input{tex/backmatter/bibliografia.tex}
+\end{document}
