@@ -8,6 +8,20 @@
 %% Direttive Arara:
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: frontespizio
-%! arara: bibtex
+% arara: bibtex
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+
+\chapter{Contributo}\label{ch:contributo}
+\section{Analisi della struttura precedente}\label{sec:analisi}
+\subsection{User experience}\label{sub:prevUx}
+\subsection{Swing}\label{sub:swing}
+\subsection{Gli effetti e l'interfaccia \texttt{Effect}}\label{sub:effect}
+\section{Nuova architettura}\label{sec:architettura}
+\subsection{I vantaggi di JavaFX su Swing}\label{sub:swingVSjfx}
+\subsection{Interfaccia e UX}\label{sub:gui}
+\subsection{La nuova architettura degli effetti}\label{sub:nuoviEffetti}
+\subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
+\subsubsection{I singoli effetti e l'interfaccia \texttt{EffectFX}}\label{subsub:effectFX}
+\subsubsection{Differenze di serializzazione}\label{subsub:serializzazione}
+\subsection{Rappresentazione grafica e concorrenza}\label{sub:rappresentazione}

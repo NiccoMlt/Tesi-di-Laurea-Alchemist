@@ -8,8 +8,17 @@
 %% Direttive Arara:
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: frontespizio
-%! arara: bibtex
+% arara: bibtex
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
-% TODO
+% \chapter*{Bibliografia}
+\addcontentsline{toc}{chapter}{Bibliografia}
+\bibliography{biblio}
+\nocite{mysite}
+\bibliographystyle{abbrv}
+% Possibili stili:
+% - plain (ordine alfabetico contrassegnato da numeri),
+% - unsrt (ordine di citazione contrassegnato da numeri),
+% - alpha (opere contrassegnate da etichette formate a partire dal nome dell’autore e dall’anno di pubblicazione),
+% - abbrv (come plain, ma i nomi di battesimo, i nome dei mesi e dei giornali sono abbreviati)
