@@ -40,9 +40,11 @@ Sono stati molto utili anche il template fornitomi da relatore e correlatore del
     - [Sito ufficiale](http://alchemistsimulator.github.io/)
     - [Pagina APICe](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/WebHome)
     - [Manuale PDF](https://bitbucket.org/danysk/alchemist/downloads/alchemist-manual.pdf)
-    - [Pubblicazioni](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/Publications)
+    - [Pubblicazioni](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/Publications):
+        - [Chemical-oriented simulation of computational systems with Alchemist](https://www.researchgate.net/profile/Danilo_Pianini/publication/262961797_Chemical-oriented_simulation_of_computational_systems_with_ALCHEMIST/links/5819fe6708aeffb294130aa8/Chemical-oriented-simulation-of-computational-systems-with-ALCHEMIST.pdf)
     - [Tesi](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/Theses)
 2. [Protelis](http://protelis.github.io/)
+    - [Protelis: Practical Aggregate Programming](https://www.researchgate.net/profile/Danilo_Pianini/publication/289638756_Protelis/links/5819fe2708ae3c82664c0fd0.pdf)
 3. SAPERE
     - [Sito ufficiale](http://www.sapere-project.eu/) (attualmente down)
     - [Pagina APICe](http://www.apice.unibo.it/xwiki/bin/view/SAPERE/WebHome)
