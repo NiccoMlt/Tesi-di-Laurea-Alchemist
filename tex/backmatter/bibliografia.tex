@@ -8,13 +8,14 @@
 %% Direttive Arara:
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: frontespizio
-% arara: bibtex
+% arara: biber
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
-\bibliography{biblio}
+% \bibliography{biblio}
 \nocite{*}
-\bibliographystyle{abbrv}
+% \bibliographystyle{abbrv}
+\printbibliography[heading=bibintoc]
 
 % Possibili stili:
 % - plain (ordine alfabetico contrassegnato da numeri),

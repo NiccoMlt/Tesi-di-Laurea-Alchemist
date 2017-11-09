@@ -8,23 +8,23 @@
 %% Direttive Arara:
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: frontespizio
-% arara: bibtex
+% arara: biber
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
 \documentclass[%
-    a4paper,        % specifica il formato A4 (default: letter)
-    12pt,           % specifica la dimensione del carattere a 12
-    openright,      % serve per aprire i capitoli sulla destra
-    oneside,        % serve per fare fronteretro
-    % draft,        % evidenzia i punti in cui il testo sborda dai margini con delle barre nere, va tolta nella versione definitiva % TODO utile per il controllo
-    titlepage       % opzione necessaria per il pacchetto frontespizio
+    a4paper,            % specifica il formato A4 (default: letter)
+    12pt,               % specifica la dimensione del carattere a 12
+    openright,          % serve per aprire i capitoli sulla destra
+    oneside,            % serve per fare fronteretro
+    % draft,            % evidenzia i punti in cui il testo sborda dai margini con delle barre nere, va tolta nella versione definitiva % TODO utile per il controllo
+    titlepage           % opzione necessaria per il pacchetto frontespizio
 ]{book}
 
 \usepackage{a4wide}             % consente di avere più spazio nell'A4
 \usepackage[english,italian]{%
-    babel,          % serve per scrivere Indice, Capitolo, etc in Italiano
-    varioref        % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
+    babel,              % serve per scrivere Indice, Capitolo, etc in Italiano
+    varioref            % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
 }
 \usepackage[T1]{fontenc}        % serve per impostare la codifica di output del font come Latin1 (T1)
 \usepackage{lmodern}            % necessario per risolvere un errore col font, si può usare times o lmodern (o probabilmente anche altro)
@@ -41,29 +41,41 @@
 \usepackage{xcolor}             % serve per la gestione dei colori nel testo
 \usepackage{graphicx}           % serve per includere immagini e grafici
 \usepackage[%
-    write,          % alternativa a nowrite, crea il file *-frn.tex
-    %nowrite,       % alternativa a write, non crea il file *-frn.tex
-    standard,       % alternativa a suftesi, crea un frontespizio standard
-    %signatures,    % lascia fra i nomi dei relatori lo spazio per le loro firme
-    %noadvisor,     % opzione per non mostrare il relatore
-    swapnames,      % scambia la posizione dei nomi di relatori e candidato
-    normal          % alternativa a sans, utilizza un font "normale"
-    %sans,          % alternativa a normal, utilizza un font senza grazie
-    %norules,       % eliminano i filetti fra il nome dell’ateneo e quello della facoltà e sopra l’indicazione dell’anno accademico
-    %nouppercase,   % disabilita il maiuscoletto nel nome della facoltà
-    %noinputenc,    % disabilita la trascrizione dell'inputenc nel preambolo
-    %onlyinclude    % disabilita tutte le altre opzioni
+    write,              % alternativa a nowrite, crea il file *-frn.tex
+    %nowrite,           % alternativa a write, non crea il file *-frn.tex
+    standard,           % alternativa a suftesi, crea un frontespizio standard
+    %signatures,        % lascia fra i nomi dei relatori lo spazio per le loro firme
+    %noadvisor,         % opzione per non mostrare il relatore
+    swapnames,          % scambia la posizione dei nomi di relatori e candidato
+    normal              % alternativa a sans, utilizza un font "normale"
+    %sans,              % alternativa a normal, utilizza un font senza grazie
+    %norules,           % eliminano i filetti fra il nome dell’ateneo e quello della facoltà e sopra l’indicazione dell’anno accademico
+    %nouppercase,       % disabilita il maiuscoletto nel nome della facoltà
+    %noinputenc,        % disabilita la trascrizione dell'inputenc nel preambolo
+    %onlyinclude        % disabilita tutte le altre opzioni
 ]{frontespizio}                 % serve a costruire un buon frontespizio
 \usepackage[%
-    %notbib,        % rimuove la bibliografia dall'indice
-    notindex,       % rimuove l'indice dall'indice
-    nottoc,         % rimuove la Table of Contents dall'indice
-    notlot,         % rimuove la lista delle tabelle dall'indice
-    notlof,         % rimuove la lista delle figure dall'indice
-    %chapter,       % "Use chapter-level headings, if possible"
-    %section,       % "Use section-level headings, if possible"
-    %numbib         % numera il capitolo della bibliografia
-    %numindex       % numera il capitolo dell'indice
+    strict,             % rende tutti gli warning degli errori
+    autostyle,          % imposta lo stile in base al linguaggio specificato in babel o polyglossia
+    english=american,   % imposta lo stile per l'inglese
+    italian=guillemets  % imposta lo stile per l'italiano
+]{csquotes}
+\usepackage[
+    style=numeric,
+    firstinits=true,
+    backend=biber       % specifica il backend per la bibliografia
+]{biblatex}                     % si interfaccia con bibtex e biber per la bibliografia
+\addbibresource{biblio.bib}
+\usepackage[%
+    %notbib,            % rimuove la bibliografia dall'indice
+    notindex,           % rimuove l'indice dall'indice
+    nottoc,             % rimuove la Table of Contents dall'indice
+    notlot,             % rimuove la lista delle tabelle dall'indice
+    notlof,             % rimuove la lista delle figure dall'indice
+    %chapter,           % "Use chapter-level headings, if possible"
+    %section,           % "Use section-level headings, if possible"
+    %numbib             % numera il capitolo della bibliografia
+    %numindex           % numera il capitolo dell'indice
 ]{tocbibind}                    % aggiunge cose all'indice
 %\usepackage{fncychap}          % serve a personalizzare il formato dei titoli dei capitoli
 %\usepackage[]{titlesec}        % una volta definito lo stile nel preambolo con \titleformat formatta i \chapter{}
