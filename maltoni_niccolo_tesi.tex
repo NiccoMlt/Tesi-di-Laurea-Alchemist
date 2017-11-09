@@ -54,6 +54,17 @@
     %noinputenc,    % disabilita la trascrizione dell'inputenc nel preambolo
     %onlyinclude    % disabilita tutte le altre opzioni
 ]{frontespizio}                 % serve a costruire un buon frontespizio
+\usepackage[%
+    %notbib,        % rimuove la bibliografia dall'indice
+    notindex,       % rimuove l'indice dall'indice
+    nottoc,         % rimuove la Table of Contents dall'indice
+    notlot,         % rimuove la lista delle tabelle dall'indice
+    notlof,         % rimuove la lista delle figure dall'indice
+    %chapter,       % "Use chapter-level headings, if possible"
+    %section,       % "Use section-level headings, if possible"
+    %numbib         % numera il capitolo della bibliografia
+    %numindex       % numera il capitolo dell'indice
+]{tocbibind}                    % aggiunge cose all'indice
 %\usepackage{fncychap}          % serve a personalizzare il formato dei titoli dei capitoli
 %\usepackage[]{titlesec}        % una volta definito lo stile nel preambolo con \titleformat formatta i \chapter{}
 %\usepackage{enumitem}          % serve a personalizzare liste enumerate, itemize e description
@@ -125,7 +136,7 @@
 
     \backmatter
     \input{tex/backmatter/bibliografia.tex}
-    %\listoffigures
-    %\listoftables
+    % \listoffigures
+    % \listoftables
     \input{tex/backmatter/ringraziamenti.tex}
 \end{document}
