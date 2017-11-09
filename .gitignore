@@ -468,4 +468,4 @@ $RECYCLE.BIN/
 /.idea/xtextAutoBuilderState.xml
 /.idea/checkstyle-idea.xml
 *-frn.tex
-*-frn.pdf
+# *-frn.pdf
