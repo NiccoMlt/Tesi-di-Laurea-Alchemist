@@ -62,7 +62,7 @@
 ]{csquotes}
 \usepackage[
     style=numeric,
-    firstinits=true,
+    giveninits=true,
     backend=biber       % specifica il backend per la bibliografia
 ]{biblatex}                     % si interfaccia con bibtex e biber per la bibliografia
 \addbibresource{biblio.bib}
@@ -106,6 +106,9 @@
         \null \vfill\begin{center}%
             \bfseries \abstractname \end{center}}%
     {\vfill\null}
+
+% Definisco un nuovo comando per enfatizzare il testo in inglese
+\newcommand{\engEmph}[1] {\emph{\foreignlanguage{english}#1}}
 
 %\hyphenation{}                 % Permette di sillabare bene le parole, TODO inserire se necessario
 
