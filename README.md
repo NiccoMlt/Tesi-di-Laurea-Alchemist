@@ -11,11 +11,11 @@ Enrico Gregorio ne ha scritto una [guida introduttiva](http://profs.sci.univr.it
 
 - per TeXLive e MikTeX:
 
-    ```texdoc arara```
+    ```bash texdoc arara```
 
 - per MikTeX:
 
-    ```mthelp arara```
+    ```bash mthelp arara```
 
 Sono stati molto utili anche il template fornitomi da relatore e correlatore della tesi e le guide fornite dal [GuIT](https://www.guitex.org/home/it/doc).
 
@@ -42,9 +42,15 @@ Sono stati molto utili anche il template fornitomi da relatore e correlatore del
     - [Manuale PDF](https://bitbucket.org/danysk/alchemist/downloads/alchemist-manual.pdf)
     - [Pubblicazioni](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/Publications):
         - [Chemical-oriented simulation of computational systems with Alchemist](https://www.researchgate.net/profile/Danilo_Pianini/publication/262961797_Chemical-oriented_simulation_of_computational_systems_with_ALCHEMIST/links/5819fe6708aeffb294130aa8/Chemical-oriented-simulation-of-computational-systems-with-ALCHEMIST.pdf)
-    - [Tesi](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/Theses)
+    - [Tesi](http://www.apice.unibo.it/xwiki/bin/view/Alchemist/Theses):
+        - [Revisione e refactoring dell'interfaccia utente del simulatore Alchemist](http://amslaurea.unibo.it/12310/), Casadio Elisa (2016)
 2. [Protelis](http://protelis.github.io/)
     - [Protelis: Practical Aggregate Programming](https://www.researchgate.net/profile/Danilo_Pianini/publication/289638756_Protelis/links/5819fe2708ae3c82664c0fd0.pdf)
 3. SAPERE
     - [Sito ufficiale](http://www.sapere-project.eu/) (attualmente down)
     - [Pagina APICe](http://www.apice.unibo.it/xwiki/bin/view/SAPERE/WebHome)
+4. JavaFX
+    - [Oracle](http://www.oracle.com/technetwork/java/javase/overview/javafx-overview-2158620.html)
+    - [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
+    - Wikipedia: [IT](https://it.wikipedia.org/wiki/JavaFX), [EN](https://en.wikipedia.org/wiki/JavaFX)
+    - [Gluon Scene Builder](http://gluonhq.com/products/scene-builder/)
