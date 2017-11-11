@@ -14,9 +14,10 @@
 
 \appendix
 \chapter{L'interfaccia \texttt{Effect}}\label{appendix:effect}
-    \begin{minted}{java}
+    % \begin{minted}{java}
+    % \begin{minipage}{\linewidth}
+    \begin{lstlisting}[language=Java]
         public interface Effect extends Serializable {
-
             /**
              * Applies the effect.
              *
@@ -42,4 +43,6 @@
             @Override // Should override equals() method
             boolean equals(Object obj);
         }
-    \end{minted}
+    \end{lstlisting}
+    % \end{minipage}
+    % \end{minted}
