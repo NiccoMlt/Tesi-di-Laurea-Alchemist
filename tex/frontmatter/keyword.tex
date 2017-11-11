@@ -1,0 +1,36 @@
+%% Direttive TeXworks:
+% !TeX root = ../maltoni_niccolo_tesi.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = arara
+% !TEX TS-program = arara
+% !TeX spellcheck = it-IT
+
+%% Direttive Arara:
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: frontespizio
+% arara: biber
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+
+\pagestyle{empty}
+\vspace*{20ex}
+\begin{flushright}
+    \begin{LARGE}
+        \textbf{Parole chiave}\\
+        \vspace{5ex}
+    \end{LARGE}
+    \begin{normalsize}
+        \textbf{%
+            Alchemist\\%
+            \medskip
+            Simulatore\\%
+            \medskip
+            JavaFX\\%
+            \medskip
+            Interfaccia grafica\\%
+            \medskip
+            Effetto%
+        }
+    \end{normalsize}
+\end{flushright}
+\vfill
