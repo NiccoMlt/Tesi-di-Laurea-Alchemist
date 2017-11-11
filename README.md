@@ -11,11 +11,11 @@ Enrico Gregorio ne ha scritto una [guida introduttiva](http://profs.sci.univr.it
 
 - per TeXLive e MikTeX:
 
-    ```bash texdoc arara```
+    ```texdoc arara```
 
 - per MikTeX:
 
-    ```bash mthelp arara```
+    ```mthelp arara```
 
 Sono stati molto utili anche il template fornitomi da relatore e correlatore della tesi e le guide fornite dal [GuIT](https://www.guitex.org/home/it/doc).
 
