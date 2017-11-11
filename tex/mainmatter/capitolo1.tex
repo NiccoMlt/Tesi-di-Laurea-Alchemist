@@ -137,10 +137,35 @@
                 \caption{Vista principale di una simulazione con l'interfaccia classica}
             \end{figure}
 
-            Un'altra criticità criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico/edonistico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione estetica che rispettasse le direttive di un design grafico ben definito (come il Material Design~\cite{material} di Google o Modern UI e Fluent Design System~\cite{fluent} di Microsoft).
+            Un'ultima criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico/edonistico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione estetica che rispettasse le direttive di un design grafico ben definito (come il Material Design~\cite{material} di Google o Modern UI e Fluent Design System~\cite{fluent} di Microsoft) o che mantenesse il design fornito dal sistema operativo.
 
             \subsubsection{Swing}\label{subsub:swing}
+
+            Come detto, Alchemist utilizzava Swing come strumento per implementare l'interfaccia grafica. Java Swing è un framework per lo sviluppo di GUI in Java, parte delle \engEmph{Java Foundation Classes} (JFC) insieme ad AWT (\engEmph{Abstract Window Toolkit}) e \emph{Java 2D}.
+
+            Come è possibile vedere in \figurename~\vref{fig:awt}, la libreria sfrutta i componenti forniti da AWT, mettendo a disposizione nuovi componenti in grado di risolvere diverse debolezze del precedente standard grafico per il linguaggio di Oracle:
+
+            \begin{figure}[htbp]\label{fig:awt}
+                % \centering
+                \includegraphics[scale=.45]{img/AWTSwing}
+                \caption{Struttura delle classi di Swing e AWT, by Jakub Závěrka (Jakub Závěrka - own work) [Public domain], via Wikimedia Commons}
+            \end{figure}
+
+            \begin{itemize}
+              \item[--] Swing è molto più facilmente estendibile e rende possibile un controllo della presentazione grafica dei componenti (il \engEmph{look'n'feel}) trasparente, non necessitando più di classi specifiche per ogni aspetto grafico.
+              \item[--] I componenti forniti da Swing permettono inoltre di realizzare un'interfaccia più leggera di quella di AWT: essa sfrutta infatti le API fornite da Java 2D, anziché chiamare il \engEmph{toolkit} di interfacce native del sistema operativo; nel contempo, appoggiandosi al container di AWT, sfrutta l'accesso al framework di gestione delle GUI fornito dall'OS, traducendo gli eventi specifici dell'OS in eventi Java disaccoppiati dalla piattaforma su cui gira la JVM, semplificando la gestione da parte dello sviluppatore.
+              \item[--] Swing rende più semplice appoggiarsi al pattern MVC per implementare software con GUI, separando le classi di modello da quelle grafiche e di controllo.
+            \end{itemize}
+
             \subsubsection{Gli effetti e l'interfaccia \texttt{Effect}}\label{subsub:effect}
+
+            Una parte consistente della visualizzazione di una simulazione di Alchemist, nell'interfaccia classica come in quella attuale, è costituita dagli effetti.
+
+            Un \emph{effetto} in Alchemist è una rappresentazione grafica di ``qualcosa'' nell'ambiente; costituisce di fatto una modalità semplificata per l'utente di cogliere quanto accade nella simulazione.
+
+            L'interfaccia Java che implementa questo tipo di astrazione prima del lavoro svolto con questa tesi è la classe \texttt{Effect}.
+            L'effetto è in grado di rappresentare qualsiasi proprietà di un nodo dato; è concepito come un oggetto serializzabile, in modo da semplificare il salvataggio e il caricamento di intere rapprsentazioni tramite la serializzazione di collezioni di essi.
+
     \section{JavaFX}\label{sec:jfx}
         \subsection{Introduzione a JavaFX}\label{sub:jfxIntro}
         \subsection{Il framework JavaFX}\label{sub:jfxFramework}
