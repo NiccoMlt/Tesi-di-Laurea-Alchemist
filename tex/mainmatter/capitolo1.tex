@@ -24,13 +24,14 @@
             Alchemist rientra nell'archetipo dei simulatori ad eventi discreti (DES)~\cite{des, des2}: gli eventi sono strettamente ordinati e vengono eseguiti uno alla volta, mentre il tempo viene fatto avanzare parallelamente ad ogni passo (detto \engEmph{tick}).
             L'idea dietro al progetto è quello di riuscire ad avere un framework di simulazione il più possibile generico, in grado di simulare sistemi di tipologia e complessità diverse, mantenendo le prestazioni dei simulatori non generici (come ad esempio quelli impiegati in ambito chimico~\cite{gillespie1976}).
 
-            Per perseguire questo obiettivo, la progettazione dell'algoritmo è partita dal lavoro di Gillespie del 1977~\cite{gillespie1977}, al quale sono state aggiunte diverse modifiche per adattarlo al rinnovato metamodello.
+            Per perseguire questo obiettivo, la progettazione dell'algoritmo è partita dallo studio del lavoro di Gillespie del 1977~\cite{gillespie1977} e di altri scienziati nell'ambito della simulazione chimica. Nonostante siano presenti algoritmi in grado di eseguire un numero di reazioni addirittura in tempo costante, la scelta dell'algoritmo è infine ricaduta su una versione migliorata dell'algoritmo SSA di Gillespie, il Next Reaction Method~\cite{nextReactionMethod} di Gibson e Bruck: ad ogni passo di simulazione, esso è in grado di selezionare la reazione successiva in tempo costante e richiede un tempo logaritmico per aggiornare le strutture dati interne al termine dell'esecuzione dell'evento.
 
-            % TODO aggiungi qualche riferimento al Next Reaction Method (Gibson and Bruck, 2000).
+        \subsection{Architettura di Alchemist}\label{sub:architettura}
+            % TODO analizza architettura Alchemist e separala dal modello
 
-        \subsection{Modello computazionale di Alchemist}\label{sub:modelloComputazionale}
-            Il modello (visibile in \figurename~\vref{fig:model}) che costituisce l'architettura base di Alchemist è, come detto, ispirato ad algoritmi tipici della simulazione a scopo di ricerca chimica e, dunque, ne riprende la nomenclatura, seppur con alcune libertà atte ad ottenere una maggiore flessibilità.
-            Le entità su cui lavora sono le seguenti:
+        \subsection{Astrazioni e modello di Alchemist}\label{sub:modello}
+            Il modello di astrazione di Alchemist è ispirato dal lavoro della comunità scientifica nell'ambito dei simulatori a scopo di ricerca chimica e, dunque, ne riprende la nomenclatura, seppur con alcune libertà per favorire
+            Le entità (visibile in \figurename~\vref{fig:model}) su cui lavora sono le seguenti:
 
             \begin{description}
 
@@ -56,7 +57,7 @@
                     La \emph{Regola di collegamento} è la funzione dello stato corrente dell'\emph{Ambiente} che associa ad ogni \emph{Nodo} un \emph{Vicinato}.
 
                 \item[\engEmph{Vicinato}\label{itm:neigh}]
-                    Un \emph{Vicinato} è un'entità costituita da un \emph{Nodo} detto ''centro'' e da un insieme di altri \emph{Nodi} (i ''vicini'').
+                    Un \emph{Vicinato} è un'entità costituita da un \emph{Nodo} detto ``centro'' e da un insieme di altri \emph{Nodi} (i ``vicini'').
 
                     L'astrazione dovrebbe avere un'accezione il più possibile generale e flessibile, in modo da poter modellare qualsiasi tipo di legame di vicinato, non solo spaziale.
 
@@ -77,7 +78,7 @@
                     \begin{itemize}
                         \item[--] Un tasso statico;
                         \item[--] Il valore di ciascuna \emph{Condizione};
-                        \item[--] Una equazione che combina il tasso statico e il valore delle \emph{Condizioni}, restituendo un ''tasso istantaneo'';
+                        \item[--] Una equazione che combina il tasso statico e il valore delle \emph{Condizioni}, restituendo un ``tasso istantaneo'';
                         \item[--] Una distribuzione temporale.
                     \end{itemize}
 
@@ -88,6 +89,7 @@
 
                 \item[\engEmph{Action}\label{itm:act}]
                         Un'\emph{Azione} è una procedura che provoca una modifica allo stato dell'\emph{Ambiente}.
+
             \end{description}
 
             \begin{figure}[htbp]\label{fig:model}
@@ -98,9 +100,45 @@
                 }
             \end{figure}
 
-            
+            % TODO aggiungi dettagli
         \subsection{Interfaccia utente classica}\label{sub:prevGui}
+
+            L'architettura di Alchemist è progettata con paradigma \engEmph{Model-View-Controller} (MVC)~\cite{mvc}, di conseguenza la suddivisione tra componente grafica (\engEmph{View}) e il blocco ``logico'' composto da \engEmph{Model} e \engEmph{Controller} è netta.
+            Questa distinzione è evidente anche per quanto riguarda l'utilizzo pratico del software: una simulazione su Alchemist può venire lanciata da terminale, senza che alcuna interfaccia grafica sia necessaria per tutta la durata del periodo di esecuzione, oppure essere inizializzata, lanciata e controllata in tempo reale dalla sua interfaccia grafica.
+
+            Per lo scopo di questa tesi, tratteremo esclusivamente della GUI.
+
             \subsubsection{Esperienza utente}\label{subsub:prevUx}
+
+            Un'interfaccia grafica (detta anche GUI, \engEmph{graphical user interface}~\cite{gui}) è l’insieme dei componenti grafici con i quali l'utente può interagire per impartire comandi ad un programma del computer, che si contrappone ad un altro metodo di interazione, l'interfaccia a riga di comando (o CLI, \engEmph{Command Line Interface}).
+
+            L'interfaccia grafica è stata ideata negli anni `80 a partire da un'esigenza di maggiore usabilità rispetto dalla riga di comando, derivante soprattuto dall'affermarsi degli studi di usabilità~\cite{norman1988} e di ergonomia cognitiva di quel periodo.
+
+            Più ampio e moderno è invece il concetto di esperienza utente~\cite{ux} (spesso abbreviata in UX, \engEmph{User eXperience}): l'ISO 9241-210~\cite{iso9421} al definisce come ``le percezioni e le reazioni di un utente che derivano dall’uso o dall’aspettativa d’uso di un prodotto, sistema o servizio''.
+            Di fatto, essa descrive la reazione dell'utente di fronte all'interazione con il programma o lo strumento in base a tre dimensioni:
+            \begin{itemize}
+                \item[--] \emph{Dimensione pragmatica}: funzionalità e usabilità del sistema;
+                \item[--] \emph{Dimensione estetica/edonistica}: piacevolezza estetica, emotiva e ludica del sistema;
+                \item[--] \emph{Dimensione simbolica}: attributi sociali, forza del brand, identificazione.
+            \end{itemize}
+            L'usabilità, invece, fa riferimento unicamente ai soli aspetti pragmatici (la capacità di svolgere un compito con efficienza ed efficacia).
+
+            L'interfaccia utente classica di Alchemist può essere definita come di usbilità appena sufficiente, funzionale alle necessità di un utilizzatore esperto, ma non adeguato a fornire un'esperienza completa e \engEmph{user-friendly} ad un utente ``standard''.
+
+            % Analizzando l'interfaccia precedente al lavoro illustrato in questa tesi più nel dettaglio, è possibile notare una differenza di stile grafico evidente: le componenti
+
+            Grazie a contributi recenti~\cite{casadio}, la GUI ha subito un parziale rinnovamento, limitati alla parte di ambiente integrato che accoglie l'utilizzatore che stia lanciando il simulatore senza una simulazione specificata; questa parte non è oggetto del lavoro illustrato in questa tesi. Al contrario, è interessante analizzare lo stato dell'interfaccia relativa all'ambiente di esecuzione della simulazione.
+
+            La criticità principale, che va a minare non solo il livello di esperienza utente, ma anche il concetto di usabilità  ``classico'', è evidente nella non intuitività dei controlli: come è possibile vedere in \figurename~\vref{fig:oldMain}, non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zone in cui viene rappresentato l'environment; questo perché molte possibilità di controllo sono limitate a scorciatoie da tastiera non modificabili e non esplicate altrove se non nella documentazione.
+
+            \begin{figure}[htbp]\label{fig:oldMain}
+                % \centering
+                \includegraphics[scale=.35]{img/oldMain}
+                \caption{Vista principale di una simulazione con l'interfaccia classica}
+            \end{figure}
+
+            Un'altra criticità criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico/edonistico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione estetica che rispettasse le direttive di un design grafico ben definito (come il Material Design~\cite{material} di Google o Modern UI e Fluent Design System~\cite{fluent} di Microsoft).
+
             \subsubsection{Swing}\label{subsub:swing}
             \subsubsection{Gli effetti e l'interfaccia \texttt{Effect}}\label{subsub:effect}
     \section{JavaFX}\label{sec:jfx}
