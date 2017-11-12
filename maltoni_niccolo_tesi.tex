@@ -36,6 +36,7 @@
 \usepackage{textcomp}           % serve per fornire supporto ai Text Companion fonts
 \usepackage[utf8]{inputenc}     % serve per impostare la codifica di input del font come UTF8 (codifica di questo file .tex)
 \usepackage{indentfirst}        % serve per avere l'indentazione all'inizio di capitoli, sezioni, etc
+\usepackage{microtype}          % migliora la gestione dei microspazi nel testo
 \usepackage{setspace}           % serve a fornire comandi di interlinea standard, alternativi a \linespread{}
 \usepackage{fancyhdr}           % serve per impaginare bene la tesi
 %\usepackage{refcheck}          % serve per controllare l’utilizzo dei \label e dei \ref, va tolta nella versione definitiva    %TODO utile per il controllo
@@ -98,9 +99,9 @@
     english=american,   % imposta lo stile per l'inglese
     italian=guillemets  % imposta lo stile per l'italiano
 ]{csquotes}
-\usepackage[
-    style=numeric,
-    giveninits=true,
+\usepackage[%
+    style=numeric,      %
+    giveninits=true,    %
     backend=biber       % specifica il backend per la bibliografia
 ]{biblatex}                     % si interfaccia con bibtex e biber per la bibliografia
 \addbibresource{biblio.bib}
@@ -149,6 +150,7 @@
 % Definisco un nuovo comando per enfatizzare il testo in inglese
 \newcommand{\engEmph}[1] {\emph{\foreignlanguage{english}#1}}
 
+\usepackage[htt]{hyphenat}      % Enable hyphenation of TT text
 \hyphenation{                   % Permette di sillabare bene le parole, TODO inserire se necessario
     JavaFX
     Swing

@@ -218,13 +218,34 @@
 
             \begin{figure}[htbp]\label{fig:jfxLife}
                 \centering
-                \includegraphics{img/jfxLifecycle}
+                \includegraphics[scale=1]{img/jfxLifecycle}
                 \caption{La figura rappresenta il ciclo di vita di una applicazione JavaFX}
             \end{figure}
 
-            La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx.application.Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx.application.Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx.stage.Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
+            % La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx\allowbreak .\allowbreak application\allowbreak .\allowbreak Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\allowbreak .\allowbreak application\allowbreak .\allowbreak Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(\allowbreak javafx\allowbreak .\allowbreak stage\allowbreak .\allowbreak Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
 
-            % TODO aggiungi analisi di Layout, Pannelli, Componenti e Stile
+            La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx\dothyp application\dothyp Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\dothyp application\dothyp Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx\dothyp stage\dothyp Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
+            Il metodo \texttt{main()} non deve essere necessariamente implementato perché l'applicazione possa essere avviata: esso viene infatti creato da l\engEmph{JavaFX Packager tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
+
+            Il layout con cui un'applicazione JavaFX è costituita a livello grafico si struttura gerarchicamente su tre sezioni principali, visibili in \figurename~\vref{fig:jfxStage}:
+
+            \begin{description}
+                \item[\texttt{Stage}] In JavaFX, una finestra è astratta tramite la classe \texttt{javafx\dothyp stage\dothyp Stage}: letteralmente ``\emph{palcoscenico}'',  è il contenitore di livello più elevato e funge da ``guscio esterno'' per ogni altro componente grafico e pannello.
+
+                Lo \texttt{Stage} primario viene costruito dalla piattaforma all'atto di avvio, ma ulteriori \texttt{Stage} possono venire costruiti durante l'esecuzione, purché attraverso il \engEmph{JavaFX Application Thread}.
+
+            \begin{figure}[htbp]\label{fig:jfxStage}
+                \centering
+                \includegraphics[scale=1]{img/Javafx-stage-scene-node}
+                \caption{Struttura del layout di una applicazione JavaFX, by Stkl [CC BY-SA 4.0], via Wikimedia Commons}
+            \end{figure}
+
+                \item[\texttt{Scene}] Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartentente a quello specifico \engEmph{scene graph}.
+
+                \item[\texttt{Pane}] Come già affermato nella Sezione~\vref{sub:jfxIntro}, ogni elemento appartenente ad una \emph{scena} è detto \emph{nodo}. Il terzo livello è costituito da un particolare tipo di nodo, detto \emph{pannello} (modellato dalla classe \texttt{javafx\dothyp scene\dothyp layout\dothyp Pane}), che costituisce il contenuto di una scena e gestisce la disposizione dei nodi al suo interno sullo schermo; è possibile costruire una struttura gerarchica inserendo all'interno di un pannello radice altri pannelli.
+            \end{description}
+
+            % TODO aggiungi analisi di Pannelli, Componenti e Stile
 
         \subsection{Vantaggi di JavaFX su Swing}\label{sub:jfxVantaggi}
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
