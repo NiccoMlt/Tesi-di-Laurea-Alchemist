@@ -230,7 +230,7 @@
             Il layout con cui un'applicazione JavaFX è costituita a livello grafico si struttura gerarchicamente su tre sezioni principali, visibili in \figurename~\vref{fig:jfxStage}:
 
             \begin{description}
-                \item[\texttt{Stage}] In JavaFX, una finestra è astratta tramite la classe \texttt{javafx\dothyp stage\dothyp Stage}: letteralmente ``\emph{palcoscenico}'',  è il contenitore di livello più elevato e funge da ``guscio esterno'' per ogni altro componente grafico e pannello.
+                \item[\texttt{Stage}]\label{itm:stg} In JavaFX, una finestra è astratta tramite la classe \texttt{javafx\dothyp stage\dothyp Stage}: letteralmente ``\emph{palcoscenico}'',  è il contenitore di livello più elevato e funge da ``guscio esterno'' per ogni altro componente grafico e pannello.
 
                 Lo \texttt{Stage} primario viene costruito dalla piattaforma all'atto di avvio, ma ulteriori \texttt{Stage} possono venire costruiti durante l'esecuzione, purché attraverso il \engEmph{JavaFX Application Thread}.
 
@@ -240,12 +240,20 @@
                 \caption{Struttura del layout di una applicazione JavaFX, by Stkl [CC BY-SA 4.0], via Wikimedia Commons}
             \end{figure}
 
-                \item[\texttt{Scene}] Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartentente a quello specifico \engEmph{scene graph}.
+                \item[\texttt{Scene}]\label{itm:scn} Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartentente a quello specifico \engEmph{scene graph}.
 
-                \item[\texttt{Pane}] Come già affermato nella Sezione~\vref{sub:jfxIntro}, ogni elemento appartenente ad una \emph{scena} è detto \emph{nodo}. Il terzo livello è costituito da un particolare tipo di nodo, detto \emph{pannello} (modellato dalla classe \texttt{javafx\dothyp scene\dothyp layout\dothyp Pane}), che costituisce il contenuto di una scena e gestisce la disposizione dei nodi al suo interno sullo schermo; è possibile costruire una struttura gerarchica inserendo all'interno di un pannello radice altri pannelli.
+                \item[\texttt{Pane}]\label{itm:pane} Come già affermato nella Sezione~\vref{sub:jfxIntro}, ogni elemento appartenente ad una \emph{scena} è detto \emph{nodo}. Il terzo livello è costituito da un particolare tipo di nodo, detto \emph{pannello} (modellato dalla classe \texttt{javafx\dothyp scene\dothyp layout\dothyp Pane}), che costituisce il contenuto di una scena e gestisce la disposizione dei nodi al suo interno sullo schermo; è possibile costruire una struttura gerarchica inserendo all'interno di un pannello radice altri pannelli.
+
+                \item[\texttt{Node}]\label{itm:nod} La classe \texttt{javafx\dothyp scene\dothyp Node} modella ogni singolo componente dello \engEmph{Scene Graph}, dai già citati pannelli ai bottoni, canvas, campi di testo e così via.
+
+                In \figurename~\vref{fig:jfxNode} è possibile vedere una rappresentazione gerarchica delle diverse tipologie di \emph{nodo}.
             \end{description}
 
-            % TODO aggiungi analisi di Pannelli, Componenti e Stile
+            \begin{figure}[htbp]\label{fig:jfxNode}
+                \centering
+                \includegraphics[scale=0.8]{img/Javafx-layout-classes}
+                \caption{Struttura dei \emph{nodi} di JavaFX, by Stkl [CC BY-SA 4.0], via Wikimedia Commons}
+            \end{figure}
 
         \subsection{Vantaggi di JavaFX su Swing}\label{sub:jfxVantaggi}
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
