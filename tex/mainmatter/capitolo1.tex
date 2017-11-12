@@ -210,8 +210,21 @@
             Il terzo livello è costituito dal sopra citato \engEmph{Glass Windowing Toolkit}, che rappresenta il livello più basso del \engEmph{JavaFX graphics stack}.
             Esso si occupa di gestire i servizi nativi forniti dai sistemi operativi per la gestione delle finestre e delle code degli eventi; costituisce la parte \engEmph{platform-dependent} di JavaFX.
 
-            \engEmph{Media Engine} e \engEmph{Web Engine} si occupano del supporto per i file multimediali e per i linguaggi web.
+            \engEmph{Media Engine} e \engEmph{Web Engine} si occupano del supporto per i file multimediali audiovisivi e per i linguaggi web.
 
         \subsection{Struttura di una Applicazione JavaFX}\label{sub:jfxStruttura}
+
+            JavaFX fornisce le classi di base per strutturare una applicazione completa, delimitando linee guida ben specifiche nella suddivisione della struttura.
+
+            \begin{figure}[htbp]\label{fig:jfxLife}
+                \centering
+                \includegraphics{img/jfxLifecycle}
+                \caption{La figura rappresenta il ciclo di vita di una applicazione JavaFX}
+            \end{figure}
+
+            La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx.application.Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx.application.Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx.stage.Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
+
+            % TODO aggiungi analisi di Layout, Pannelli, Componenti e Stile
+
         \subsection{Vantaggi di JavaFX su Swing}\label{sub:jfxVantaggi}
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
