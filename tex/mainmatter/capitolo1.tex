@@ -188,6 +188,30 @@
             Oltre al già citato miglioramento per quanto riguarda il \engEmph{look'n'feel} (che ora può vantare la semplificazione data dai fogli di stile CSS), un ulteriore flessibilità grafica è il supporto Hi-DPI, che permette alle GUI di adattarsi a qualsiasi risoulzione di schermo senza comprometterne la qualità.
 
         \subsection{Architettura del framework JavaFX}\label{sub:jfxFramework}
+            Come è possibile osservare in \figurename~\vref{fig:jfxArch}, l'architettura interna di JavaFX è costituita da diversi livelli, ciascuno dei quali sfrutta le funzionalità messe a disposizione dai livelli inferiori per offrire nuove API ai livelli superiori e allo sviluppatore finale.
+
+            Il livello più elevato per la costruzione di una applicazione JavaFX è il grafo delle scene (\engEmph{Scene Graph}): esso ospita un albero gerarchico di nodi, ciascuno dei quali rappresentante un elemento visivo dell'interfaccia utente. Questo livello si occupa anche di intercettare gli input e di mettere a disposizione le JavaFX API pubbliche.
+
+            Un singolo elemento del grafo delle scene è chiamato \emph{nodo}. Ogni nodo possiede un ID, una classe di stile e un volume delimitato; fatta eccezione per il nodo radice, ogni nodo possiede un solo nodo genitore e può essere a sua volta genitore di uno o più altri nodi. Su ogni nodo possono essere definiti effetti grafici (come blur e ombre) e livello di opacità, nonché stati specifici per l'applicazione e comportamenti in caso di eventi specifici.
+
+            Il livello subito inferiore allo \engEmph{Scene Graph} è costituito dal \engEmph{JavaFX Graphics System} (in \figurename~\ref{fig:jfxArch} è rappresentato dagli elementi in azzurro), che attraverso il \engEmph{Quantum Toolkit} e \engEmph{Prism} mette a disposizione funzionalità più a basso livello per rappresentazioni 2D e 3D.
+
+            I processi di \engEmph{Prism} si occupano del rendering; possono eseguire sia con accelerazione hardware che senza, ed effettuano sia rendering 2D che 3D.
+            Attraverso questi processi vengono eseguite le rasterizzazioni e i rendering di tutti i grafi delle scene.
+
+            Il \engEmph{Quantum Toolkit} collega invece \engEmph{Prism} al \engEmph{Glass Windowing Toolkit} e gestisce le regole di threading per rendering e gestione degli eventi.
+
+            \begin{figure}[htbp]\label{fig:jfxArch}
+                \centering
+                \includegraphics[scale=0.75]{img/jfxArch}
+                \caption{La figura, presa dalla documentazione ufficiale di Oracle~\cite{java8}, rappresenta i diversi livelli che caratterizzano il framework JavaFX}
+            \end{figure}
+
+            Il terzo livello è costituito dal sopra citato \engEmph{Glass Windowing Toolkit}, che rappresenta il livello più basso del \engEmph{JavaFX graphics stack}.
+            Esso si occupa di gestire i servizi nativi forniti dai sistemi operativi per la gestione delle finestre e delle code degli eventi; costituisce la parte \engEmph{platform-dependent} di JavaFX.
+
+            \engEmph{Media Engine} e \engEmph{Web Engine} si occupano del supporto per i file multimediali e per i linguaggi web.
+
         \subsection{Struttura di una Applicazione JavaFX}\label{sub:jfxStruttura}
         \subsection{Vantaggi di JavaFX su Swing}\label{sub:jfxVantaggi}
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
