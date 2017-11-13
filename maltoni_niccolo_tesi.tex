@@ -166,7 +166,10 @@
 %\usepackage[a-1b]{pdfx}        % Permette di generare PDF/A con specifica 1b, TODO verificare
                                 % La chiamata deve essere ritardata il più possibile, ma deve essere prima di hyperref
 
-\usepackage[hidelinks]{hyperref}
+\usepackage[%
+    hidelinks,
+    linktoc=all
+]{hyperref}
 %\hypersetup{                   % Parametri hyperref da Beccari_Pdf_archiviabile, TODO verificare
 %	pdfpagemode={UseOutlines},
 %	bookmarksopen,
