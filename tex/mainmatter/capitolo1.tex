@@ -26,7 +26,7 @@
 
             Per perseguire questo obiettivo, la progettazione dell'algoritmo è partita dallo studio del lavoro di Gillespie del 1977~\cite{gillespie1977} e di altri scienziati nell'ambito della simulazione chimica. Nonostante siano presenti algoritmi in grado di eseguire un numero di reazioni addirittura in tempo costante, la scelta dell'algoritmo è infine ricaduta su una versione migliorata dell'algoritmo SSA di Gillespie, il Next Reaction Method~\cite{nextReactionMethod} di Gibson e Bruck: ad ogni passo di simulazione, esso è in grado di selezionare la reazione successiva in tempo costante e richiede un tempo logaritmico per aggiornare le strutture dati interne al termine dell'esecuzione dell'evento.
 
-        % \subsection{Architettura di Alchemist}\label{sub:architettura}
+        % \subsection{Architettura di Alchemist}\label{sub:architettura} % TODO
             % TODO analizza architettura Alchemist e separala dal modello
 
         \subsection{Astrazioni e modello di Alchemist}\label{sub:modello}
@@ -60,12 +60,13 @@
 
                     L'astrazione dovrebbe avere un'accezione il più possibile generale e flessibile, in modo da poter modellare qualsiasi tipo di legame di vicinato, non solo spaziale.
 
-                \begin{figure}[htbp]\label{fig:react}
+                \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=.35]{img/reaction}
                     \caption{%
                         La figura, rivisitata da quella disponibile sul sito ufficiale~\cite{alchemistWeb}, offre una rappresentazione grafica della \emph{Reazione}.
                     }
+                    \label{fig:react}
                 \end{figure}
 
                 \item[\engEmph{Reaction}\label{itm:react}]
@@ -91,12 +92,13 @@
 
             \end{description}
 
-            \begin{figure}[htbp]\label{fig:model}
+            \begin{figure}[htbp]
                 \centering
                 \includegraphics[scale=.4]{img/model}
                 \caption{%
                     La figura, presa dal sito ufficiale~\cite{alchemistWeb}, offre una rappresentazione grafica delle diverse entità. All’interno di un ambiente, che modella il sistema, si trovano i nodi connessi tra loro attraverso dei collegamenti; ogni nodo è composto da reazioni e molecole, ognuna delle quali ha associata una concentrazione.
                 }
+                \label{fig:model}
             \end{figure}
 
             % TODO aggiungi dettagli
@@ -126,10 +128,11 @@
 
                 La criticità principale, che va a minare non solo il livello di esperienza utente, ma anche il concetto di usabilità  ``classico'', è evidente nella non intuitività dei controlli: come è possibile vedere in \figurename~\vref{fig:oldMain}, non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zone in cui viene rappresentato l'environment; questo perché molte possibilità di controllo sono limitate a scorciatoie da tastiera non modificabili e non esplicate altrove se non nella documentazione.
 
-                \begin{figure}[htbp]\label{fig:oldMain}
+                \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=.35]{img/oldMain}
                     \caption{Vista principale di una simulazione con l'interfaccia classica}
+                    \label{fig:oldMain}
                 \end{figure}
 
                 Un'ultima criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico/edonistico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione estetica che rispettasse le direttive di un design grafico ben definito (come il Material Design~\cite{material} di Google o Modern UI e Fluent Design System~\cite{fluent} di Microsoft) o che mantenesse il design fornito dal sistema operativo.
@@ -139,10 +142,11 @@
 
                 Come è possibile vedere in \figurename~\vref{fig:awt}, la libreria sfrutta i componenti forniti da AWT, mettendo a disposizione nuovi componenti in grado di risolvere diverse debolezze del precedente standard grafico per il linguaggio di Oracle:
 
-                \begin{figure}[htbp]\label{fig:awt}
+                \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=.45]{img/AWTSwing}
                     \caption{Struttura delle classi di Swing e AWT, by Jakub Závěrka (Jakub Závěrka - own work) [Public domain], via Wikimedia Commons}
+                    \label{fig:awt}
                 \end{figure}
 
                 \begin{itemize}
@@ -201,10 +205,11 @@
 
             Il \engEmph{Quantum Toolkit} collega invece \engEmph{Prism} al \engEmph{Glass Windowing Toolkit} e gestisce le regole di threading per rendering e gestione degli eventi.
 
-            \begin{figure}[htbp]\label{fig:jfxArch}
+            \begin{figure}[htbp]
                 \centering
                 \includegraphics[scale=0.75]{img/jfxArch}
                 \caption{La figura, presa dalla documentazione ufficiale di Oracle~\cite{java8}, rappresenta i diversi livelli che caratterizzano il framework JavaFX}
+                \label{fig:jfxArch}
             \end{figure}
 
             Il terzo livello è costituito dal sopra citato \engEmph{Glass Windowing Toolkit}, che rappresenta il livello più basso del \engEmph{JavaFX graphics stack}.
@@ -216,13 +221,12 @@
 
             JavaFX fornisce le classi di base per strutturare una applicazione completa, delimitando linee guida ben specifiche nella suddivisione della struttura.
 
-            \begin{figure}[htbp]\label{fig:jfxLife}
+            \begin{figure}[htbp]
                 \centering
                 \includegraphics[scale=1]{img/jfxLifecycle}
                 \caption{La figura rappresenta il ciclo di vita di una applicazione JavaFX}
+                \label{fig:jfxLife}
             \end{figure}
-
-            % La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx\allowbreak .\allowbreak application\allowbreak .\allowbreak Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\allowbreak .\allowbreak application\allowbreak .\allowbreak Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(\allowbreak javafx\allowbreak .\allowbreak stage\allowbreak .\allowbreak Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
 
             La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx\dothyp application\dothyp Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\dothyp application\dothyp Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx\dothyp stage\dothyp Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
             Il metodo \texttt{main()} non deve essere necessariamente implementato perché l'applicazione possa essere avviata: esso viene infatti creato da l\engEmph{JavaFX Packager tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
@@ -234,10 +238,11 @@
 
                 Lo \texttt{Stage} primario viene costruito dalla piattaforma all'atto di avvio, ma ulteriori \texttt{Stage} possono venire costruiti durante l'esecuzione, purché attraverso il \engEmph{JavaFX Application Thread}.
 
-            \begin{figure}[htbp]\label{fig:jfxStage}
+            \begin{figure}[htbp]
                 \centering
                 \includegraphics[scale=1]{img/Javafx-stage-scene-node}
                 \caption{Struttura del layout di una applicazione JavaFX, by Stkl [CC BY-SA 4.0], via Wikimedia Commons}
+                \label{fig:jfxStage}
             \end{figure}
 
                 \item[\texttt{Scene}]\label{itm:scn} Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartentente a quello specifico \engEmph{scene graph}.
@@ -249,18 +254,20 @@
                 In \figurename~\vref{fig:jfxNode} è possibile vedere una rappresentazione gerarchica delle diverse tipologie di \emph{nodo}.
             \end{description}
 
-            \begin{figure}[htbp]\label{fig:jfxNode}
+            \begin{figure}[htbp]
                 \centering
                 \includegraphics[scale=0.8]{img/Javafx-layout-classes}
                 \caption{Struttura dei \emph{nodi} di JavaFX, by Stkl [CC BY-SA 4.0], via Wikimedia Commons}
+                \label{fig:jfxNode}
             \end{figure}
 
         \subsection{Vantaggi di JavaFX su Swing}\label{sub:jfxVantaggi}
 
-            \begin{figure}[htbp]\label{fig:jfxSwingAdapt}
+            \begin{figure}[hbpt]
                 \centering
                 \includegraphics[scale=0.8]{img/jfxSwingAdapt}
                 \caption{Diagramma delle classi \engEmph{adapter} per \emph{nodi JavaFX} e \emph{componenti Swing}}
+                \label{fig:jfxSwingAdapt}
             \end{figure}
 
             Nonostante sia presente un livello di interoperabilità fornito dalle classi \engEmph{adapter} \texttt{JFXPanel} e \texttt{SwingNode} del package \texttt{javafx\dothyp embed\dothyp swing} (\figurename~\ref{fig:jfxSwingAdapt}), come già sostenuto nella sottosezione~\ref{sub:jfxIntro} lo sviluppo del framework JavaFX è orientato prima ad affiancare poi a sostituire Swing e le \engEmph{Java Foundation Classes} come ambiente grafico per applicazioni su \engEmph{Java Virtual Machine}.
