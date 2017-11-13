@@ -295,3 +295,18 @@
             \end{description}
 
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
+        Come spiegato nella sottosezione~\vref{subsub:prevUx}, l'esperienza utente dell'interfaccia utente classica di Alchemist è estremamente limitata.
+        Miglioramenti recenti~\cite{casadio} sono stati apportati a parte dell'interfaccia, impiegando la libreria JavaFX per implementare un'esperienza d'uso più intuivo, simile all'utilizzo di una IDE.
+        Evidente era dunque la necessità di una nuova interfaccia grafica per l'ambiente di simulazione, che potesse avvicinare utilizzatori meno esperti in ambito informatico all'utilizzo dei Alchemist per impieghi scientifici nei loro campi di competenza.
+
+        Si è scelto dunque di effettuare la reimplementazione in JavaFX anche per questa parte per diversi motivi:
+
+        \begin{itemize}
+            \item[--] Poiché l'alternativa valutabile era Swing, la prima motivazione è composta da tutte le nuove funzionalità elencate nella sottosezione~\ref{sub:jfxVantaggi}; in particolare, era importante il supporto ad uno scaling corretto dell'interfaccia su tutti gli schermi e una gestione delle animazioni più leggera che potesse impattare in modo inferiore le risorse della macchina e lasciare maggiore potenza computazionale al motore di simulazione.
+
+            Inoltre, è stato considerato interessante l'orientamento ``intrinseco'' che l'utilizzo di file FXML ha verso il pattern MVC, già utilizzato in Alchemist per il design della struttura dei moduli.
+
+            \item[--] Una seconda motivazione riguarda il supporto futuro: come illustrato precedentemente, JavaFX si presenta come il nuovo punto di riferimento per quanto riguarda l'implementazione di GUI per applicazioni JVM, dunque è stato considerato più conveniente abbandonare la soluzione \engEmph{legacy} Swing per la più nuova alternativa.
+
+            \item[--] In ultimo, vi è una motivazione prettamente estetica: la maggiore flessibilità a livello di personalizzazione grafica che JavaFX è in grado di offrire ha permesso di adottare le direttive grafiche di design molto apprezzati come, in questo caso, il Material Design definito da Google.
+        \end{itemize}
