@@ -265,6 +265,26 @@
 
             Nonostante sia presente un livello di interoperabilità fornito dalle classi \engEmph{adapter} \texttt{JFXPanel} e \texttt{SwingNode} del package \texttt{javafx\dothyp embed\dothyp swing} (\figurename~\ref{fig:jfxSwingAdapt}), come già sostenuto nella sottosezione~\ref{sub:jfxIntro} lo sviluppo del framework JavaFX è orientato prima ad affiancare poi a sostituire Swing e le \engEmph{Java Foundation Classes} come ambiente grafico per applicazioni su \engEmph{Java Virtual Machine}.
 
+            Escludendo il fatto di essere la libreria grafica non di terze parti più moderna per Java e il cosiddetto ``eye candy factor'', JavaFX può vantare diversi vantaggi su Swing:
 
+            \begin{description}
+              \item [FXML] L'utilizzo di un linguaggio di markup basato su XML per la definizione della componente di UI offre un approccio dichiarativo nel processo di costruzione che Swing non poteva offrire; inoltre, questo porta ad un incapsulamento della compionente \engEmph{View} dei pattern di progettazione MV* sostanzialmente ``automatico''.
+
+              Da non sottovalutare è anche la presenza di un software ufficiale per il design dell'interfaccia in FXML: \engEmph{Scene Builder}. Esso offre un'interfaccia \engEmph{drag'n'drop} per l'aggiunta dei componenti grafici, ed è perfettamente integrato in tutte le IDE più utilizzate (Eclipse, Intellij IDEA, Netbeans).
+              La versione più recente del software creato da Oracle è distribuito da Gluon\footnote{\url{http://gluonhq.com/products/scene-builder/}}.
+
+              \item[Skin e CSS] Altro miglioramento in merito alla flessibilità riguarda il supporto ai fogli di stile CSS (\engEmph{Cascading style sheet}): ampiamente utilizzati nello sviluppo web, esi permettono di sviluppare temi per una applicazione JavaFX senza coinvolgere il codice Java, a differenza dei \engEmph{look'n'feel} di Swing, né i file FXML, incapsulando completamente la componente di presentazione.
+
+              \item[Supporto multimediale] Grazie a JavaFX Media, la piattaforma supporta nativamente i più comuni formati audio (MP3, AIFF, WAV, AAC) e video (FLV con compressione VP6, MP4 con compressione H.264/AVC) senza richiedere l'utilizzo di librerie interne. Il supporto è incluso anche nella \engEmph{Webview}.
+
+              \item[Animazione] Rispetto a Swing, il supporto alle animazioni (sia per quanto riguarda il movimento di componenti grafiche che gli effetti di transizione) è stato notevolmente allegerito; è stato inoltre introdotto il supporto alle alterazioni regolate dal tempo, precedentemente molto complesse da implementare a causa del paradigma di rappresentazione tramite doppio buffer di default.
+
+              \item[Supporto HTML] Completamente assente in Swing era la possibilità di rendering di contenuti HTML; con JavaFX è stato inserito il supporto completo a Javascript, HTML5 e CSS tramite motore di rendering WebKit (utilizzato da browser come Safari, Google Chrome e Opera) e nodi \texttt{Webview} dedicati.
+
+              \item[Scaling e Hi-DPI] Recentemente si sta verificando un progressivo innalzarsi delle risoluzioni degli schermi: i sempre più comuni display 4K UltraHD o display retina dei dispositivi Apple recenti sono alcuni esempi.
+              Eseguire applicazioni su questo tipo di schermi in moltissime occasioni causa problemi di visualizzazione: infatti l'utilizzo di valori assoluti per quanto riguarda la dimensione dei componenti grafici rende la GUI molto piccola e soprattutto quasi totalmente inutilizzabile dall’utente, a causa dell'elevato rapporto di pixel per unità di dimensione.
+
+              JavaFX 8 introduce il supporto a Hi-DPI, assente in Swing.
+            \end{description}
 
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
