@@ -124,9 +124,9 @@
 
                 L'interfaccia utente classica di Alchemist è caratterizzata da un'usbilità appena sufficiente, funzionale alle necessità di un utilizzatore esperto, ma non adeguato a fornire un'esperienza completa e \engEmph{user-friendly} ad un utente ``standard''.
 
-                Grazie a contributi recenti~\cite{casadio}, la GUI ha subito un parziale rinnovamento, limitati alla parte di ambiente integrato che accoglie l'utilizzatore che stia lanciando il simulatore senza una simulazione specificata; questa parte non è oggetto del lavoro illustrato in questa tesi. Al contrario, è interessante analizzare lo stato dell'interfaccia relativa all'ambiente di esecuzione della simulazione.
+                Grazie a contributi recenti~\cite{casadio}, la GUI ha subito un parziale rinnovamento, limitato alla parte di ambiente integrato che accoglie l'utilizzatore che stia lanciando il simulatore senza una simulazione specificata; questa parte non è oggetto del lavoro illustrato in questa tesi. Al contrario, è interessante analizzare lo stato dell'interfaccia relativa all'ambiente di esecuzione della simulazione.
 
-                La criticità principale, che va a minare non solo il livello di esperienza utente, ma anche il concetto di usabilità  ``classico'', è evidente nella non intuitività dei controlli: come è possibile vedere in \figurename~\vref{fig:oldMain}, non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zone in cui viene rappresentato l'environment; questo perché molte possibilità di controllo sono limitate a scorciatoie da tastiera non modificabili e non esplicate altrove se non nella documentazione.
+                La criticità principale, che va a minare non solo il livello di esperienza utente, ma anche il concetto di usabilità  ``classico'', è evidente nella non intuitività dei controlli: come è possibile vedere in \figurename~\vref{fig:oldMain}, non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zona in cui viene rappresentato l'ambiente; questo perché molte possibilità di controllo sono limitate a scorciatoie da tastiera non modificabili e non descritte altrove se non nella documentazione.
 
                 \begin{figure}[htbp]
                     \centering
@@ -135,7 +135,7 @@
                     \label{fig:oldMain}
                 \end{figure}
 
-                Un'ultima criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico/edonistico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione estetica che rispettasse le direttive di un design grafico ben definito (come il Material Design~\cite{material} di Google o Modern UI e Fluent Design System~\cite{fluent} di Microsoft) o che mantenesse il design fornito dal sistema operativo.
+                Un'ultima criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione al \engEmph{look'n'feel} che potesse identificare uno stile originale di Alchemist, né che lo allineasse alle direttive di un design grafico ben definito (come il Material Design~\cite{material} di Google o Modern UI e Fluent Design System~\cite{fluent} di Microsoft), né che si adattasse al \engEmph{look'n'feel} generico del sistema operativo.
 
             \subsubsection{Swing}\label{subsub:swing}
                 Come detto, Alchemist utilizzava Swing come strumento per implementare l'interfaccia grafica. Java Swing è un framework per lo sviluppo di GUI in Java, parte delle \engEmph{Java Foundation Classes} (JFC) insieme ad AWT (\engEmph{Abstract Window Toolkit}) e \emph{Java 2D}.
@@ -164,7 +164,7 @@
                 Un \emph{effetto} in Alchemist è una rappresentazione grafica di ``qualcosa'' nell'ambiente; costituisce di fatto una modalità semplificata per l'utente di cogliere quanto accade nella simulazione.
 
                 L'interfaccia Java che implementa questo tipo di astrazione prima del lavoro svolto con questa tesi è la classe \texttt{Effect} (codice in Appendice \ref{appendix:effect}).
-                L'effetto è in grado di rappresentare qualsiasi proprietà di un nodo dato; è concepito come un oggetto serializzabile, in modo da semplificare il salvataggio e il caricamento di intere rapprsentazioni tramite la serializzazione di collezioni di essi.
+                L'effetto è in grado di rappresentare qualsiasi proprietà di un nodo dato; è concepito come un oggetto serializzabile, in modo da semplificare il salvataggio e il caricamento di intere rappresentazioni tramite la serializzazione di collezioni di essi.
 
     \section{JavaFX}\label{sec:jfx}
         Nel mese di maggio del 2007 alla conferenza annuale JavaOne, Sun Microsystems annuncia JavaFX Script (chiamato anche F3, \engEmph{Form~Follows~Function}), un DSL (\engEmph{Domain~Specific~Language}, linguaggio di dominio specifico) pensato per lo sviluppo di interfacce grafiche di Rich Internet Applications~\cite{moritz2008rich}, e JavaFX Mobile, un sistema software per dispositivi mobili basato su Java e ispirato all'allora neonato iPhone, che avrebbe avuto come cavallo di battaglia la possibilità di sviluppare app mobile in grado di condividere codice e asset grafici con le controparti desktop e web, semplificando lo sviluppo di ecosistemi strutturati.
@@ -186,7 +186,7 @@
             \begin{itemize}
                 \item[--] La \emph{componente visiva} è definita su file di markup FXML, logicamente separati da qualsiasi componente Java che non siano le loro classi \engEmph{Controller}; anche la \emph{presentazione}, definibile attraverso fogli di stile CSS, è indipendente dalle altre componenti Java e XML e può essere anche sostituita a tempo di esecuzione senza difficoltà;
                 \item[--] Il \emph{controllo} dell'applicazione è circoscritto a classi Java specifiche, che vengono associate al caricamento del documento di markup corrispondente; per design sono facilmente sostituibili da differenti implementazioni progettate per interagire con gli oggetti che il parser di JavaFX riconosce nel file FXML;
-                \item[--] In una implementazione che sfrutti appieno gli strumenti messi a disposizione del framework, per design il \emph{modello} non viene coinvolto delle suddette componenti e resta dunque distaccato dalle suddette componenti.
+                \item[--] In una implementazione che sfrutti appieno gli strumenti messi a disposizione del framework, per design il \emph{modello} non viene coinvolto dalle suddette componenti e resta dunque distaccato dalle suddette componenti.
             \end{itemize}
 
             Oltre al già citato miglioramento per quanto riguarda il \engEmph{look'n'feel} (che ora può vantare la semplificazione data dai fogli di stile CSS), un ulteriore flessibilità grafica è il supporto Hi-DPI, che permette alle GUI di adattarsi a qualsiasi risoulzione di schermo senza comprometterne la qualità.
@@ -280,7 +280,7 @@
               Da non sottovalutare è anche la presenza di un software ufficiale per il design dell'interfaccia in FXML: \engEmph{Scene Builder}. Esso offre un'interfaccia \engEmph{drag'n'drop} per l'aggiunta dei componenti grafici, ed è perfettamente integrato in tutte le IDE più utilizzate (Eclipse, Intellij IDEA, Netbeans).
               La versione più recente del software creato da Oracle è distribuito da Gluon\footnote{\url{http://gluonhq.com/products/scene-builder/}}.
 
-              \item[Skin e CSS] Altro miglioramento in merito alla flessibilità riguarda il supporto ai fogli di stile CSS (\engEmph{Cascading style sheet}): ampiamente utilizzati nello sviluppo web, esi permettono di sviluppare temi per una applicazione JavaFX senza coinvolgere il codice Java, a differenza dei \engEmph{look'n'feel} di Swing, né i file FXML, incapsulando completamente la componente di presentazione.
+              \item[Skin e CSS] Altro miglioramento in merito alla flessibilità riguarda il supporto ai fogli di stile CSS (\engEmph{Cascading style sheet}): ampiamente utilizzati nello sviluppo web, essi permettono di sviluppare temi per una applicazione JavaFX senza coinvolgere il codice Java, a differenza dei \engEmph{look'n'feel} di Swing, né i file FXML, incapsulando completamente la componente di presentazione.
 
               \item[Supporto multimediale] Grazie a JavaFX Media, la piattaforma supporta nativamente i più comuni formati audio (MP3, AIFF, WAV, AAC) e video (FLV con compressione VP6, MP4 con compressione H.264/AVC) senza richiedere l'utilizzo di librerie interne. Il supporto è incluso anche nella \engEmph{Webview}.
 
