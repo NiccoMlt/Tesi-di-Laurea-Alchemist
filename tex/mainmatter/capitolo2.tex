@@ -92,15 +92,38 @@
                     \label{fig:simcity}
                 \end{figure}
 
-                % TODO lo screenshot serve?
-
                 % TODO potrebbe essere utile inserire ulteriori dettagli?
 
-            \subsubsection{Universe Sandbox}\label{subsub:us1}
-                Altra serie di videogiochi simulativi analizzata è Universe Sandbox, composta dall'omonimo primo capitolo, rilasciato nel 2008, e Universe Sandbox\ap{2} del 2015.
+            \subsubsection{Universe Sandbox}\label{subsub:universesandbox}
+                Altra serie di videogiochi simulativi analizzata è Universe Sandbox.
+                Dopo oltre 15 anni di sviluppo~\cite{unisandTechradar}, il primo capitolo~\cite{universeSandboxDixon} è stato rilasciato dallo sviluppatore e artista Dan Dixon nel 2008.
+                Il responso positivo lo ha portato a continurare lo sviluppo, tanto da fondare la compagnia Giant Army~\cite{universeSandboxGiantArmy}, che ha rilasciato nel 2015 la seconda iterazione della saga, Universe Sandbox\ap{2}~\cite{universeSandbox2}.
 
-                % TODO continua
+                % TODO approfondire analisi ?
+
+                Per il design dell'interfaccia, è stato proprio il secondo capitolo a fungere da maggior fonte d'ispirazione. Essa va a riprendere la classica interfaccia utilizzata da videogiochi simulativi come il già citato SimCity (\figurename~\ref{fig:simcity}), ma andando a rimuovere buona parte degli ornamenti grafici tipici delle GUI a scopo videoludico, andando a preferire uno stile molto più pulito e semplificato; il sistema di interazione a sviluppo verticale e a popup viene sostituito con uno sviluppo orizzontale di pannelli (definito \emph{Modello multi-paned}~\cite{multipanedmodel}) che vanno a raccogliere tutte le impostazioni e i parametri.
+
+                La simulazione viene rappresentata sullo sfondo, come in SimCity, ma con effetti di trasparenza non presenti nel gioco di EA.
+
+                % TODO approfondire analisi ?
+
+                \begin{figure}[htbp]
+                    \centering
+                    \includegraphics[scale=0.35]{img/universesandboxpanels}
+                    \caption{Universe Sandbox\ap{2} (2015), sviluppato e distribuito da Giant Army, tutti i diritti riservati ai ripettivi proprietari}
+                    \label{fig:universesandboxpanels}
+                \end{figure}
+
         \subsection{Material Design}\label{sub:material}
+            Uno dei maggiori motivi che hanno portato l'interfaccia grafica di Alchemist a necessitare di un rinnovamento è stata l'intenzione di semplificarla all'occhio dell'utente non esperto, fornendo un'esperienza completa e gradevole.
+            Era dunque necessario scegliere uno stile grafico familiare, moderno e facilmente adattabile a quella che sarebbe essere la nuova interfaccia che si stava progettando.
+
+            Prendendo come base l'interfaccia di Universe Sandbox illustrata nella sezione~\ref{subsub:universesandbox}, è possibile notare che il design di base sia estremamente ``flat''; si è deciso di valutare i possibili design a cui adeguare la UX che si aveva intenzione di progettare.
+
+            La scelta è infine ricaduta sul Material Design~\cite{material} sviluppato da Google: dal suo annuncio nel giugno del 2014 alla conferenza del Google I/O~\cite{pichai2014google} esso è stato almeno parzialmente adottatto in molte applicazioni web, mobile e desktop, e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
+
+            Si è deciso di utilizzare le icone\footnote{\url{https://material.io/icons/}} e le direttive in merito a dimensioni e palette di colore\footnote{\url{https://material.io/color/}} fornite da Google.
+
     \section{Design dell'interfaccia}\label{sec:design}
     \section{Progettazione}\label{sec:progettazione}
         \subsection{La barra inferiore}\label{sub:barra}
