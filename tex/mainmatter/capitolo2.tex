@@ -70,6 +70,9 @@
             \subsubsection{Supporto Hi-DPI}\label{subsub:hidpi}
                 L'interfaccia non deve perdere di usabilità e qualità di rappresentazione su alcun tipo di schermo, indipendentemente dalla risoluzione e dalla densità di pixel.Per fare questo si devono quindi utilizzare quanto più possibile grandezze relative e sfruttare al meglio in tal senso le funzionalità offerte da JavaFX.
 
+            \subsubsection{Serializzazione \engEmph{Human-readable}}
+                Deve essere possibile serializzare gli effetti in un formato testo, in modo tale che possa essere facilmente creato e/o modificato manualmente in modo semplice, senza coinvolgere necessariamente l'interfaccia di Alchemist.
+
     \section{Fonti d'ispirazione}\label{sec:ispirazione}
         Una volta chiariti i requisiti dell'interfaccia, il passo successivo riguarda la progettazione dell'interfaccia.
 
@@ -125,6 +128,33 @@
             Si è deciso di utilizzare le icone\footnote{\url{https://material.io/icons/}} e le direttive in merito a dimensioni e palette di colore\footnote{\url{https://material.io/color/}} fornite da Google.
 
     \section{Design dell'interfaccia}\label{sec:design}
+        Una volta chiariti i requisiti e le possibili fonti di ispirazione per la struttura della GUI da realizzare, sono stati disegnati dei mockup che potessero rappresentare una linea guida per l'implementazione concreta dell'interfaccia.
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[scale=0.4]{img/withNodes/main_window}
+            \caption{Mockup dell'interfaccia principale}
+            \label{fig:mock:mainWindow}
+        \end{figure}
+
+        Come è possibile vedere dalla \figurename~\vref{fig:mock:mainWindow}, si è scelto di adottare un'interfaccia composta da uno spazio disegnabile centrale, al quale viene sovrapposta nella parte inferiore una barra contenente dei controlli che permettono un'interazione semplice e diretta con le funzionalità di base:
+
+        \begin{description}
+          \item [Play/Pausa] Partendo da destra, è presente un bottone che permette di avviare e mettere in pausa la simulazione.
+
+          Esso funge anche da indicatore per lo stato attuale della simulazione: qualora essa venga avviata o fermata da terminale o tramite una scorciatoia da tastiera, l'icona rappresentata sul bottone viene aggiornata per adeguarsi al nuovo stato.
+
+          \item[Avanzamento in termini di tempo e step] Continuando verso sinistra, si trovano spazi dedicati al numero di secondi di simulazione rappresentati e di step effettuati; essi vengono aggiornati durante tutto l'avanzamento del motore di simulazione.
+
+          \item[Gestione del sistema di controllo] Poiché l'interazione tramite mouse deve permettere sia di spostarsi nell'ambiente che selezionare i nodi e interagirvi, è presente un bottone che apre un pannello che permette di scegliere tra spostamento (\engEmph{pan}) e selezione.
+
+          \item[Gestione della velocità] Una barra a scorrimento permette di regolare la velocità di rappresentazione della simulazione.
+
+          \item[Gesione degli effetti] Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
+
+          % TODO descrivi meglio tramite immagini
+        \end{description}
+
     \section{Progettazione}\label{sec:progettazione}
         \subsection{La barra inferiore}\label{sub:barra}
         \subsection{La struttura a drawer}\label{sub:drawer}
