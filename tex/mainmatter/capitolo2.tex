@@ -187,44 +187,55 @@
         Terminata la realizzazione dei mockup, il passo successivo riguardava la progettazione della struttura del sistema software. Durante la progettazione, in molti casi ci si è serviti di pattern di progettazione specifici, secondo quanto definito dalla cosiddetta \engEmph{Gang of Four}\footnote{John Vlissides, Richard Helm, Ralph Johnson, Erich Gamma} nel loro celebre saggio~\cite{designPattern} del 1995.
 
         \subsection{L'architettura degli effetti}\label{sub:effetti}
-            La componente architetturale più complessa da progettare probabilmente è costituita dagli effetti.
-            Infatti, concettualmente il nuovo archetipo di effetti (della cui interfaccia è possibile vedere il codice in Appendice~\ref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
-            \begin{itemize}
-                \item[--] esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
-                \item[--] esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe; questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l’interfaccia grafica, una moltitudine di effetti.
-                \item[--] esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti;
-                \item[--] le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
-                \item[--] infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
+            \subsubsection{I singoli effetti e l'interfaccia \texttt{EffectFX}}\label{subsub:effectFX}
+                La componente architetturale più complessa da progettare probabilmente è costituita dagli effetti.
+                Infatti, concettualmente il nuovo archetipo di effetti (della cui interfaccia è possibile vedere il codice in Appendice~\ref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
+                \begin{itemize}
+                    \item[--]\label{itm:eFXEnv} esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
+                    \item[--]\label{itm:eFXName} esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe; questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l’interfaccia grafica, una moltitudine di effetti.
+                    \item[--]\label{itm:eFXVis} esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti;
+                    \item[--]\label{itm:json} le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+                    \item[--]\label{itm:eFXjson} infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
 
-                Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}: esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
-            \end{itemize}
+                    Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}: esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+                \end{itemize}
 
-            \begin{figure}[htbp]
-                \centering
-                \includegraphics[scale=0.5]{img/EffectFXUMLsimple}
-                \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti; maggiori dettagli in Appendice~\ref{appendix:effectfx}} % TODO verifica e sistema il riferimento all'appendice
-                \label{fig:effectFX}
-            \end{figure}
+                \begin{figure}[htbp]
+                    \centering
+                    \includegraphics[scale=0.5]{img/EffectFXUMLsimple}
+                    \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti; maggiori dettagli in Appendice~\ref{appendix:effectfx}} % TODO verifica e sistema il riferimento all'appendice
+                    \label{fig:effectFX}
+                \end{figure}
 
-            Come rappresentato graficamente nel diagramma UML in \figurename~\vref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
-            La suddivisione permette a ciascun effetto concreto di separare le procedure che coinvolgono l'interrogazione del modello da quelle che portano alla costruzione della coda di comandi per effettuare la rappresentazione grafica.
+                Come rappresentato graficamente nel diagramma UML in \figurename~\vref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
+                La suddivisione permette a ciascun effetto concreto di separare le procedure che coinvolgono l'interrogazione del modello da quelle che portano alla costruzione della coda di comandi per effettuare la rappresentazione grafica.
 
-            L'esigenza di permettere all'utente di porer realizzare rappresentazioni complesse con numerosi effetti ha portato alla definizione di una classe collezione specifica:
-            \begin{itemize}
-                \item[--] la classe, secondo il contratto classico definito dall'interfaccia \texttt{Collection} di Java, è pensata per essere iterabile~\cite{iterator} e per permettere l'applicazione in blocco degli effetti che la compongono;
-                \item[--] anche il gruppo di effetti è definito da un nome che lo distigue dagli altri, permettendo all'utente di distinguerli in modo più immediato;
-                \item[--] altra proprietà che accomuna la collezione con gli oggetti che è stata pensata per contenere è la visibilità: essa permette di mostrare e nascondere in blocco tutti i suoi effetti senza andare a modificare la visibilità di ciascuno degli effetti; l'interfaccia consente comunque di agire anche singolarmente sulla visibilità dei singoli nodi.
-            \end{itemize}
+            \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
+                L'esigenza di permettere all'utente di porer realizzare rappresentazioni complesse con numerosi effetti ha portato alla definizione di una classe collezione specifica:
+                \begin{itemize}
+                    \item[--]\label{itm:eFXgIterator} la classe, secondo il contratto classico definito dall'interfaccia \texttt{Collection} di Java, è pensata per essere iterabile~\cite{iterator} e per permettere l'applicazione in blocco degli effetti che la compongono;
+                    \item[--]\label{itm:eFXgName} anche il gruppo di effetti è definito da un nome che lo distigue dagli altri, permettendo all'utente di distinguerli in modo più immediato;
+                    \item[--]\label{itm:eFXgVis} altra proprietà che accomuna la collezione con gli oggetti che è stata pensata per contenere è la visibilità: essa permette di mostrare e nascondere in blocco tutti i suoi effetti senza andare a modificare la visibilità di ciascuno degli effetti; l'interfaccia consente comunque di agire anche singolarmente sulla visibilità dei singoli nodi.
+                \end{itemize}
 
-            % TODO salvataggio e caricamento
-            
+            \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsub:serializzazione}
+
+                Come detto~\vpageref{itm:eFXjson}, il salvataggio e il caricamento degli effetti avvengono tramite file JSON. Si è deciso di modellare una \engEmph{stateless utility class} che si comportasse da intermediario con la libreria utilizzata per la serializzazione, comportandosi secondo il pattern strutturale di tipo \engEmph{Façade}~\cite{designPattern}. È possibile vedere la rappresentazione UML in \figurename~\vref{fig:serial}.
+
+                \begin{figure}[htbp]
+                    \centering
+                    \includegraphics[scale=0.5]{img/EffectSerializationUML}
+                    \caption{Diagramma UML delle classi che modellano la logica di serializzazione degli effetti tramite \engEmph{Façade stateless}} % TODO verifica e sistema il riferimento all'appendice
+                    \label{fig:serial}
+                \end{figure}
+
         \subsection{La barra inferiore}\label{sub:barra}
 
 
         \subsection{La struttura a drawer}\label{sub:drawer}
-            % \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
-            % \subsubsection{I singoli effetti e l'interfaccia \texttt{EffectFX}}\label{subsub:effectFX}
-            % \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsub:serializzazione}
+
+
+
     \section{Dettagli implementativi}\label{sec:dettagli}
         % \subsection{Librerie utilizzate}\label{sub:lib}
         % \subsection{Gestione della concorrenza}\label{sub:concorrenza}
