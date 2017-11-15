@@ -4,49 +4,49 @@
   <class id="1" language="java" name="it.unibo.alchemist.boundary.gui.effects.DrawDot" project="alchemist-swingui" 
     file="/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/gui/effects/DrawDot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="129" y="766"/>    
+    <position height="-1" width="-1" x="96" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="true" protected="false" private="false" static="true"/>    
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
   <class id="2" language="java" name="it.unibo.alchemist.boundary.gui.effects.DrawColoredDot" 
     project="alchemist-swingui" 
     file="/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/gui/effects/DrawColoredDot.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="398" y="865"/>    
+    <position height="-1" width="-1" x="363" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="true" protected="false" private="false" static="true"/>    
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
   <class id="3" language="java" name="it.unibo.alchemist.boundary.gui.effects.DrawLinks" project="alchemist-swingui" 
     file="/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/gui/effects/DrawLinks.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="693" y="766"/>    
+    <position height="-1" width="-1" x="618" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="true" protected="false" private="false" static="true"/>    
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
   <class id="4" language="java" name="it.unibo.alchemist.boundary.gui.effects.AbstractEffect" 
     project="alchemist-swingui" 
     file="/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/gui/effects/AbstractEffect.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="398" y="471"/>    
+    <position height="-1" width="-1" x="363" y="345"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
-      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+      <operations public="false" package="true" protected="true" private="false" static="true"/>    
     </display>  
   </class>  
   <interface id="5" language="java" name="it.unibo.alchemist.boundary.gui.effects.EffectFX" project="alchemist-swingui" 
     file="/alchemist-swingui/src/main/java/it/unibo/alchemist/boundary/gui/effects/EffectFX.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="398" y="211"/>    
+    <position height="-1" width="-1" x="363" y="158"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -55,7 +55,7 @@
   </interface>  
   <interface id="6" language="java" name="java.io.Serializable" project="alchemist-swingui" 
     file="/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="398" y="73"/>    
+    <position height="-1" width="-1" x="363" y="34"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
@@ -63,8 +63,8 @@
     </display>  
   </interface>  
   <generalization id="7">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
   </generalization>  
   <realization id="8">    
     <end type="SOURCE" refId="4"/>    
@@ -75,11 +75,11 @@
     <end type="TARGET" refId="6"/>  
   </generalization>  
   <generalization id="10">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
   </generalization>  
   <generalization id="11">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="4"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
