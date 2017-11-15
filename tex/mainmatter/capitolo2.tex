@@ -261,8 +261,8 @@
     \section{Dettagli implementativi}\label{sec:dettagli}
 
         \subsection{La barra inferiore}\label{sub:barra}
-            La barra inferiore (\figurename~\vref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx.scene.control.ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com.jfoenix.controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
-            Il popup per la modifica del sistema di controllo è stato realizzato tramite la classe \texttt{org.controlsfx.control.PopOver} presente nella libreria ControlsFX.
+            La barra inferiore (\figurename~\vref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
+            Il popup per la modifica del sistema di controllo è stato realizzato tramite la classe \texttt{org\dothyp controlsfx\dothyp control\dothyp PopOver} presente nella libreria ControlsFX.
 
             \begin{figure}[htbp]
                 \centering
@@ -274,7 +274,26 @@
             Gli effetti di colore e trasparenza sono stati implementati con diverse specifiche inserite nel foglio di stile CSS, inline nel documento FXML e attraverso i suddetti componenti.
 
         \subsection{Drawer, liste e celle}\label{sub:drawerCelle}
-            L'impiego dei drawer % TODO
+            L'impiego dei drawer, elemento tipico del Material Design, è stato possibile, ancora una volta, grazie alle classi \texttt{JFXDrawer} e \texttt{JFXDrawersStack} forniti da JFoenix.
+
+            La struttura di un drawer è costituita dagli elementi seguenti:
+            \begin{itemize}
+                \item[--] una opzionale barra superiore, che va a rappresentare il nome dell'elemento di cui si va a modificare il contenuto (ed è dunque assente nella vista di tutti i gruppi di effetti caricati);
+
+                \item[--] una barra inferiore, che fornisce possibili interazioni:
+                \begin{itemize}
+                    \item[$\bullet$] tornare al drawer precedente nello stack; questa funzionalità è presente su ogni livello tranne il primo.
+                    \item[$\bullet$] aggiungere nuovi effetti o gruppi di effetti, andando a cercare tramite \engEmph{reflection} quelli presenti all'interno del classpath; questa funzionalità è assente nel drawer che mostra le proprietà di uno specifico effetto.
+                    \item[$\bullet$] salvare e caricare gruppi di effetti da file; questa funzionalità è disponibile solo nel primo drawer.
+                \end{itemize}
+
+                \item[--] la parte centrale del drawer, che può essere costituita da una \texttt{ListView} di \texttt{EffectFX} o di \texttt{EffectGroup}, o da una rappresentazione delle proprietà dell'effetto costruita a tempo di esecuzione sfruttando la \engEmph{reflection} per identificare quale nodo di controllo utilizzare.
+
+                Nel caso della lista, le celle sono state personalizzate per poter essere riordinate tramite \engEmph{drag'n'drop} e per permettere la modifica della visibilità tramite un \texttt{JFXToggleButton}. % e del nome tramite doppio click sulla relativa \texttt{Label}.
+
+            \end{itemize}
+
+            % TODO inserire immagini
 
         \subsection{Librerie esterne utilizzate}\label{sub:lib}
             Per realizzare questa interfaccia grafica è stato necessario utilizzare delle librerie esterne che forniscono ulteriori funzionalità.
