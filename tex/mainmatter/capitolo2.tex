@@ -198,7 +198,7 @@
 
                 Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}: esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
             \end{itemize}
-
+            
             \begin{figure}[htbp]
                 \centering
                 \includegraphics[scale=0.55]{img/EffectFXUMLsimple}
@@ -206,7 +206,8 @@
                 \label{fig:effectFX}
             \end{figure}
 
-            Come rapprsentato graficamente nel diagramma UML in \figurename~\vref{fig:effectFX}, la struttura di funzionamento di base viene parzialmente concretizzata da una classe astratta
+            Come rappresentato graficamente nel diagramma UML in \figurename~\vref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
+            La suddivisione permette a ciascun effetto concreto di separare le procedure che coinvolgono l'interrogazione del modello da quelle che portano alla costruzione della coda di comandi per effettuare la rappresentazione grafica.
 
         % TODO gruppi di effetti
 
