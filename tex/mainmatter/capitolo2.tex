@@ -132,7 +132,7 @@
 
         \begin{figure}[htbp]
             \centering
-            \includegraphics[scale=0.4]{img/withNodes/main_window}
+            \includegraphics[scale=0.5]{img/withNodes/main_window}
             \caption{Mockup dell'interfaccia principale}
             \label{fig:mock:mainWindow}
         \end{figure}
@@ -192,12 +192,17 @@
                 Infatti, concettualmente il nuovo archetipo di effetti (della cui interfaccia è possibile vedere il codice in Appendice~\ref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
                 \begin{itemize}
                     \item[--]\label{itm:eFXEnv} esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
+
                     \item[--]\label{itm:eFXName} esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe; questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l’interfaccia grafica, una moltitudine di effetti.
-                    \item[--]\label{itm:eFXVis} esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti;
-                    \item[--]\label{itm:json} le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+
+                    \item[--]\label{itm:eFXVis} esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti.
+
+                    \item[--]\label{itm:eFXobservable} le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+
                     \item[--]\label{itm:eFXjson} infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
 
                     Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}: esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+
                 \end{itemize}
 
                 \begin{figure}[htbp]
@@ -214,27 +219,91 @@
                 L'esigenza di permettere all'utente di poter realizzare rappresentazioni complesse con numerosi effetti ha portato alla definizione di una classe collezione specifica:
                 \begin{itemize}
                     \item[--]\label{itm:eFXgIterator} la classe, secondo il contratto classico definito dall'interfaccia \texttt{Collection} di Java, è pensata per essere iterabile~\cite{iterator} e per permettere l'applicazione in blocco degli effetti che la compongono;
+
                     \item[--]\label{itm:eFXgName} anche il gruppo di effetti è definito da un nome che lo distingue dagli altri, permettendo all'utente di distinguerli in modo più immediato;
+
                     \item[--]\label{itm:eFXgVis} altra proprietà che accomuna la collezione con gli oggetti che è stata pensata per contenere è la visibilità: essa permette di mostrare e nascondere in blocco tutti i suoi effetti senza andare a modificare la visibilità di ciascuno degli effetti; l'interfaccia consente comunque di agire anche singolarmente sulla visibilità dei singoli nodi.
+
                 \end{itemize}
 
             \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsub:serializzazione}
-
                 Come detto~\vpageref{itm:eFXjson}, il salvataggio e il caricamento degli effetti avvengono tramite file JSON. Si è deciso di modellare una \engEmph{stateless utility class} che si comportasse da intermediario con la libreria utilizzata per la serializzazione, comportandosi secondo il pattern strutturale di tipo \engEmph{Façade}~\cite{designPattern}. È possibile vedere la rappresentazione UML in \figurename~\vref{fig:serial}.
 
                 \begin{figure}[htbp]
                     \centering
-                    \includegraphics[scale=0.5]{img/EffectSerializationUML}
-                    \caption{Diagramma UML delle classi che modellano la logica di serializzazione degli effetti tramite \engEmph{Façade stateless}} % TODO verifica e sistema il riferimento all'appendice
+                    \includegraphics[scale=0.45]{img/EffectSerializationUML}
+                    \caption{Diagramma UML delle classi che modellano la logica di serializzazione degli effetti tramite \engEmph{Façade stateless}}
                     \label{fig:serial}
                 \end{figure}
 
-        \subsection{La barra inferiore}\label{sub:barra}
+        \subsection{La struttura dei drawer e le proprietà osservabili}\label{sub:drawer}
+            Una volta realizzato il mockup illustrato nella Sezione~\ref{sec:design}, l'attenzione si è spostata su progettarne la struttura a livello software.
+            Trascurando i dettagli implementativi prettamente legati all'implementazione grafica, di cui si parla nella Sezione~\vref{sec:dettagli}, è stato importante progettare la gestione degli eventi di modifica di proprietà di effetti e gruppi.
+            Come detto nella Sottosezione~\vref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili (UML in \figurename~\vref{fig:props}), che possono implementare ascoltatori di eventi dedicati in modo semplice, potendosi avvalere delle API messe a disposizione dal framework JavaFX.
 
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale=0.5]{img/EffectAndPropertiesUML}
+                \caption{Diagramma UML delle classi che modellano la logica delle proprietà serializzabili e osservabili implementate}
+                \label{fig:props}
+            \end{figure}
 
-        \subsection{La struttura a drawer}\label{sub:drawer}
-            
 
     \section{Dettagli implementativi}\label{sec:dettagli}
-        % \subsection{Librerie utilizzate}\label{sub:lib}
-        % \subsection{Gestione della concorrenza}\label{sub:concorrenza}
+        \subsection{La barra inferiore}\label{sub:barra}
+
+        % TODO
+
+        \begin{figure}[htbp]
+            \centering
+            \includegraphics[scale=0.45]{img/NewBar}
+            \caption{La barra inferiore concretamente realizzata}
+            \label{fig:newBar}
+        \end{figure}
+
+        % TODO
+
+        \subsection{Drawer, liste e celle}\label{sub:drawerCelle}
+
+        % TODO
+
+        \subsection{Librerie esterne utilizzate}\label{sub:lib}
+            Per realizzare questa interfaccia grafica è stato necessario utilizzare delle librerie esterne che forniscono ulteriori funzionalità.
+            Le librerie esterne utilizzate sono le seguenti.
+
+            \subsubsection{ControlsFX}\label{subsub:controlsfx}
+            % TODO
+
+            \subsubsection{GSON}\label{subsub:gson}
+            % TODO
+
+            \subsubsection{JFoenix}\label{subsub:jfoenix}
+            % TODO
+
+            \subsubsection{jIconFont}\label{subsub:jiconfont}
+            % TODO
+
+        \subsection{Strumenti utilizzati}\label{sub:strum}
+            \subsubsection{Qualità del codice e controllo del software}\label{subsub:codeQuality}
+                Date le dimensioni di Alchemist, è necessario fare uso di strumenti che controllino la qualità del codice e diano la possibilità di testarlo in modo immediato.
+
+                Gli strumenti di qualità del codice permettono di revisionare il codice in modo sistematico, così da evitare errori che a volte possono verificarsi, senza bisogno che il programma venga realmente eseguito: essi analizzano il codice sorgente per individuare potenziali bug o codice duplicato e per indicare i possibili miglioramenti e ottimizzazioni.
+
+                Il progetto Alchemist utilizza i seguenti:
+                \begin{description}
+                  \item[FindBugs] % TODO
+                  \item[Checkstyle] % TODO
+                  \item[PMD] % TODO
+                \end{description}
+            \subsubsection{Controllo di versione}\label{subsub:hosting}
+                % TODO
+
+            \subsubsection{Automazione dello sviluppo e integrazione continua}\label{subsub:buildECI}
+                % TODO
+
+            \subsubsection{Ambiente di sviluppo integrato}\label{subsub:IDE}
+                % TODO
+
+            % \subsection{Gestione della concorrenza}\label{sub:concorrenza}
+
+                % TODO
