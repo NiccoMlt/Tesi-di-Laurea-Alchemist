@@ -247,25 +247,34 @@
                 \caption{Diagramma UML delle classi che modellano la logica delle proprietà serializzabili e osservabili implementate}
                 \label{fig:props}
             \end{figure}
+        \subsection{Nodi grafici come monitor per la simulazione}
+            Il canvas in cui vengono rappresentati gli effetti, il bottone che controlla l'avvio della simulazione e le etichette che mostrano il progresso della simulazione in termini di tempo e step sono indubbiamenti nodi grafici; in fase di progettazione, si è scelto però di modellarli anche come monitor per il motore della simulazione, sfruttando ancora una volta il pattern \engEmph{observer} per mettere in ascolto gli elementi della GUI legati alla simulazione stessa al fine di ricevere comunicazione di doversi aggiornare ad ogni step eseguito che li riguardi.
 
+            % TODO potrebbe valere la pena aggiungere UML ?
+
+        \subsection{Costruzione e avvio dell'interfaccia}\label{sub:avvio}
+            L'interfaccia classica gestiva l'avvio della GUI per la simulazione in tempo reale, costruendo l'interfaccia con componenti Swing specifici assemblati in base ai parametri richiesti.
+
+            La nuova interfaccia grafica è progettata conservando l'impiego di pattern \engEmph{builder}, presentando un oggetto adibito all'interpretazione dei parametri e alla semplificazione del processo di costruzione.
+            Si dfferenzia però per l'assenza di frammentazione della struttura: essa è modellata come un'unica applicazione JavaFX, con un layout predefinito, e il builder si occupa di modificare il comportamento e il tipo di canvas per adattarlo alla simulazione, oltre a caricare gli effetti e la simulazione stessa, ma non influenza l'aspetto della UI.
 
     \section{Dettagli implementativi}\label{sec:dettagli}
+
         \subsection{La barra inferiore}\label{sub:barra}
+            La barra inferiore (\figurename~\vref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx.scene.control.ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com.jfoenix.controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
+            Il popup per la modifica del sistema di controllo è stato realizzato tramite la classe \texttt{org.controlsfx.control.PopOver} presente nella libreria ControlsFX.
 
-        % TODO
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale=0.45]{img/NewBar}
+                \caption{La barra inferiore concretamente realizzata}
+                \label{fig:newBar}
+            \end{figure}
 
-        \begin{figure}[htbp]
-            \centering
-            \includegraphics[scale=0.45]{img/NewBar}
-            \caption{La barra inferiore concretamente realizzata}
-            \label{fig:newBar}
-        \end{figure}
-
-        % TODO
+            Gli effetti di colore e trasparenza sono stati implementati con diverse specifiche inserite nel foglio di stile CSS, inline nel documento FXML e attraverso i suddetti componenti.
 
         \subsection{Drawer, liste e celle}\label{sub:drawerCelle}
-
-        % TODO
+            L'impiego dei drawer % TODO
 
         \subsection{Librerie esterne utilizzate}\label{sub:lib}
             Per realizzare questa interfaccia grafica è stato necessario utilizzare delle librerie esterne che forniscono ulteriori funzionalità.
