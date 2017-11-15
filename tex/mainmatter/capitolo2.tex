@@ -184,9 +184,25 @@
         \end{description}
 
     \section{Progettazione}\label{sec:progettazione}
+        Terminata la realizzazione dei mockup, il passo successivo riguardava la progettazione della struttura del sistema software.
+
+        \subsection{L'architettura degli effetti}\label{sub:effetti}
+            La componente architetturale più complessa da progettare probabilmente è costituita dagli effetti.
+            Infatti, concettualmente il nuovo archetipo di effetti (della cui interfaccia è possibile vedere il codice in Appendice~\ref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
+                \begin{itemize}
+                    \item[--] esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
+                    \item[--] esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe; questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l’interfaccia grafica, una moltitudine di effetti.
+                    \item[--] esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti;
+                    \item[--] le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern observable, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+                    \item[--] infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
+
+                    Si è scelto di utilizzare il formato JSON\footnote{\url{https://www.json.org/index.html}} (JavaScript Object Notation~\cite{json}): esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+                \end{itemize}
+
+        % TODO gruppi di effetti
+
         \subsection{La barra inferiore}\label{sub:barra}
         \subsection{La struttura a drawer}\label{sub:drawer}
-        \subsection{L'architettura degli effetti}\label{sub:effetti}
             % \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
             % \subsubsection{I singoli effetti e l'interfaccia \texttt{EffectFX}}\label{subsub:effectFX}
             % \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsub:serializzazione}
