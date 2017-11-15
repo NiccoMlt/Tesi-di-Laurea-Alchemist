@@ -189,15 +189,24 @@
         \subsection{L'architettura degli effetti}\label{sub:effetti}
             La componente architetturale più complessa da progettare probabilmente è costituita dagli effetti.
             Infatti, concettualmente il nuovo archetipo di effetti (della cui interfaccia è possibile vedere il codice in Appendice~\ref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
-                \begin{itemize}
-                    \item[--] esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
-                    \item[--] esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe; questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l’interfaccia grafica, una moltitudine di effetti.
-                    \item[--] esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti;
-                    \item[--] le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern observable, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
-                    \item[--] infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
+            \begin{itemize}
+                \item[--] esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
+                \item[--] esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe; questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l’interfaccia grafica, una moltitudine di effetti.
+                \item[--] esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti;
+                \item[--] le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+                \item[--] infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
 
-                    Si è scelto di utilizzare il formato JSON\footnote{\url{https://www.json.org/index.html}} (JavaScript Object Notation~\cite{json}): esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
-                \end{itemize}
+                Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}: esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+            \end{itemize}
+
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale=0.55]{img/EffectFXUMLsimple}
+                \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti; maggiori dettagli in Appendice~\ref{appendix:effectfx}} % TODO verifica e sistema riferimento
+                \label{fig:effectFX}
+            \end{figure}
+
+            Come rapprsentato graficamente nel diagramma UML in \figurename~\vref{fig:effectFX}, la struttura di funzionamento di base viene parzialmente concretizzata da una classe astratta
 
         % TODO gruppi di effetti
 
