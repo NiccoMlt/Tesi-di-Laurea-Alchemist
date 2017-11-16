@@ -171,10 +171,18 @@
 %\usepackage[a-1b]{pdfx}        % Permette di generare PDF/A con specifica 1b, TODO verificare
                                 % La chiamata deve essere ritardata il più possibile, ma deve essere prima di hyperref
 
+% hyperref deve essere generalmente l'ultimo pacchetto
 \usepackage[%
-    hidelinks,
-    linktoc=all
+    hidelinks,          % nasconde i collegamenti (non vengono quadrettati)
+    linktoc=all         % inserisce i link nell'indice
 ]{hyperref}
+
+% cleveref va anche dopo hyperref
+\usepackage[%
+    english,italian,    % definizione delle lingue da usare
+    nameinlink          % inserisce i link nei riferimenti
+]{cleveref}             % permette di usare riferimenti migliori dei \ref e dei varioref
+
 %\hypersetup{                   % Parametri hyperref da Beccari_Pdf_archiviabile, TODO verificare
 %	pdfpagemode={UseOutlines},
 %	bookmarksopen,
@@ -203,7 +211,7 @@
     \input{tex/mainmatter/capitolo1.tex}
     \input{tex/mainmatter/capitolo2.tex}
     \input{tex/mainmatter/capitolo3.tex}
-    \input{tex/frontmatter/appendice.tex}
+    \input{tex/mainmatter/appendice.tex}
 
     \backmatter
     \input{tex/backmatter/bibliografia.tex}

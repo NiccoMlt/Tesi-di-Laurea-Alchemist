@@ -62,7 +62,7 @@
             I requisiti non funzionali descrivono le proprietà non comportamentali che il sistema deve possedere, come efficienza, affidabilità, sicurezza, performance, ma anche caratteristiche del processo di sviluppo e caratteristiche esterne.
 
             \subsubsection{JavaFX}\label{subsub:jfx}
-                Come specificato nella sezione~\vref{sec:motivi}, il processo di sviluppo deve coinvolgere la libreria JavaFX come framework per la costruzione dell'interfaccia.
+                Come specificato nella sezione~\cref{sec:motivi}, il processo di sviluppo deve coinvolgere la libreria JavaFX come framework per la costruzione dell'interfaccia.
 
             \subsubsection{Performance}\label{subsub:performance}
                 L'interfaccia grafica deve quanto più possibile non gravare sulle prestazioni del motore di simulazione; in particolare, poiché JavaFX non è nativamente \engEmph{thread-safe}, è necessario gestire la concorrenza in modo oculato.
@@ -137,7 +137,7 @@
             \label{fig:mock:mainWindow}
         \end{figure}
 
-        Come è possibile vedere dalla \figurename~\vref{fig:mock:mainWindow}, si è scelto di adottare un'interfaccia composta da uno spazio disegnabile centrale, al quale viene sovrapposta nella parte inferiore una barra contenente dei controlli che permettono un'interazione semplice e diretta con le funzionalità di base:
+        Come è possibile vedere dalla \figurename~\cref{fig:mock:mainWindow}, si è scelto di adottare un'interfaccia composta da uno spazio disegnabile centrale, al quale viene sovrapposta nella parte inferiore una barra contenente dei controlli che permettono un'interazione semplice e diretta con le funzionalità di base:
 
         \begin{description}
           \item [Play/Pausa] Partendo da destra, è presente un bottone che permette di avviare e mettere in pausa la simulazione.
@@ -152,7 +152,7 @@
 
           \item[Gesione degli effetti] Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
 
-          Nelle Figure~\vrefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
+          Nelle Figure~\crefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
 
           \begin{figure}[htbp]
               \centering%
@@ -212,7 +212,7 @@
                     \label{fig:effectFX}
                 \end{figure}
 
-                Come rappresentato graficamente nel diagramma UML in \figurename~\vref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
+                Come rappresentato graficamente nel diagramma UML in \figurename~\cref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
                 La suddivisione permette a ciascun effetto concreto di separare le procedure che coinvolgono l'interrogazione del modello da quelle che portano alla costruzione della coda di comandi per effettuare la rappresentazione grafica.
 
             \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
@@ -227,7 +227,7 @@
                 \end{itemize}
 
             \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsub:serializzazione}
-                Come detto~\vpageref{itm:eFXjson}, il salvataggio e il caricamento degli effetti avvengono tramite file JSON. Si è deciso di modellare una \engEmph{stateless utility class} che si comportasse da intermediario con la libreria utilizzata per la serializzazione, comportandosi secondo il pattern strutturale di tipo \engEmph{Façade}~\cite{designPattern}. È possibile vedere la rappresentazione UML in \figurename~\vref{fig:serial}.
+                Come detto~\cpageref{itm:eFXjson}, il salvataggio e il caricamento degli effetti avvengono tramite file JSON. Si è deciso di modellare una \engEmph{stateless utility class} che si comportasse da intermediario con la libreria utilizzata per la serializzazione, comportandosi secondo il pattern strutturale di tipo \engEmph{Façade}~\cite{designPattern}. È possibile vedere la rappresentazione UML in \figurename~\cref{fig:serial}.
 
                 \begin{figure}[htbp]
                     \centering
@@ -238,8 +238,8 @@
 
         \subsection{La struttura dei drawer e le proprietà osservabili}\label{sub:drawer}
             Una volta realizzato il mockup illustrato nella Sezione~\ref{sec:design}, l'attenzione si è spostata su progettarne la struttura a livello software.
-            Trascurando i dettagli implementativi prettamente legati all'implementazione grafica, di cui si parla nella Sezione~\vref{sec:dettagli}, è stato importante progettare la gestione degli eventi di modifica di proprietà di effetti e gruppi.
-            Come detto nella Sottosezione~\vref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili (UML in \figurename~\vref{fig:props}), che possono implementare ascoltatori di eventi dedicati in modo semplice, potendosi avvalere delle API messe a disposizione dal framework JavaFX.
+            Trascurando i dettagli implementativi prettamente legati all'implementazione grafica, di cui si parla nella Sezione~\cref{sec:dettagli}, è stato importante progettare la gestione degli eventi di modifica di proprietà di effetti e gruppi.
+            Come detto nella Sottosezione~\cref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili (UML in \figurename~\cref{fig:props}), che possono implementare ascoltatori di eventi dedicati in modo semplice, potendosi avvalere delle API messe a disposizione dal framework JavaFX.
 
             \begin{figure}[htbp]
                 \centering
@@ -261,7 +261,7 @@
     \section{Dettagli implementativi}\label{sec:dettagli}
 
         \subsection{La barra inferiore}\label{sub:barra}
-            La barra inferiore (\figurename~\vref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
+            La barra inferiore (\figurename~\cref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
             Il popup per la modifica del sistema di controllo è stato realizzato tramite la classe \texttt{org\dothyp controlsfx\dothyp control\dothyp PopOver} presente nella libreria ControlsFX.
 
             \begin{figure}[htbp]

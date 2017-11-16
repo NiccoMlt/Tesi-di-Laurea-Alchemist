@@ -31,7 +31,7 @@
 
         \subsection{Astrazioni e modello di Alchemist}\label{sub:modello}
             Il modello di astrazione di Alchemist è ispirato dal lavoro della comunità scientifica nell'ambito dei simulatori a scopo di ricerca chimica e, dunque, ne riprende la nomenclatura, seppur con alcune libertà per favorire
-            Le entità (visibile in \figurename~\vref{fig:model}) su cui lavora sono le seguenti:
+            Le entità (visibile in \figurename~\cref{fig:model}) su cui lavora sono le seguenti:
 
             \begin{description}
                 \item[\engEmph{Molecule}\label{itm:mol}]
@@ -72,7 +72,7 @@
                 \item[\engEmph{Reaction}\label{itm:react}]
                     Il concetto di \emph{Reazione} è da considerarsi molto più elaborato di quello utilizzato in chimica: in questo caso, si può considerare com un insieme di \emph{Condizioni} sullo stato del sistema, che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{Azioni}.
 
-                    Una \emph{Reazione} (di cui è possibile vederne una rappresentazione grafica in \figurename~\vref{fig:react}) è dunque un qualsiasi evento che può cambiare lo stato dell’\emph{Ambiente} e si compone di un insieme di condizioni, una o più azioni e una distribuzione temporale.
+                    Una \emph{Reazione} (di cui è possibile vederne una rappresentazione grafica in \figurename~\cref{fig:react}) è dunque un qualsiasi evento che può cambiare lo stato dell’\emph{Ambiente} e si compone di un insieme di condizioni, una o più azioni e una distribuzione temporale.
 
                     La frequenza di accadimento può dipendere da:
                     \begin{itemize}
@@ -126,7 +126,7 @@
 
                 Grazie a contributi recenti~\cite{casadio}, la GUI ha subito un parziale rinnovamento, limitato alla parte di ambiente integrato che accoglie l'utilizzatore che stia lanciando il simulatore senza una simulazione specificata; questa parte non è oggetto del lavoro illustrato in questa tesi. Al contrario, è interessante analizzare lo stato dell'interfaccia relativa all'ambiente di esecuzione della simulazione.
 
-                La criticità principale, che va a minare non solo il livello di esperienza utente, ma anche il concetto di usabilità  ``classico'', è evidente nella non intuitività dei controlli: come è possibile vedere in \figurename~\vref{fig:oldMain}, non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zona in cui viene rappresentato l'ambiente; questo perché molte possibilità di controllo sono limitate a scorciatoie da tastiera non modificabili e non descritte altrove se non nella documentazione.
+                La criticità principale, che va a minare non solo il livello di esperienza utente, ma anche il concetto di usabilità  ``classico'', è evidente nella non intuitività dei controlli: come è possibile vedere in \figurename~\cref{fig:oldMain}, non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zona in cui viene rappresentato l'ambiente; questo perché molte possibilità di controllo sono limitate a scorciatoie da tastiera non modificabili e non descritte altrove se non nella documentazione.
 
                 \begin{figure}[htbp]
                     \centering
@@ -140,7 +140,7 @@
             \subsubsection{Swing}\label{subsub:swing}
                 Come detto, Alchemist utilizzava Swing come strumento per implementare l'interfaccia grafica. Java Swing è un framework per lo sviluppo di GUI in Java, parte delle \engEmph{Java Foundation Classes} (JFC) insieme ad AWT (\engEmph{Abstract Window Toolkit}) e \emph{Java 2D}.
 
-                Come è possibile vedere in \figurename~\vref{fig:awt}, la libreria sfrutta i componenti forniti da AWT, mettendo a disposizione nuovi componenti in grado di risolvere diverse debolezze del precedente standard grafico per il linguaggio di Oracle:
+                Come è possibile vedere in \figurename~\cref{fig:awt}, la libreria sfrutta i componenti forniti da AWT, mettendo a disposizione nuovi componenti in grado di risolvere diverse debolezze del precedente standard grafico per il linguaggio di Oracle:
 
                 \begin{figure}[htbp]
                     \centering
@@ -192,7 +192,7 @@
             Oltre al già citato miglioramento per quanto riguarda il \engEmph{look'n'feel} (che ora può vantare la semplificazione data dai fogli di stile CSS), un ulteriore flessibilità grafica è il supporto Hi-DPI, che permette alle GUI di adattarsi a qualsiasi risoulzione di schermo senza comprometterne la qualità.
 
         \subsection{Architettura del framework JavaFX}\label{sub:jfxFramework}
-            Come è possibile osservare in \figurename~\vref{fig:jfxArch}, l'architettura interna di JavaFX è costituita da diversi livelli, ciascuno dei quali sfrutta le funzionalità messe a disposizione dai livelli inferiori per offrire nuove API ai livelli superiori e allo sviluppatore finale.
+            Come è possibile osservare in \figurename~\cref{fig:jfxArch}, l'architettura interna di JavaFX è costituita da diversi livelli, ciascuno dei quali sfrutta le funzionalità messe a disposizione dai livelli inferiori per offrire nuove API ai livelli superiori e allo sviluppatore finale.
 
             Il livello più elevato per la costruzione di una applicazione JavaFX è il grafo delle scene (\engEmph{Scene Graph}): esso ospita un albero gerarchico di nodi, ciascuno dei quali rappresentante un elemento visivo dell'interfaccia utente. Questo livello si occupa anche di intercettare gli input e di mettere a disposizione le JavaFX API pubbliche.
 
@@ -231,7 +231,7 @@
             La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx\dothyp application\dothyp Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\dothyp application\dothyp Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx\dothyp stage\dothyp Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
             Il metodo \texttt{main()} non deve essere necessariamente implementato perché l'applicazione possa essere avviata: esso viene infatti creato da l\engEmph{JavaFX Packager tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
 
-            Il layout con cui un'applicazione JavaFX è costituita a livello grafico si struttura gerarchicamente su tre sezioni principali, visibili in \figurename~\vref{fig:jfxStage}:
+            Il layout con cui un'applicazione JavaFX è costituita a livello grafico si struttura gerarchicamente su tre sezioni principali, visibili in \figurename~\cref{fig:jfxStage}:
 
             \begin{description}
                 \item[\texttt{Stage}]\label{itm:stg} In JavaFX, una finestra è astratta tramite la classe \texttt{javafx\dothyp stage\dothyp Stage}: letteralmente ``\emph{palcoscenico}'',  è il contenitore di livello più elevato e funge da ``guscio esterno'' per ogni altro componente grafico e pannello.
@@ -247,11 +247,11 @@
 
                 \item[\texttt{Scene}]\label{itm:scn} Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartentente a quello specifico \engEmph{scene graph}.
 
-                \item[\texttt{Pane}]\label{itm:pane} Come già affermato nella Sezione~\vref{sub:jfxIntro}, ogni elemento appartenente ad una \emph{scena} è detto \emph{nodo}. Il terzo livello è costituito da un particolare tipo di nodo, detto \emph{pannello} (modellato dalla classe \texttt{javafx\dothyp scene\dothyp layout\dothyp Pane}), che costituisce il contenuto di una scena e gestisce la disposizione dei nodi al suo interno sullo schermo; è possibile costruire una struttura gerarchica inserendo all'interno di un pannello radice altri pannelli.
+                \item[\texttt{Pane}]\label{itm:pane} Come già affermato nella Sezione~\cref{sub:jfxIntro}, ogni elemento appartenente ad una \emph{scena} è detto \emph{nodo}. Il terzo livello è costituito da un particolare tipo di nodo, detto \emph{pannello} (modellato dalla classe \texttt{javafx\dothyp scene\dothyp layout\dothyp Pane}), che costituisce il contenuto di una scena e gestisce la disposizione dei nodi al suo interno sullo schermo; è possibile costruire una struttura gerarchica inserendo all'interno di un pannello radice altri pannelli.
 
                 \item[\texttt{Node}]\label{itm:nod} La classe \texttt{javafx\dothyp scene\dothyp Node} modella ogni singolo componente dello \engEmph{Scene Graph}, dai già citati pannelli ai bottoni, canvas, campi di testo e così via.
 
-                In \figurename~\vref{fig:jfxNode} è possibile vedere una rappresentazione gerarchica delle diverse tipologie di \emph{nodo}.
+                In \figurename~\cref{fig:jfxNode} è possibile vedere una rappresentazione gerarchica delle diverse tipologie di \emph{nodo}.
             \end{description}
 
             \begin{figure}[htbp]
@@ -295,7 +295,7 @@
             \end{description}
 
     \section{Interfaccia JavaFX per Alchemist: motivazioni}\label{sec:motivi}
-        Come spiegato nella sottosezione~\vref{subsub:prevUx}, l'esperienza utente dell'interfaccia utente classica di Alchemist è estremamente limitata.
+        Come spiegato nella sottosezione~\cref{subsub:prevUx}, l'esperienza utente dell'interfaccia utente classica di Alchemist è estremamente limitata.
         Miglioramenti recenti~\cite{casadio} sono stati apportati a parte dell'interfaccia, impiegando la libreria JavaFX per implementare un'esperienza d'uso più intuivo, simile all'utilizzo di una IDE.
         Evidente era dunque la necessità di una nuova interfaccia grafica per l'ambiente di simulazione, che potesse avvicinare utilizzatori meno esperti in ambito informatico all'utilizzo dei Alchemist per impieghi scientifici nei loro campi di competenza.
 
