@@ -13,40 +13,40 @@
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
 \appendix
-\chapter{Codice relativo all'interfaccia classica}\label{appendix:old}
-    \section{L'interfaccia \texttt{Effect}}\label{appendix:effect}
-        % \begin{minted}{java}
-        % \begin{minipage}{\linewidth}
-        \begin{lstlisting}[language=Java]
-            public interface Effect extends Serializable {
-                /**
-                 * Applies the effect.
-                 *
-                 * @param graphic
-                 *            Graphics2D to use
-                 * @param node
-                 *            the node to draw
-                 * @param x
-                 *            x screen position
-                 * @param y
-                 *            y screen position
-                 */
-                void apply(Graphics2D graphic, Node<?> node, int x, int y);
-
-                /**
-                 * @return a color which resembles the color of this effect
-                 */
-                Color getColorSummary();
-
-                @Override // Should override hashCode() method
-                int hashCode();
-
-                @Override // Should override equals() method
-                boolean equals(Object obj);
-            }
-        \end{lstlisting}
-        % \end{minipage}
-        % \end{minted}
+% \chapter{Codice relativo all'interfaccia classica}\label{appendix:old}
+%     \section{L'interfaccia \texttt{Effect}}\label{appendix:effect}
+%         % \begin{minted}{java}
+%         % \begin{minipage}{\linewidth}
+%         \begin{lstlisting}[language=Java]
+%             public interface Effect extends Serializable {
+%                 /**
+%                  * Applies the effect.
+%                  *
+%                  * @param graphic
+%                  *            Graphics2D to use
+%                  * @param node
+%                  *            the node to draw
+%                  * @param x
+%                  *            x screen position
+%                  * @param y
+%                  *            y screen position
+%                  */
+%                 void apply(Graphics2D graphic, Node<?> node, int x, int y);
+%
+%                 /**
+%                  * @return a color which resembles the color of this effect
+%                  */
+%                 Color getColorSummary();
+%
+%                 @Override // Should override hashCode() method
+%                 int hashCode();
+%
+%                 @Override // Should override equals() method
+%                 boolean equals(Object obj);
+%             }
+%         \end{lstlisting}
+%         % \end{minipage}
+%         % \end{minted}
 
 \chapter{Codice relativo al contributo}\label{appendix:new}
     \section{L'interfaccia \texttt{EffectFX}}\label{appendix:effectfx}
