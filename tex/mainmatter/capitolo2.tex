@@ -326,21 +326,45 @@
 
                 Gli strumenti di qualità del codice permettono di revisionare il codice in modo sistematico, così da evitare errori che a volte possono verificarsi, senza bisogno che il programma venga realmente eseguito: essi analizzano il codice sorgente per individuare potenziali bug o codice duplicato e per indicare i possibili miglioramenti e ottimizzazioni.
 
-                Il progetto Alchemist utilizza i seguenti:
+                Il progetto Alchemist utilizza i seguenti strumenti:
+
                 \begin{description}
-                  \item[FindBugs] % TODO
-                  \item[Checkstyle] % TODO
-                  \item[PMD] % TODO
+                    \item[FindBugs\footnote{\url{http://findbugs.sourceforge.net}}] è un analizzatore di codice statico \engEmph{open-source} che rileva possibili bug all’interno del codice Java realizzato da Bill Pugh e David Hovemeyer e marchio registrato dall'Università del Maryland.
+
+                    Classifica i potenziali errori in categorie, per dare un'idea migliore allo sviluppatore di quale potrebbe essere il loro impatto sul software; opera direttamente sul bytecode di Java.
+
+                    \item[Checkstyle\footnote{\url{http://checkstyle.sourceforge.net}}] è un analizzatore di codice statico \engEmph{open-source} per diversi linguaggi di programmazione che verifica che il codice scritto aderisca a un determinato stile di codifica.
+
+                    Esso effettua un controllo sulla presentazione e non sul contenuto, dunque non permette di assicurare la correttezza e la completezza del software.
+
+                    \item[PMD\footnote{\url{https://pmd.github.io}}] è uno strumento di analisi del codice sorgente statico per Java e altri linguaggi che prevede un set di regole, personalizzabile dallo sviluppatore, per definire quando una parte di esso è errata.
+
+                    Generalmente, gli errori segnalati riguardano scelte implementative subottimali e imperfezioni nel codice, che non inficiano direttamente il funzionamento del programma ma per la maggiorparte il livello del sorgente.
+
+                    Componente importante è il \emph{Copy/Paste Detector} (CPD) che utilizza l'algoritmo di Rabin–Karp per la ricerca delle stringhe~\cite{RabinKarp}, che permette di identificare codice duplicato con elevata precisione.
+
                 \end{description}
+
             \subsubsection{Controllo di versione}\label{subsub:hosting}
-                % TODO
+                Il controllo di versione utilizzato per Alchemist è affidato al DVCS (\engEmph{Distributed Version Control System}) Git, utilizzato con flusso di lavoro di tipo \emph{Git flow}.
 
             \subsubsection{Automazione dello sviluppo e integrazione continua}\label{subsub:buildECI}
-                % TODO
+                Alchemist si avvale di Gradle per il processo di \engEmph{build automation} e di Travis CI per la fase di test in \engEmph{continuous integration} dopo l'aggiunta del codice al repository ufficiale su GitHub.
+
+                \begin{description}
+                    \item[Gradle\footnote{\url{https://gradle.org}}] è un sistema per l’automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy. Pensato per i linguaggi che compilano per JVM, questo sistema permette di avere una gestione controllata delle dipendenze (\engEmph{dependency management}), le quali vengono scaricate dai vari repository Maven durante la fase di compilazione.
+
+                    \item[Travis CI\footnote{\url{https://travis-ci.org}}] è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub; è gratuito per progetti \engEmph{open-source}.
+
+                    Il comportamento è definibile attraverso un file YAML; Alchemist richiede di effettuare una procedura di \engEmph{building} completa con Gradle ad ogni commit su repository.
+
+                \end{description}
 
             \subsubsection{Ambiente di sviluppo integrato}\label{subsub:IDE}
-                % TODO
+                Una IDE (Integrated Development Environment) o ambiente di sviluppo integrato è un software che aiuta i programmatori nello sviluppo del codice sorgente di un programma, mettendo a disposizione una serie di strumenti che permettono scrittura, compilazione o interpretazione, debug e analisi del codice da un unico ambiente, appunto, integrato.
 
-            % \subsection{Gestione della concorrenza}\label{sub:concorrenza}
+                Durante lo sviluppo è stato utilizzato inizialmente Eclipse\footnote{\url{https://eclipse.org}} in versioni \textit{Neon.3} e \textit{Oxygen.1}, con l’integrazione dei plugin \emph{Gradle Buildship}, \emph{Xtext IDE}, \emph{Scala IDE}, \emph{e(fx)clipse}, \emph{FindBugs}, \emph{Checkstyle} e \emph{PMD}.
 
-                % TODO
+                Successivamente è stato utilizzato anche Jetbrains Intellij IDEA\footnote{\url{https://www.jetbrains.com/idea}} in versione \textit{Community 2017.2.6}, con l'integrazione dei plugin per il supporto a Scala e Xtend.
+
+                In congiunzione alle due IDE per lo sviluppo del codice Java è stato utilizzato anche Gluon Scene Builder\footnote{\url{https://gluonhq.com/products/scene-builder}} per una prima definizione dei file FXML di layout.
