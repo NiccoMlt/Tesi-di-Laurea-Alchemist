@@ -23,7 +23,7 @@
         Questa sezione si occuperà di enunciare i requisiti funzionali e non funzionali individuati.
 
         \subsection{Requisiti funzionali}\label{sub:funzionali}
-            I requisiti funzionali (\figurename~\ref{fig:useCase}) descrivono il comportamento che il sistema deve avere:
+            I requisiti funzionali (\Cref{fig:useCase}) descrivono il comportamento che il sistema deve avere:
             descrivono le funzionalità del sistema software, in termini di servizi che il sistema software deve fornire, di come il sistema software reagisce a specifici tipi di input e di come si comporta in situazioni particolari.
 
             \subsubsection{Rappresentazione dell'ambiente di simulazione}\label{subsub:seeEnv}
@@ -51,6 +51,9 @@
             \subsubsection{Rappresentazione di ambienti con mappa}\label{subsub:mappa}
                 Deve essere fornito il supporto alle mappe come sfondo degli ambienti nella rappresentazione di simulazioni che coinvolgano questo aspetto.
 
+            \subsubsection{Serializzazione \engEmph{Human-readable}}
+                Deve essere possibile serializzare gli effetti in un formato testo, in modo tale che possa essere facilmente creato e/o modificato manualmente in modo semplice, senza coinvolgere necessariamente l'interfaccia di Alchemist.
+
                 \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=0.55]{img/useCase}
@@ -62,16 +65,13 @@
             I requisiti non funzionali descrivono le proprietà non comportamentali che il sistema deve possedere, come efficienza, affidabilità, sicurezza, performance, ma anche caratteristiche del processo di sviluppo e caratteristiche esterne.
 
             \subsubsection{JavaFX}\label{subsub:jfx}
-                Come specificato nella sezione~\cref{sec:motivi}, il processo di sviluppo deve coinvolgere la libreria JavaFX come framework per la costruzione dell'interfaccia.
+                Come specificato nella \Cref{sec:motivi}, il processo di sviluppo deve coinvolgere la libreria JavaFX come framework per la costruzione dell'interfaccia.
 
             \subsubsection{Performance}\label{subsub:performance}
                 L'interfaccia grafica deve quanto più possibile non gravare sulle prestazioni del motore di simulazione; in particolare, poiché JavaFX non è nativamente \engEmph{thread-safe}, è necessario gestire la concorrenza in modo oculato.
 
             \subsubsection{Supporto Hi-DPI}\label{subsub:hidpi}
-                L'interfaccia non deve perdere di usabilità e qualità di rappresentazione su alcun tipo di schermo, indipendentemente dalla risoluzione e dalla densità di pixel.Per fare questo si devono quindi utilizzare quanto più possibile grandezze relative e sfruttare al meglio in tal senso le funzionalità offerte da JavaFX.
-
-            \subsubsection{Serializzazione \engEmph{Human-readable}}
-                Deve essere possibile serializzare gli effetti in un formato testo, in modo tale che possa essere facilmente creato e/o modificato manualmente in modo semplice, senza coinvolgere necessariamente l'interfaccia di Alchemist.
+                L'interfaccia non deve perdere di usabilità e qualità di rappresentazione su alcun tipo di schermo, indipendentemente dalla risoluzione e dalla densità di pixel. Per fare questo si devono quindi utilizzare quanto più possibile grandezze relative e sfruttare al meglio in tal senso le funzionalità offerte da JavaFX.
 
     \section{Fonti d'ispirazione}\label{sec:ispirazione}
         Una volta chiariti i requisiti dell'interfaccia, il passo successivo riguarda la progettazione dell'interfaccia.
@@ -90,8 +90,8 @@
 
                 \begin{figure}[htbp]
                     \centering
-                    \includegraphics[scale=0.2]{img/SimCity}
-                    \caption{SimCity (2013), sviluppato da Maxis e distribuito da EA, tutti i diritti riservati ai ripettivi proprietari}
+                    \includegraphics[scale=0.35]{img/SimCity}
+                    \caption{Interfaccia grafica di SimCity (2013), sviluppato da Maxis e distribuito da EA}
                     \label{fig:simcity}
                 \end{figure}
 
@@ -104,7 +104,7 @@
 
                 % TODO approfondire analisi ?
 
-                Per il design dell'interfaccia, è stato proprio il secondo capitolo a fungere da maggior fonte d'ispirazione. Essa va a riprendere la classica interfaccia utilizzata da videogiochi simulativi come il già citato SimCity (\figurename~\ref{fig:simcity}), ma andando a rimuovere buona parte degli ornamenti grafici tipici delle GUI a scopo videoludico, andando a preferire uno stile molto più pulito e semplificato; il sistema di interazione a sviluppo verticale e a popup viene sostituito con uno sviluppo orizzontale di pannelli (definito \emph{Modello multi-paned}~\cite{multipanedmodel}) che vanno a raccogliere tutte le impostazioni e i parametri.
+                Per il design dell'interfaccia, è stato proprio il secondo capitolo a fungere da maggior fonte d'ispirazione. Essa va a riprendere la classica interfaccia utilizzata da videogiochi simulativi come il già citato SimCity (\Cref{fig:simcity}), ma andando a rimuovere buona parte degli ornamenti grafici tipici delle GUI a scopo videoludico, andando a preferire uno stile molto più pulito e semplificato; il sistema di interazione a sviluppo verticale e a popup viene sostituito con uno sviluppo orizzontale di pannelli (definito \emph{Modello multi-paned}~\cite{multipanedmodel}) che vanno a raccogliere tutte le impostazioni e i parametri.
 
                 La simulazione viene rappresentata sullo sfondo, come in SimCity, ma con effetti di trasparenza non presenti nel gioco di EA.
 
@@ -113,7 +113,7 @@
                 \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=0.35]{img/universesandboxpanels}
-                    \caption{Universe Sandbox\ap{2} (2015), sviluppato e distribuito da Giant Army, tutti i diritti riservati ai ripettivi proprietari}
+                    \caption{Rappresentazione dell'interffaccia di Universe Sandbox\ap{2} (2015), sviluppato e distribuito da Giant Army}
                     \label{fig:universesandboxpanels}
                 \end{figure}
 
@@ -121,7 +121,7 @@
             Uno dei maggiori motivi che hanno portato l'interfaccia grafica di Alchemist a necessitare di un rinnovamento è stata l'intenzione di semplificarla all'occhio dell'utente non esperto, fornendo un'esperienza completa e gradevole.
             Era dunque necessario scegliere uno stile grafico familiare, moderno e facilmente adattabile a quella che sarebbe essere la nuova interfaccia che si stava progettando.
 
-            Prendendo come base l'interfaccia di Universe Sandbox illustrata nella sezione~\ref{subsub:universesandbox}, è possibile notare che il design di base sia estremamente ``flat''; si è deciso di valutare i possibili design a cui adeguare la UX che si aveva intenzione di progettare.
+            Prendendo come base l'interfaccia di Universe Sandbox illustrata nella \Cref{subsub:universesandbox}, è possibile notare che il design di base sia estremamente ``flat''; si è deciso di valutare i possibili design a cui adeguare la UX che si aveva intenzione di progettare.
 
             La scelta è infine ricaduta sul Material Design~\cite{material} sviluppato da Google: dal suo annuncio nel giugno del 2014 alla conferenza del Google I/O~\cite{pichai2014google} esso è stato almeno parzialmente adottatto in molte applicazioni web, mobile e desktop, e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
 
@@ -137,7 +137,7 @@
             \label{fig:mock:mainWindow}
         \end{figure}
 
-        Come è possibile vedere dalla \figurename~\cref{fig:mock:mainWindow}, si è scelto di adottare un'interfaccia composta da uno spazio disegnabile centrale, al quale viene sovrapposta nella parte inferiore una barra contenente dei controlli che permettono un'interazione semplice e diretta con le funzionalità di base:
+        Come è possibile vedere dalla \Cref{fig:mock:mainWindow}, si è scelto di adottare un'interfaccia composta da uno spazio disegnabile centrale, al quale viene sovrapposta nella parte inferiore una barra contenente dei controlli che permettono un'interazione semplice e diretta con le funzionalità di base:
 
         \begin{description}
           \item [Play/Pausa] Partendo da destra, è presente un bottone che permette di avviare e mettere in pausa la simulazione.
@@ -152,7 +152,8 @@
 
           \item[Gesione degli effetti] Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
 
-          Nelle Figure~\crefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
+          % Nelle \Crefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
+          Nella \Cref{fig:mock:allEffects} è possibile osservare i diversi livelli del drawer laterale degli effetti.
 
           \begin{figure}[htbp]
               \centering%
@@ -189,7 +190,8 @@
         \subsection{L'architettura degli effetti}\label{sub:effetti}
             \subsubsection{I singoli effetti e l'interfaccia \texttt{EffectFX}}\label{subsub:effectFX}
                 La componente architetturale più complessa da progettare probabilmente è costituita dagli effetti.
-                Infatti, concettualmente il nuovo archetipo di effetti (della cui interfaccia è possibile vedere il codice in Appendice~\ref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
+                Infatti, concettualmente il nuovo archetipo di effetti (di cui è possibile vedere l'UML in~\Cref{fig:effectFX} o con maggiori dettagli in~\Cref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
+
                 \begin{itemize}
                     \item[--]\label{itm:eFXEnv} esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
 
@@ -201,18 +203,18 @@
 
                     \item[--]\label{itm:eFXjson} infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
 
-                    Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}: esso è un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+                    Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}, un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
 
                 \end{itemize}
 
                 \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=0.5]{img/EffectFXUMLsimple}
-                    \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti; maggiori dettagli in Appendice~\ref{appendix:effectfx}} % TODO verifica e sistema il riferimento all'appendice
+                    \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti; maggiori dettagli in \Cref{appendix:effectfx}}
                     \label{fig:effectFX}
                 \end{figure}
 
-                Come rappresentato graficamente nel diagramma UML in \figurename~\cref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
+                Come rappresentato graficamente nel diagramma UML in \Cref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
                 La suddivisione permette a ciascun effetto concreto di separare le procedure che coinvolgono l'interrogazione del modello da quelle che portano alla costruzione della coda di comandi per effettuare la rappresentazione grafica.
 
             \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
@@ -227,7 +229,7 @@
                 \end{itemize}
 
             \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsub:serializzazione}
-                Come detto~\cpageref{itm:eFXjson}, il salvataggio e il caricamento degli effetti avvengono tramite file JSON. Si è deciso di modellare una \engEmph{stateless utility class} che si comportasse da intermediario con la libreria utilizzata per la serializzazione, comportandosi secondo il pattern strutturale di tipo \engEmph{Façade}~\cite{designPattern}. È possibile vedere la rappresentazione UML in \figurename~\cref{fig:serial}.
+                Come detto~\vpageref{itm:eFXjson}, il salvataggio e il caricamento degli effetti avvengono tramite file JSON. Si è deciso di modellare una \engEmph{stateless utility class} che si comportasse da intermediario con la libreria utilizzata per la serializzazione, comportandosi secondo il pattern strutturale di tipo \engEmph{Façade}~\cite{designPattern}. È possibile vedere la rappresentazione UML in \Cref{fig:serial}.
 
                 \begin{figure}[htbp]
                     \centering
@@ -237,20 +239,20 @@
                 \end{figure}
 
         \subsection{La struttura dei drawer e le proprietà osservabili}\label{sub:drawer}
-            Una volta realizzato il mockup illustrato nella Sezione~\ref{sec:design}, l'attenzione si è spostata su progettarne la struttura a livello software.
-            Trascurando i dettagli implementativi prettamente legati all'implementazione grafica, di cui si parla nella Sezione~\cref{sec:dettagli}, è stato importante progettare la gestione degli eventi di modifica di proprietà di effetti e gruppi.
-            Come detto nella Sottosezione~\cref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili (UML in \figurename~\cref{fig:props}), che possono implementare ascoltatori di eventi dedicati in modo semplice, potendosi avvalere delle API messe a disposizione dal framework JavaFX.
+            Una volta realizzato il mockup illustrato nella \Cref{sec:design}, l'attenzione si è spostata su progettarne la struttura a livello software.
+            Trascurando i dettagli implementativi prettamente legati all'implementazione grafica, di cui si parla nella \Cref{sec:dettagli}, è stato importante progettare la gestione degli eventi di modifica di proprietà di effetti e gruppi.
+            Come detto nella \Cref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili %(UML in \Cref{fig:props})
+            , che possono implementare ascoltatori di eventi dedicati in modo semplice, potendosi avvalere delle API messe a disposizione dal framework JavaFX.
 
-            \begin{figure}[htbp]
-                \centering
-                \includegraphics[scale=0.5]{img/EffectAndPropertiesUML}
-                \caption{Diagramma UML delle classi che modellano la logica delle proprietà serializzabili e osservabili implementate}
-                \label{fig:props}
-            \end{figure}
+            % \begin{figure}[htbp]
+            %     \centering
+            %     \includegraphics[scale=0.4]{img/PropertiesUMLsimple}
+            %     \caption{Diagramma UML delle classi che modellano la logica delle proprietà serializzabili e osservabili implementate}
+            %     \label{fig:props}
+            % \end{figure}
+
         \subsection{Nodi grafici come monitor per la simulazione}
             Il canvas in cui vengono rappresentati gli effetti, il bottone che controlla l'avvio della simulazione e le etichette che mostrano il progresso della simulazione in termini di tempo e step sono indubbiamenti nodi grafici; in fase di progettazione, si è scelto però di modellarli anche come monitor per il motore della simulazione, sfruttando ancora una volta il pattern \engEmph{observer} per mettere in ascolto gli elementi della GUI legati alla simulazione stessa al fine di ricevere comunicazione di doversi aggiornare ad ogni step eseguito che li riguardi.
-
-            % TODO potrebbe valere la pena aggiungere UML ?
 
         \subsection{Costruzione e avvio dell'interfaccia}\label{sub:avvio}
             L'interfaccia classica gestiva l'avvio della GUI per la simulazione in tempo reale, costruendo l'interfaccia con componenti Swing specifici assemblati in base ai parametri richiesti.
@@ -261,7 +263,7 @@
     \section{Dettagli implementativi}\label{sec:dettagli}
 
         \subsection{La barra inferiore}\label{sub:barra}
-            La barra inferiore (\figurename~\cref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
+            La barra inferiore (\Cref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
             Il popup per la modifica del sistema di controllo è stato realizzato tramite la classe \texttt{org\dothyp controlsfx\dothyp control\dothyp PopOver} presente nella libreria ControlsFX.
 
             \begin{figure}[htbp]
@@ -274,6 +276,33 @@
             Gli effetti di colore e trasparenza sono stati implementati con diverse specifiche inserite nel foglio di stile CSS, inline nel documento FXML e attraverso i suddetti componenti.
 
         \subsection{Drawer, liste e celle}\label{sub:drawerCelle}
+            \begin{figure}[htbp]
+                \centering%
+                \subfigure[%
+                    Vista dei singoli gruppi di effetti che compongono lo \engEmph{stack}%
+                    \label{fig:impl:groups}
+                ]{%
+                    \includegraphics[scale=0.5]{img/cropped/effectgroups_bar_open}
+                }%
+                \qquad{\LARGE$\Rightarrow$}\qquad
+                \subfigure[%
+                    Vista dei singoli effetti di un gruppo%
+                    \label{fig:impl:effects}%
+                ]{%
+                    \includegraphics[scale=0.5]{img/cropped/effects_bar_open}
+                }%
+                \qquad{\LARGE$\Rightarrow$}\qquad
+                \subfigure[%
+                    Vista delle proprietà di un effetto%
+                    \label{fig:impl:properties}%
+                ]{%
+                    \includegraphics[scale=0.5]{img/cropped/effect_properties_open}
+                }
+                \caption{Vista del drawer laterale degli effetti nei diversi livelli\label{fig:impl:allEffects}}
+            \end{figure}
+
+            % TODO sistema altezza frecce
+
             L'impiego dei drawer, elemento tipico del Material Design, è stato possibile, ancora una volta, grazie alle classi \texttt{JFXDrawer} e \texttt{JFXDrawersStack} forniti da JFoenix.
 
             La struttura di un drawer è costituita dagli elementi seguenti:

@@ -48,56 +48,60 @@
 %         % \end{minipage}
 %         % \end{minted}
 
-\chapter{Codice relativo al contributo}\label{appendix:new}
-    \section{L'interfaccia \texttt{EffectFX}}\label{appendix:effectfx}
-        % \begin{minted}{java}
-        % \begin{minipage}{\linewidth}
-        \begin{lstlisting}[language=Java]
-            /**
-             * Graphical visualization of something happening in the environment.
-             */
-            public interface EffectFX extends Serializable {
+% \chapter{Codice relativo al contributo}\label{appendix:new}
+    % \section{L'interfaccia \texttt{EffectFX}}\label{appendix:effectfx}
 
-                /**
-                 * Computes a queue of commands to Draw something.
-                 *
-                 * @param environment the environment to gather data from
-                 * @param <T>         the {@link Concentration} type
-                 * @return the queue of commands that should be run to draw the effect
-                 */
-                <T> Queue<DrawCommand> computeDrawCommands(Environment<T> environment);
+    % TODO sistema gli UML in appendice
 
-                /**
-                 * Gets the name of the effect.
-                 *
-                 * @return the name of the effect
-                 */
-                String getName();
-
-                /**
-                 * Sets the name of the effect.
-                 *
-                 * @param name the name of the effect to set
-                 */
-                void setName(String name);
-
-                /**
-                 * Gets the visibility of the effect.
-                 *
-                 * @return the visibility of the effect
-                 */
-                boolean isVisible();
-
-                /**
-                 * Sets the visibility of the effect.
-                 *
-                 * @param visibility the visibility of the effect to set
-                 */
-                void setVisibility(boolean visibility);
-            }
-        \end{lstlisting}
-        % \end{minipage}
-        % \end{minted}
+    \chapter{L'interfaccia \texttt{EffectFX}}\label{appendix:effectfx}
+        % % \begin{minted}{java}
+        % % \begin{minipage}{\linewidth}
+        % \begin{lstlisting}[language=Java]
+        %     /**
+        %      * Graphical visualization of something happening in the environment.
+        %      */
+        %     public interface EffectFX extends Serializable {
+        %
+        %         /**
+        %          * Computes a queue of commands to Draw something.
+        %          *
+        %          * @param environment the environment to gather data from
+        %          * @param <T>         the {@link Concentration} type
+        %          * @return the queue of commands that should be run to draw the effect
+        %          */
+        %         <T> Queue<DrawCommand> computeDrawCommands(Environment<T> environment);
+        %
+        %         /**
+        %          * Gets the name of the effect.
+        %          *
+        %          * @return the name of the effect
+        %          */
+        %         String getName();
+        %
+        %         /**
+        %          * Sets the name of the effect.
+        %          *
+        %          * @param name the name of the effect to set
+        %          */
+        %         void setName(String name);
+        %
+        %         /**
+        %          * Gets the visibility of the effect.
+        %          *
+        %          * @return the visibility of the effect
+        %          */
+        %         boolean isVisible();
+        %
+        %         /**
+        %          * Sets the visibility of the effect.
+        %          *
+        %          * @param visibility the visibility of the effect to set
+        %          */
+        %         void setVisibility(boolean visibility);
+        %     }
+        % \end{lstlisting}
+        % % \end{minipage}
+        % % \end{minted}
 
     \section{L'interfaccia \texttt{EffectGroup}}\label{appendix:effectgroup}
         % \begin{minted}{java}

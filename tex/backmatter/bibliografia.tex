@@ -12,10 +12,6 @@
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
-% \bibliography{biblio}
-% \nocite{*}
-% \bibliographystyle{abbrv}
+% per quanto non citato esplicitamente, Effective Java (2nd Edition) di Joshua Bloch ha dato il suo contributo alla scrittura del codice
 \nocite{Bloch:2008:EJ:1377533}
 \printbibliography[heading=bibintoc]
-
-% TODO considera la possibilità di splittare la bibliografia per distingure i testi scientifici dal resto
