@@ -354,15 +354,15 @@
                 Il progetto Alchemist utilizza i seguenti strumenti:
 
                 \begin{description}
-                    \item[FindBugs\footnote{\url{http://findbugs.sourceforge.net}}] è un analizzatore di codice statico \engEmph{open-source} che rileva possibili bug all’interno del codice Java realizzato da Bill Pugh e David Hovemeyer e marchio registrato dall'Università del Maryland.
+                    \item[FindBugs\footnotemark]\footnotetext{\url{http://findbugs.sourceforge.net}} è un analizzatore di codice statico \engEmph{open-source} che rileva possibili bug all’interno del codice Java realizzato da Bill Pugh e David Hovemeyer e marchio registrato dall'Università del Maryland.
 
                     Classifica i potenziali errori in categorie, per dare un'idea migliore allo sviluppatore di quale potrebbe essere il loro impatto sul software; opera direttamente sul bytecode di Java.
 
-                    \item[Checkstyle\footnote{\url{http://checkstyle.sourceforge.net}}] è un analizzatore di codice statico \engEmph{open-source} per diversi linguaggi di programmazione che verifica che il codice scritto aderisca a un determinato stile di codifica.
+                    \item[Checkstyle\footnotemark]\footnotetext{\url{http://checkstyle.sourceforge.net}} è un analizzatore di codice statico \engEmph{open-source} per diversi linguaggi di programmazione che verifica che il codice scritto aderisca a un determinato stile di codifica.
 
                     Esso effettua un controllo sulla presentazione e non sul contenuto, dunque non permette di assicurare la correttezza e la completezza del software.
 
-                    \item[PMD\footnote{\url{https://pmd.github.io}}] è uno strumento di analisi del codice sorgente statico per Java e altri linguaggi che prevede un set di regole, personalizzabile dallo sviluppatore, per definire quando una parte di esso è errata.
+                    \item[PMD\footnotemark]\footnotetext{\url{https://pmd.github.io}} è uno strumento di analisi del codice sorgente statico per Java e altri linguaggi che prevede un set di regole, personalizzabile dallo sviluppatore, per definire quando una parte di esso è errata.
 
                     Generalmente, gli errori segnalati riguardano scelte implementative subottimali e imperfezioni nel codice, che non inficiano direttamente il funzionamento del programma ma per la maggiorparte il livello del sorgente.
 
@@ -377,9 +377,9 @@
                 Alchemist si avvale di Gradle per il processo di \engEmph{build automation} e di Travis CI per la fase di test in \engEmph{continuous integration} dopo l'aggiunta del codice al repository ufficiale su GitHub.
 
                 \begin{description}
-                    \item[Gradle\footnote{\url{https://gradle.org}}] è un sistema per l’automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy. Pensato per i linguaggi che compilano per JVM, questo sistema permette di avere una gestione controllata delle dipendenze (\engEmph{dependency management}), le quali vengono scaricate dai vari repository Maven durante la fase di compilazione.
+                    \item[Gradle\footnotemark]\footnotetext{\url{https://gradle.org}} è un sistema per l’automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy. Pensato per i linguaggi che compilano per JVM, questo sistema permette di avere una gestione controllata delle dipendenze (\engEmph{dependency management}), le quali vengono scaricate dai vari repository Maven durante la fase di compilazione.
 
-                    \item[Travis CI\footnote{\url{https://travis-ci.org}}] è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub; è gratuito per progetti \engEmph{open-source}.
+                    \item[Travis CI\footnotemark]\footnotetext{\url{https://travis-ci.org}} è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub; è gratuito per progetti \engEmph{open-source}.
 
                     Il comportamento è definibile attraverso un file YAML; Alchemist richiede di effettuare una procedura di \engEmph{building} completa con Gradle ad ogni commit su repository.
 
