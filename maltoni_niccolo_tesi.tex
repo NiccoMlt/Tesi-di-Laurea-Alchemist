@@ -119,7 +119,9 @@
     {\cleardoublepage%
         % \thispagestyle{empty}%
         \null \vfill\begin{center}%
-            \bfseries \abstractname \end{center}}%
+            \bfseries \phantomsection%
+            \addcontentsline{toc}{chapter}{\abstractname}%
+            \abstractname \end{center}}%
     {\vfill\null}
 
 % Definisco un nuovo comando per enfatizzare il testo in inglese
