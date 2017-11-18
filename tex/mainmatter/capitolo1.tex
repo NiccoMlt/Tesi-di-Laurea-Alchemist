@@ -27,7 +27,7 @@
 
         \subsection{Astrazioni e modello di Alchemist}\label{sub:modello}
             Il modello di astrazione di Alchemist è ispirato dal lavoro della comunità scientifica nell'ambito dei simulatori a scopo di ricerca chimica e ne riprende dunque la nomenclatura.
-            Le entità (visibile in \Cref{fig:model}) su cui lavora sono le seguenti:
+            Le entità (visibili in \Cref{fig:model}) su cui lavora sono le seguenti:
 
             \begin{description}
                 \item[Molecola]\label{itm:mol}
@@ -44,12 +44,12 @@
                     Il \emph{Nodo} è un contenitore di \emph{Molecole} e \emph{Reazioni} che risiede all'interno di un \emph{Ambiente} e che astrae una singola entità.
 
                 \item[Ambiente]\label{itm:env}
-                    L'\emph{Ambiente} è l'astrazione che rappresenta lo spazio nella simulazione ed è l'entità che contiene i nodi.
+                    L'\emph{Ambiente} è l'astrazione che rappresenta lo spazio nella simulazione ed è l'entità che contiene i \emph{Nodi}.
 
                     Esso è in grado di fonrire informazioni in merito alla posizione dei \emph{Nodi} nello spazio, alla distanza tra loro e al loro vicinato; opzionalmente, l'\emph{Ambiente} può offrire il supporto allo spostamento dei \emph{Nodi}.
 
                 \item[Regola di collegamento]\label{itm:linkr}
-                    La \emph{Regola di collegamento} è la funzione dello stato corrente dell'\emph{Ambiente} che associa ad ogni \emph{Nodo} un \emph{Vicinato}.
+                    La \emph{Regola di collegamento} è una funzione dello stato corrente dell'\emph{Ambiente} che associa ad ogni \emph{Nodo} un \emph{Vicinato}.
 
                 \item[Vicinato]\label{itm:neigh}
                     Un \emph{Vicinato} è un'entità costituita da un \emph{Nodo} detto ``centro'' e da un insieme di altri \emph{Nodi} (i ``vicini'').
@@ -68,7 +68,7 @@
                 \item[Reazione]\label{itm:react}
                     Il concetto di \emph{Reazione} è da considerarsi molto più elaborato di quello utilizzato in chimica: in questo caso, si può considerare com un insieme di \emph{Condizioni} sullo stato del sistema, che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{Azioni}.
 
-                    Una \emph{Reazione} (di cui è possibile vederne una rappresentazione grafica in \Cref{fig:react}) è dunque un qualsiasi evento che può cambiare lo stato dell’\emph{Ambiente} e si compone di un insieme di condizioni, una o più azioni e una distribuzione temporale.
+                    Una \emph{Reazione} (di cui è si ha una rappresentazione grafica in \Cref{fig:react}) è dunque un qualsiasi evento che può cambiare lo stato dell’\emph{Ambiente} e si compone di un insieme di \emph{Condizioni}, una o più \emph{Azioni} e una distribuzione temporale.
 
                     La frequenza di accadimento può dipendere da:
                     \begin{itemize}
@@ -108,7 +108,7 @@
 
                 L'interfaccia grafica è stata ideata negli anni `80 a partire da un'esigenza di maggiore usabilità rispetto dalla riga di comando, derivante soprattuto dall'affermarsi degli studi di usabilità~\cite{norman1988} e di ergonomia cognitiva~\cite{cognitiveErgonomics} di quel periodo.
 
-                Più ampio e moderno è invece il concetto di esperienza utente~\cite{ux} (spesso abbreviata in UX, \engEmph{User eXperience}): l'ISO 9241-210~\cite{iso9241} al definisce come ``le percezioni e le reazioni di un utente che derivano dall’uso o dall’aspettativa d’uso di un prodotto, sistema o servizio''.
+                Più ampio e moderno è invece il concetto di esperienza utente~\cite{ux} (spesso abbreviata in UX, \engEmph{User eXperience}): l'ISO 9241-210~\cite{iso9241} la definisce come ``le percezioni e le reazioni di un utente che derivano dall’uso o dall’aspettativa d’uso di un prodotto, sistema o servizio''.
                 Di fatto, essa descrive la reazione dell'utente di fronte all'interazione con il programma o lo strumento in base a tre dimensioni:
                 \begin{itemize}
                     \item[--] \emph{Dimensione pragmatica}: funzionalità e usabilità del sistema;
@@ -117,7 +117,7 @@
                 \end{itemize}
                 L'usabilità, invece, fa riferimento unicamente ai soli aspetti pragmatici (la capacità di svolgere un compito con efficienza ed efficacia).
 
-                L'interfaccia utente classica di Alchemist è caratterizzata da un'usbilità appena sufficiente, funzionale alle necessità di un utilizzatore esperto, ma non adeguato a fornire un'esperienza completa e \engEmph{user-friendly} ad un utente ``standard''.
+                L'interfaccia utente classica di Alchemist è caratterizzata da un'usabilità appena sufficiente, funzionale alle necessità di un utilizzatore esperto, ma non adeguata a fornire un'esperienza completa e \engEmph{user-friendly} ad un utente ``standard''.
 
                 Grazie a contributi recenti~\cite{casadio}, la GUI ha subito un parziale rinnovamento, limitato alla parte di ambiente integrato che accoglie l'utilizzatore che stia lanciando il simulatore senza una simulazione specificata; questa parte non è oggetto del lavoro illustrato in questa tesi. Al contrario, è interessante analizzare lo stato dell'interfaccia relativa all'ambiente di esecuzione della simulazione.
 
@@ -130,12 +130,12 @@
                     \label{fig:oldMain}
                 \end{figure}
 
-                Un'ultima criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione al \engEmph{look'n'feel} che potesse identificare uno stile originale di Alchemist, né che lo allineasse alle direttive di un design grafico ben definito (come il Material Design~\footnote{https://material.io} di Google o Modern UI e Fluent Design System~\footnote{https://fluent.microsoft.com} di Microsoft), né che si adattasse al \engEmph{look'n'feel} generico del sistema operativo.
+                Un'ultima criticità che esula dal contesto pratico, ma che rientra appieno nel contesto estetico importante per una buona UX è, appunto l'aspetto grafico: l'intera interfaccia di simulazione è implementata sfruttando le impostazioni di base del framework Swing, senza alcun tipo di personalizzazione al \engEmph{look'n'feel} che potesse identificare uno stile originale di Alchemist, né che lo allineasse alle direttive di un design grafico ben definito (come il Material Design\footnote{https://material.io} di Google o Modern UI e Fluent Design System\footnote{https://fluent.microsoft.com} di Microsoft), né che si adattasse al \engEmph{look'n'feel} standard del sistema operativo.
 
             \subsubsection{Swing}\label{subsub:swing}
                 Come detto, Alchemist utilizza Swing come strumento per implementare l'interfaccia grafica. Java Swing è un framework per lo sviluppo di GUI in Java, parte delle \engEmph{Java Foundation Classes} (JFC) insieme ad AWT (\engEmph{Abstract Window Toolkit}) e \emph{Java 2D}.
 
-                Come è possibile vedere in \Cref{fig:awt}, la libreria sfrutta i componenti forniti da AWT, mettendo a disposizione nuovi componenti in grado di risolvere diverse debolezze del precedente standard grafico per il linguaggio di Oracle:
+                Come è possibile vedere in \Cref{fig:awt}, la libreria sfrutta i componenti forniti da AWT, mettendone a disposizione di nuovi in grado di risolvere diverse debolezze del precedente standard grafico per il linguaggio di Oracle:
 
                 \begin{figure}[htbp]
                     \centering
@@ -163,7 +163,7 @@
     \section{JavaFX}\label{sec:jfx}
         Nel mese di maggio del 2007 alla conferenza annuale JavaOne, Sun Microsystems annunciò JavaFX Script (chiamato anche F3, \engEmph{Form~Follows~Function}), un DSL (\engEmph{Domain~Specific~Language}, linguaggio di dominio specifico) pensato per lo sviluppo di interfacce grafiche di Rich Internet Applications~\cite{moritz2008rich}, e JavaFX Mobile, un sistema software per dispositivi mobili basato su Java e ispirato all'allora neonato iPhone, che avrebbe avuto come cavallo di battaglia la possibilità di sviluppare app mobile in grado di condividere codice e asset grafici con le controparti desktop e web, semplificando lo sviluppo di ecosistemi strutturati.
 
-        Incluso nella versione 1.0 del pacchetto JavaFX rilasciato nel dicembre del 2008, JavaFX Script verrà però abbandonato da Oracle (che nel frattempo aveva acquisito Sun Microsystems) meno di 2 anni dopo, in contemporanea con l'ampliamento della disponibilità delle JavaFX API agli altri linguaggi disponibili per JVM; anche JavaFX Mobile, con l'avvento di OS mobili moderni come Android e iOS, può considerarsi deprecato.
+        Incluso nella versione 1.0 del pacchetto JavaFX rilasciato nel dicembre del 2008, JavaFX Script venne però abbandonato da Oracle (che nel frattempo aveva acquisito Sun Microsystems) meno di 2 anni dopo, in contemporanea con l'ampliamento della disponibilità delle JavaFX API agli altri linguaggi disponibili per JVM; anche JavaFX Mobile, con l'avvento di OS mobili moderni come Android e iOS, è considerato deprecato.
 
         JavaFX continua invece lo sviluppo come framework per la gestione di interfacce grafiche per Java ed altri linguaggi JVM-compatibili, andando di fatto a sostituire Swing e AWT.
 
@@ -172,7 +172,7 @@
         \subsection{Introduzione al framework JavaFX}\label{sub:jfxIntro}
             La prima versione di JavaFX ad abbandonare JavaFX Script e JavaFX Mobile, con i quali il framework era nato, per andare ad affiancarsi a Swing è la versione 2.0, distribuita parzialmente su licenza \engEmph{open-source} verso la fine del 2011.
             Essa introduceva un nuovo linguaggio XML dichiarativo, l'FXML, in grado di fornire una struttura grafica all'applicazione coinvolgendo minimamente il codice Java, oltre a migliorare il supporto \engEmph{multi-thread}.
-            Con le successive versioni 2.1 e 2.2, rilasciate nell'arco del 2012, viene esteso il supporto a MacOS e Linux.
+            Con le successive versioni 2.1 e 2.2, rilasciate nell'arco del 2012, fu esteso il supporto a MacOS e Linux.
 
             La prima versione ad essere parte del JRE/JDK è JavaFX 8, rilasciata il 18 marzo 2014 insieme a Java 8; essa diventa di fatto la nuova libreria di riferimento per lo sviluppo di applicazioni grafiche per ambiente JVM.
 
@@ -205,7 +205,7 @@
                 \caption[La figura, presa dalla documentazione ufficiale di Oracle, rappresenta i diversi livelli che caratterizzano il framework JavaFX]{La figura, presa dalla documentazione ufficiale di Oracle\protect\footnotemark, rappresenta i diversi livelli che caratterizzano il framework JavaFX}
                 \label{fig:jfxArch}
             \end{figure}
-            \footnotetext{https://docs.oracle.com/javase/8/javase-clienttechnologies.htm}
+            \footnotetext{\url{https://docs.oracle.com/javase/8/javase-clienttechnologies.htm}}
 
             Il terzo livello è costituito dal sopra citato \engEmph{Glass Windowing Toolkit}, che rappresenta il livello più basso del \engEmph{JavaFX graphics stack}.
             Esso si occupa di gestire i servizi nativi forniti dai sistemi operativi per la gestione delle finestre e delle code degli eventi; costituisce la parte \engEmph{platform-dependent} di JavaFX.
@@ -224,7 +224,7 @@
             \end{figure}
 
             La classe principale per una applicazione JavaFX deve estendere da \texttt{javafx\dothyp application\dothyp Application}. Il metodo \texttt{start()} è il punto di ingresso principale: lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\dothyp application\dothyp Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx\dothyp stage\dothyp Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
-            Il metodo \texttt{main()} non deve essere necessariamente implementato perché l'applicazione possa essere avviata: esso viene infatti creato da l\engEmph{JavaFX Packager tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
+            Il metodo \texttt{main()} non deve essere necessariamente implementato perché l'applicazione possa essere avviata: esso viene infatti creato dal \engEmph{JavaFX Packager tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
 
             Il layout con cui un'applicazione JavaFX è costituita a livello grafico si struttura gerarchicamente su tre sezioni principali, visibili in \Cref{fig:jfxStage}:
 
@@ -235,7 +235,7 @@
 
             \begin{figure}[htbp]
                 \centering
-                \includegraphics[scale=1]{img/Javafx-stage-scene-node}
+                \includegraphics[scale=0.12]{img/Javafx-stage-scene-node}
                 \caption{Struttura del layout di una applicazione JavaFX}
                 \label{fig:jfxStage}
             \end{figure}
@@ -251,8 +251,8 @@
 
             \begin{figure}[htbp]
                 \centering
-                \includegraphics[scale=0.8]{img/Javafx-layout-classes}
-                \caption{Struttura dei \emph{nodi} di JavaFX}
+                \includegraphics[scale=0.4]{img/Javafx-layout-classes}
+                \caption{Struttura dei nodi di JavaFX}
                 \label{fig:jfxNode}
             \end{figure}
 

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1000"
+   height="500"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Javafx-layout-classes.svg">
+  <metadata
+     id="metadata122">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1015"
+     id="namedview120"
+     showgrid="false"
+     inkscape:zoom="0.778"
+     inkscape:cx="521.44547"
+     inkscape:cy="515.10329"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <style
+       type="text/css"
+       id="style6"><![CDATA[
+rect { stroke: #000000; stroke-width: 2; }
+text { font-family: Arial, sans-serif; text-anchor: middle; font-size: 18px; }
+line, path { stroke: #000000; stroke-width: 3; fill: none; }
+.o { fill: #f8c695; }
+.g { fill: #a1c693; }
+.r { fill: #f0b2a7; }
+]]></style>
+  </defs>
+  <rect
+     x="445"
+     y="25"
+     width="110"
+     height="55"
+     class="o"
+     id="rect12" />
+  <text
+     x="500"
+     y="47"
+     id="text14">
+    <tspan
+       style="font-weight:bold"
+       id="tspan16">Node</tspan>
+    <tspan
+       x="500"
+       y="69"
+       id="tspan18">(abstract)</tspan>
+  </text>
+  <path
+     d="M500,80V115"
+     id="path20" />
+  <rect
+     x="445"
+     y="115"
+     width="110"
+     height="55"
+     class="o"
+     id="rect22" />
+  <text
+     x="500"
+     y="135"
+     id="text24">
+    <tspan
+       style="font-weight:bold"
+       id="tspan26">Parent</tspan>
+    <tspan
+       x="500"
+       y="157"
+       id="tspan28">(abstract)</tspan>
+  </text>
+  <path
+     d="M500,170V197H75V225M310,197V225V197H685V225"
+     id="path30" />
+  <rect
+     x="10"
+     y="225"
+     width="130"
+     height="55"
+     style="fill: #bff6f1;"
+     id="rect32" />
+  <text
+     x="75"
+     y="245"
+     id="text34">
+    <tspan
+       style="font-weight:bold"
+       id="tspan36">Group</tspan>
+    <tspan
+       x="75"
+       y="267"
+       id="tspan38">non-resizable</tspan>
+  </text>
+  <rect
+     x="200"
+     y="225"
+     width="220"
+     height="55"
+     class="g"
+     id="rect40" />
+  <text
+     x="310"
+     y="245"
+     id="text42">
+    <tspan
+       style="font-weight:bold"
+       id="tspan44">Region</tspan>
+    <tspan
+       x="310"
+       y="267"
+       id="tspan46">resizable, CSS stylable</tspan>
+  </text>
+  <path
+     d="M310,280V350"
+     id="path48" />
+  <rect
+     x="255"
+     y="350"
+     width="110"
+     height="40"
+     class="g"
+     id="rect50" />
+  <text
+     x="310"
+     y="375"
+     style="font-weight: bold;"
+     id="text52">Pane</text>
+  <path
+     d="M65,440V415H188V440V415H310V390V440V415H435V440V415H560V440V415H685V440V415H810V440V415H935V440"
+     id="path54" />
+  <rect
+     x="10"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect56" />
+  <text
+     x="65"
+     y="465"
+     style="font-weight: bold;"
+     id="text58">StackPane</text>
+  <rect
+     x="135"
+     y="440"
+     width="105"
+     height="40"
+     class="g"
+     id="rect60" />
+  <text
+     x="188"
+     y="465"
+     style="font-weight: bold;"
+     id="text62">HBox</text>
+  <rect
+     x="255"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect64" />
+  <text
+     x="310"
+     y="465"
+     style="font-weight: bold;"
+     id="text66">VBox</text>
+  <rect
+     x="380"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect68" />
+  <text
+     x="435"
+     y="465"
+     style="font-weight: bold;"
+     id="text70">FlowPane</text>
+  <rect
+     x="505"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect72" />
+  <text
+     x="560"
+     y="465"
+     style="font-weight: bold;"
+     id="text74">TilePane</text>
+  <rect
+     x="630"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect76" />
+  <text
+     x="685"
+     y="465"
+     style="font-weight: bold;"
+     id="text78">AnchorPane</text>
+  <rect
+     x="755"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect80" />
+  <text
+     x="810"
+     y="465"
+     style="font-weight: bold;"
+     id="text82">BorderPane</text>
+  <rect
+     x="880"
+     y="440"
+     width="110"
+     height="40"
+     class="g"
+     id="rect84" />
+  <text
+     x="935"
+     y="465"
+     style="font-weight: bold;"
+     id="text86">GridPane</text>
+  <rect
+     x="530"
+     y="225"
+     width="310"
+     height="75"
+     class="r"
+     id="rect88" />
+  <text
+     x="685"
+     y="245"
+     id="text90">
+    <tspan
+       style="font-weight:bold"
+       id="tspan92">Control</tspan>
+    <tspan
+       x="685"
+       y="267"
+       id="tspan94">(abstract)</tspan>
+    <tspan
+       x="685"
+       y="289"
+       id="tspan96">resizable, skinnable, CSS stylable</tspan>
+  </text>
+  <path
+     d="M685,300V325H435V350V325H560V350V325H685V350V325H810V350V325H935V350"
+     id="path98" />
+  <rect
+     x="380"
+     y="350"
+     width="110"
+     height="40"
+     class="r"
+     id="rect100" />
+  <text
+     x="435"
+     y="375"
+     style="font-weight: bold;"
+     id="text102">TabPane</text>
+  <rect
+     x="505"
+     y="350"
+     width="110"
+     height="40"
+     class="r"
+     id="rect104" />
+  <text
+     x="560"
+     y="375"
+     style="font-weight: bold;"
+     id="text106">TitledPane</text>
+  <rect
+     x="630"
+     y="350"
+     width="110"
+     height="40"
+     class="r"
+     id="rect108" />
+  <text
+     x="685"
+     y="375"
+     style="font-weight: bold;"
+     id="text110">SplitPane</text>
+  <rect
+     x="755"
+     y="350"
+     width="110"
+     height="40"
+     class="r"
+     id="rect112" />
+  <text
+     x="810"
+     y="375"
+     style="font-weight: bold;"
+     id="text114">Accordian</text>
+  <rect
+     x="880"
+     y="350"
+     width="110"
+     height="40"
+     class="r"
+     id="rect116" />
+  <text
+     x="935"
+     y="375"
+     style="font-weight: bold;"
+     id="text118">ToolBar</text>
+</svg>
