@@ -1,5 +1,5 @@
 %% Direttive TeXworks:
-% !TeX root = ../maltoni_niccolo_tesi.tex
+% !TeX root = ../../maltoni_niccolo_tesi.tex
 % !TEX encoding = UTF-8 Unicode
 % !TEX program = arara
 % !TEX TS-program = arara
@@ -186,7 +186,8 @@
         \subsection{L'architettura degli effetti}\label{sub:effetti}
             \subsubsection{I singoli effetti e l'interfaccia \texttt{EffectFX}}\label{subsub:effectFX}
                 La componente architetturale più complessa da progettare probabilmente è costituita dagli effetti.
-                Infatti, concettualmente il nuovo archetipo di effetti (di cui è possibile vedere l'UML in~\Cref{fig:effectFX} o con maggiori dettagli in~\Cref{appendix:effectfx}) rappresenta un oggetto completamente diverso:
+                Infatti, concettualmente il nuovo archetipo di effetti (di cui è possibile vedere l'UML in~\Cref{fig:effectFX}% TODO % o con maggiori dettagli in~\Cref{appendix:effectfx}
+                ) rappresenta un oggetto completamente diverso:
 
                 \begin{itemize}
                     \item[--]\label{itm:eFXEnv} esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente; in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
@@ -206,7 +207,8 @@
                 \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=0.5]{img/EffectFXUMLsimple}
-                    \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti; maggiori dettagli in \Cref{appendix:effectfx}}
+                    \caption{Diagramma UML delle classi che modellano la nuova struttura di effetti% TODO %; maggiori dettagli in \Cref{appendix:effectfx}
+                    }
                     \label{fig:effectFX}
                 \end{figure}
 
