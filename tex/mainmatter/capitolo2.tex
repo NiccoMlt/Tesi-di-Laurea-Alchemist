@@ -23,7 +23,7 @@
         Questa sezione si occuperà di enunciare i requisiti funzionali e non funzionali individuati.
 
         \subsection{Requisiti funzionali}\label{sub:funzionali}
-            I requisiti funzionali (\Cref{fig:useCase}) descrivono il comportamento che il sistema deve avere:
+            I requisiti funzionali descrivono il comportamento che il sistema deve avere:
             descrivono le funzionalità del sistema software, in termini di servizi che il sistema software deve fornire, di come il sistema software reagisce a specifici tipi di input e di come si comporta in situazioni particolari.
 
             \subsubsection{Rappresentazione dell'ambiente di simulazione}\label{subsub:seeEnv}
@@ -34,9 +34,12 @@
             \subsubsection{Gestione degli effetti}\label{subusub:manageEffects}
                 La nuova interfaccia deve rendere possibile all'utente di poter aggiungere nuovi effetti allo \engEmph{stack} di rappresentazione e modificarne le proprietà a tempo di esecuzione.
 
-                Inoltre attraverso la GUI l'utente deve poter salvare lo stack di effetti presente in quel momento e caricarlo in un secondo momento, mantenendo tutte le proprietà definite manualmente.
+                Inoltre attraverso la GUI l'utente deve poter salvare la pila di effetti presente in quel momento e caricarla in un secondo momento, mantenendo tutte le proprietà definite manualmente.
 
                 Infine, deve essere possibile nascondere singoli effetti o gruppi di essi senza rimuoverli dallo \engEmph{stack}.
+
+            \subsubsection{Serializzazione \engEmph{Human-readable}}
+                In riferimento al punto precedente, deve essere possibile serializzare gli effetti in formato testo, in modo tale che file compatibili possano essere creati e/o modificati manualmente in modo semplice, senza coinvolgere necessariamente l'interfaccia di Alchemist.
 
             \subsubsection{Effetti standard per nodi e collegamenti}\label{subusub:defaultEffects}
                 Devono essere implementati effetti adibiti alla rappresentazione dei singoli nodi come punti e dei collegamenti tra i nodi di un vicinato.
@@ -46,20 +49,17 @@
             \subsubsection{Interazione con simulazione e ambiente rappresentato}\label{subsub:interazione}
                 L'interfaccia deve mettere a disposizione dell'utente la capacità di interagire con la simulazione, potendo fermarla e riavviarla, interagire con i nodi e spostarsi tra essi. Deve essere possibile effettuare pan e zoom sull'ambiente rappresentato.
 
-                Le possibilità di interazione non devono essere vincolate al puntatore del mouse, ma deve supportare anche le scorciatoie da tastiera.
+                Le possibilità di interazione non devono essere vincolate al puntatore del mouse, ma devono essere supportate anche le scorciatoie da tastiera.
 
             \subsubsection{Rappresentazione di ambienti con mappa}\label{subsub:mappa}
                 Deve essere fornito il supporto alle mappe come sfondo degli ambienti nella rappresentazione di simulazioni che coinvolgano questo aspetto.
 
-            \subsubsection{Serializzazione \engEmph{Human-readable}}
-                Deve essere possibile serializzare gli effetti in un formato testo, in modo tale che possa essere facilmente creato e/o modificato manualmente in modo semplice, senza coinvolgere necessariamente l'interfaccia di Alchemist.
-
-                \begin{figure}[htbp]
-                    \centering
-                    \includegraphics[scale=0.55]{img/useCase}
-                    \caption{Requisiti funzionali principali}
-                    \label{fig:useCase}
-                \end{figure}
+            \begin{figure}[htbp]
+                \centering
+                \includegraphics[scale=0.65]{img/useCase}
+                \caption{Il diagramma UML rappresenta i casi d'uso principali dell'interfaccia}
+                \label{fig:useCase}
+            \end{figure}
 
         \subsection{Requisiti non funzionali}\label{sub:nonFunzionali}
             I requisiti non funzionali descrivono le proprietà non comportamentali che il sistema deve possedere, come efficienza, affidabilità, sicurezza, performance, ma anche caratteristiche del processo di sviluppo e caratteristiche esterne.
@@ -78,7 +78,7 @@
 
         Per poter disegnare dei mockup da utilizzare come bozzetti, sono state fatte ricerche in merito alle interfacce grafiche utilizzate da altri simulatori, anche a scopo non strettamente scientifico.
 
-        Infine, si è scelto tra i design moderni più comuni e apprezzati uno da adottare per fornire un aspetto grafico a cui l'utente medio fosse già abituato e che potesse fornire un'esperienza di utilizzo più gradevole.
+        Infine, si è scelto tra i design moderni più comuni e apprezzati quale adottare al fine di ottenere un aspetto grafico a cui l'utente medio fosse già abituato e che potesse fornire un'esperienza di utilizzo più gradevole.
 
         \subsection{Simulatori a scopo videoludico}\label{sub:videogame}
             Come già segnalato nelle sezioni precedenti, è importante che l'interfaccia grafica si presenti semplice e immediata anche per l'utente non avanzato. Di conseguenza, si è scelto di analizzare con più attenzione le GUI di simulatori sviluppati a scopo prettamente videoludico, in quanto più orientati all'immediatezza d'uso rispetto ai simulatori di concezione scientifica.
@@ -86,11 +86,11 @@
             Tra i videogiochi di simulazione più famosi, è stato interessante analizzare SimCity, il quale all'epoca del lancio fu molto apprezzato~\cite{friedman1995} appunto per il gameplay e l'interfaccia piuttosto innovativi, e i giochi della serie Universe Sandbox del team Giant Army.
 
             \subsubsection{SimCity}\label{subsub:simcity}
-                La celebre serie di videogiochi di simulazione SimCity, ideata da Will Wright\footnote{Intervista per la rivista Wired, 1994: \url{https://www.wired.com/1994/01/wright}} tra gli anni `80 e gli anni `90 ispirandosi alla ricerca contenuta nel saggio di architettura \engEmph{A pattern language}~\cite{aPatternLanguage}, sviluppata da Maxis e distribuita da Electronics Arts, è tutt'ora considerata una delle più innovative per quanto riguarda la storia dei videogiochi di simulazione.
+                La celebre serie di videogiochi di simulazione SimCity, ideata da Will Wright\footnote{Intervista per la rivista Wired, 1994: \url{https://www.wired.com/1994/01/wright}} tra gli anni `80 e gli anni `90 ispirandosi ai risultati della ricerca contenuta nel saggio di architettura \engEmph{A pattern language}~\cite{aPatternLanguage}, è sviluppata da Maxis e distribuita da Electronics Arts ed è tutt'ora considerata una delle più innovative per quanto riguarda la storia dei videogiochi di simulazione.
 
                 \begin{figure}[htbp]
                     \centering
-                    \includegraphics[scale=0.25]{img/SimCity}
+                    \includegraphics[scale=0.24]{img/SimCity}
                     \caption{Interfaccia grafica di SimCity (2013), sviluppato da Maxis e distribuito da EA}
                     \label{fig:simcity}
                 \end{figure}
@@ -98,18 +98,16 @@
             \subsubsection{Universe Sandbox}\label{subsub:universesandbox}
                 Altra serie di videogiochi simulativi analizzata è Universe Sandbox.
                 Dopo oltre 15 anni di sviluppo\footnote{Analisi di Alex Cox per il blog TechCrunch, 2008: \url{http://www.techradar.com/news/software/computing/how-one-man-created-his-own-universe-470870}}, il primo capitolo è stato rilasciato dallo sviluppatore e artista Dan Dixon nel 2008.
-                Il responso positivo lo ha portato a continurare lo sviluppo, tanto da fondare la compagnia Giant Army\footnote{attualmente composta da Dan Dixon, Christian Herold, Georg Steinröhder, Thomas Grønneløv, Eric Hilton, Naomi Goldenson e Chad Jenkins}, che ha rilasciato nel 2015 la seconda iterazione della saga, Universe Sandbox\ap{2}.
+                Il responso positivo lo ha portato a continurare lo sviluppo, tanto da fondare la compagnia Giant Army\footnote{attualmente composta da Dan Dixon, Christian Herold, Georg Steinröhder, Thomas Grønneløv, Eric Hilton, Naomi Goldenson e Chad Jenkins}, che ha rilasciato nel 2015 la seconda iterazione della saga, Universe Sandbox 2.
 
-                Per il design dell'interfaccia, è stato proprio il secondo capitolo a fungere da maggior fonte d'ispirazione. Essa va a riprendere la classica interfaccia utilizzata da videogiochi simulativi come il già citato SimCity (\Cref{fig:simcity}), ma andando a rimuovere buona parte degli ornamenti grafici tipici delle GUI a scopo videoludico, andando a preferire uno stile molto più pulito e semplificato; il sistema di interazione a sviluppo verticale e a popup viene sostituito con uno sviluppo orizzontale di pannelli (definito \emph{Modello multi-paned}~\cite{multipanedmodel}) che vanno a raccogliere tutte le impostazioni e i parametri.
+                Per il design dell'interfaccia, è stato proprio il secondo capitolo a fungere da maggior fonte d'ispirazione. Essa va a riprendere la classica interfaccia utilizzata da videogiochi simulativi come il già citato SimCity, ma andando a rimuovere buona parte degli ornamenti grafici tipici delle GUI a scopo videoludico, andando a preferire uno stile molto più pulito e semplificato; il sistema di interazione a sviluppo verticale e a popup (\Cref{fig:simcity}) viene sostituito con uno sviluppo orizzontale di pannelli (definito \emph{Modello multi-paned}~\cite{multipanedmodel}) che vanno a raccogliere tutte le impostazioni e i parametri (\Cref{fig:universesandboxpanels}).
 
                 La simulazione viene rappresentata sullo sfondo, come in SimCity, ma con effetti di trasparenza non presenti nel gioco di EA.
 
-                % TODO approfondire analisi ?
-
                 \begin{figure}[htbp]
                     \centering
-                    \includegraphics[scale=0.35]{img/universesandboxpanels}
-                    \caption{Rappresentazione dell'interffaccia di Universe Sandbox\ap{2} (2015), sviluppato e distribuito da Giant Army}
+                    \includegraphics[scale=0.32]{img/universesandboxpanels}
+                    \caption{Rappresentazione dell'interffaccia di Universe Sandbox 2 (2015), sviluppato e distribuito da Giant Army}
                     \label{fig:universesandboxpanels}
                 \end{figure}
 
@@ -117,9 +115,9 @@
             Uno dei maggiori motivi che hanno portato l'interfaccia grafica di Alchemist a necessitare di un rinnovamento è stata l'intenzione di semplificarla all'occhio dell'utente non esperto, fornendo un'esperienza completa e gradevole.
             Era dunque necessario scegliere uno stile grafico familiare, moderno e facilmente adattabile a quella che sarebbe essere la nuova interfaccia che si stava progettando.
 
-            Prendendo come base l'interfaccia di Universe Sandbox illustrata nella \Cref{subsub:universesandbox}, è possibile notare che il design di base sia estremamente ``flat''; si è deciso di valutare i possibili design a cui adeguare la UX che si aveva intenzione di progettare.
+            Prendendo come base l'interfaccia di Universe Sandbox 2 illustrata nella \Cref{subsub:universesandbox}, è possibile notare che il design di base sia estremamente ``\engEmph{flat}''; si è deciso di valutare i possibili design a cui adeguare la UX che si aveva intenzione di progettare.
 
-            La scelta è infine ricaduta sul Material Design sviluppato da Google: dal suo annuncio nel giugno del 2014 al Google I/O 2014 Keynote esso è stato almeno parzialmente adottatto in molte applicazioni web, mobile e desktop, e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
+            La scelta è infine ricaduta sul Material Design sviluppato da Google: dal suo annuncio nel giugno del 2014 al Google I/O 2014 Keynote esso è stato almeno parzialmente adottatto in molte applicazioni web, mobile e desktop e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
 
             Si è deciso di utilizzare le icone\footnote{\url{https://material.io/icons/}} e le direttive in merito a dimensioni e palette di colore\footnote{\url{https://material.io/color/}} fornite da Google.
 
@@ -173,7 +171,7 @@
               ]{%
                   \includegraphics[scale=0.5]{img/cropped/effect_properties_open}
               }
-              \caption{Vista del pannello laterale degli effetti nei diversi livelli\label{fig:mock:allEffects}}
+              \caption{Mockup del pannello laterale degli effetti nei diversi livelli\label{fig:mock:allEffects}}
           \end{figure}
 
           % TODO sistema altezza frecce
@@ -196,11 +194,11 @@
 
                     \item[--]\label{itm:eFXVis} esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti.
 
-                    \item[--]\label{itm:eFXobservable} le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+                    \item[--]\label{itm:eFXobservable} le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{Observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
 
                     \item[--]\label{itm:eFXjson} infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
 
-                    Si è scelto di utilizzare il formato JSON~(JavaScript Object Notation~\cite{json})\footnote{\url{https://www.json.org/index.html}}, un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+                    Si è scelto di utilizzare il formato JSON\footnote{\url{https://www.json.org/index.html}} (\engEmph{JavaScript Object Notation}~\cite{json}), un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine; è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
 
                 \end{itemize}
 
@@ -212,7 +210,7 @@
                     \label{fig:effectFX}
                 \end{figure}
 
-                Come rappresentato graficamente nel diagramma UML in \Cref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{template method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
+                Come rappresentato graficamente nel diagramma UML in \Cref{fig:effectFX}, un effetto viene concretizzato secondo il pattern \engEmph{Template Method}~\cite{templateMethod}: la struttura di funzionamento di base viene parzialmente definita da una classe astratta che implementa il metodo principale dell'interfaccia effetto, \texttt{computeDrawCommands()}, come metodo template, il quale chiama i due metodi astratti \texttt{getData()} e \texttt{consumeData()} per adempiere al proprio compito.
                 La suddivisione permette a ciascun effetto concreto di separare le procedure che coinvolgono l'interrogazione del modello da quelle che portano alla costruzione della coda di comandi per effettuare la rappresentazione grafica.
 
             \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsub:effectGroup}
@@ -239,7 +237,7 @@
         \subsection{La struttura dei drawer e le proprietà osservabili}\label{sub:drawer}
             Una volta realizzato il mockup illustrato nella \Cref{sec:design}, l'attenzione si è spostata su progettarne la struttura a livello software.
             Trascurando i dettagli implementativi prettamente legati all'implementazione grafica, di cui si parla nella \Cref{sec:dettagli}, è stato importante progettare la gestione degli eventi di modifica di proprietà di effetti e gruppi.
-            Come detto nella \Cref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili %(UML in \Cref{fig:props})
+            Come detto nella \Cref{itm:eFXobservable}, si è deciso di fare ampio uso del pattern \engEmph{Observer}, ciascun effetto è progettato per implementare proprietà osservabili%(UML in \Cref{fig:props})
             , che possono implementare ascoltatori di eventi dedicati in modo semplice, potendosi avvalere delle API messe a disposizione dal framework JavaFX.
 
             % \begin{figure}[htbp]
@@ -250,12 +248,12 @@
             % \end{figure}
 
         \subsection{Nodi grafici come monitor per la simulazione}
-            Il canvas in cui vengono rappresentati gli effetti, il bottone che controlla l'avvio della simulazione e le etichette che mostrano il progresso della simulazione in termini di tempo e step sono indubbiamenti nodi grafici; in fase di progettazione, si è scelto però di modellarli anche come monitor per il motore della simulazione, sfruttando ancora una volta il pattern \engEmph{observer} per mettere in ascolto gli elementi della GUI legati alla simulazione stessa al fine di ricevere comunicazione di doversi aggiornare ad ogni step eseguito che li riguardi.
+            Il canvas in cui vengono rappresentati gli effetti, il bottone che controlla l'avvio della simulazione e le etichette che mostrano il progresso della simulazione in termini di tempo e step sono indubbiamenti nodi grafici; in fase di progettazione, si è scelto però di modellarli anche come monitor per il motore della simulazione, sfruttando ancora una volta il pattern \engEmph{Observer} per mettere in ascolto gli elementi della GUI legati alla simulazione stessa al fine di ricevere comunicazione di doversi aggiornare ad ogni step eseguito che li riguardi.
 
         \subsection{Costruzione e avvio dell'interfaccia}\label{sub:avvio}
             L'interfaccia classica gestiva l'avvio della GUI per la simulazione in tempo reale, costruendo l'interfaccia con componenti Swing specifici assemblati in base ai parametri richiesti.
 
-            La nuova interfaccia grafica è progettata conservando l'impiego di pattern \engEmph{builder}, presentando un oggetto adibito all'interpretazione dei parametri e alla semplificazione del processo di costruzione.
+            La nuova interfaccia grafica è progettata conservando l'impiego di pattern \engEmph{Builder}, presentando un oggetto adibito all'interpretazione dei parametri e alla semplificazione del processo di costruzione.
             Si dfferenzia però per l'assenza di frammentazione della struttura: essa è modellata come un'unica applicazione JavaFX, con un layout predefinito, e il builder si occupa di modificare il comportamento e il tipo di canvas per adattarlo alla simulazione, oltre a caricare gli effetti e la simulazione stessa, ma non influenza l'aspetto della UI.
 
     \section{Dettagli implementativi}\label{sec:dettagli}
@@ -388,10 +386,10 @@
                 \end{description}
 
             \subsubsection{Ambiente di sviluppo integrato}\label{subsub:IDE}
-                Una IDE (Integrated Development Environment) o ambiente di sviluppo integrato è un software che aiuta i programmatori nello sviluppo del codice sorgente di un programma, mettendo a disposizione una serie di strumenti che permettono scrittura, compilazione o interpretazione, debug e analisi del codice da un unico ambiente, appunto, integrato.
+                Un IDE (\engEmph{Integrated Development Environment}), o ambiente di sviluppo integrato, è un software che aiuta i programmatori nello sviluppo del codice sorgente di un programma, mettendo a disposizione una serie di strumenti che permettono scrittura, compilazione o interpretazione, debug e analisi del codice da un unico ambiente, appunto, integrato.
 
                 Durante lo sviluppo è stato utilizzato inizialmente Eclipse\footnote{\url{https://eclipse.org}} in versioni \textit{Neon.3} e \textit{Oxygen.1}, con l’integrazione dei plugin \emph{Gradle Buildship}, \emph{Xtext IDE}, \emph{Scala IDE}, \emph{e(fx)clipse}, \emph{FindBugs}, \emph{Checkstyle} e \emph{PMD}.
 
                 Successivamente è stato utilizzato anche Jetbrains Intellij IDEA\footnote{\url{https://www.jetbrains.com/idea}} in versione \textit{Community 2017.2.6}, con l'integrazione dei plugin per il supporto a Scala e Xtend.
 
-                In congiunzione alle due IDE per lo sviluppo del codice Java è stato utilizzato anche Gluon Scene Builder\footnote{\url{https://gluonhq.com/products/scene-builder}} per una prima definizione dei file FXML di layout.
+                In congiunzione ai due IDE per lo sviluppo del codice Java è stato utilizzato anche Gluon Scene Builder\footnote{\url{https://gluonhq.com/products/scene-builder}} per una prima definizione dei file FXML di layout.
