@@ -14,7 +14,7 @@
 
 \chapter{Introduzione}\label{ch:intro}
     \section{Alchemist}\label{sec:alchemist}
-        Alchemist\footnote{\url{http://alchemistsimulator.github.io}}~\cite{alchemist2013} è un meta-simulatore estendibile completamente \engEmph{open-source} che esegue su \engEmph{Java~Virtual~Machine} (JVM), nato all'interno del'Università di Bologna e distribuito su licenza GNU GPLv3+ con \engEmph{linking exception}; il codice è reperibile su GitHub\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}, dove chiunque fosse interessato può collaborare sviluppando nuove estensioni, migliorando funzionalità esistenti e risolvendo possibili bug.
+        Alchemist\footnote{\url{http://alchemistsimulator.github.io}}~\cite{alchemist2013} è un meta-simulatore estendibile completamente \engEmph{open-source} che esegue su \engEmph{Java~Virtual~Machine} (JVM), nato all'interno dell'Università di Bologna e distribuito su licenza GNU GPLv3+ con \engEmph{linking exception}; il codice è reperibile su GitHub\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}, dove chiunque fosse interessato può collaborare sviluppando nuove estensioni, migliorando funzionalità esistenti e risolvendo possibili bug.
 
         \subsection{Introduzione ad Alchemist}\label{sub:introAlchemist}
             In generale, una \emph{simulazione}~\cite{des3} è una riproduzione del modo di operare di un sistema o un processo del mondo reale nel tempo.
@@ -46,7 +46,7 @@
                 \item[Ambiente]\label{itm:env}
                     L'\emph{Ambiente} è l'astrazione che rappresenta lo spazio nella simulazione ed è l'entità che contiene i \emph{Nodi}.
 
-                    Esso è in grado di fonrire informazioni in merito alla posizione dei \emph{Nodi} nello spazio, alla distanza tra loro e al loro vicinato; opzionalmente, l'\emph{Ambiente} può offrire il supporto allo spostamento dei \emph{Nodi}.
+                    Esso è in grado di fornire informazioni in merito alla posizione dei \emph{Nodi} nello spazio, alla distanza tra loro e al loro vicinato; opzionalmente, l'\emph{Ambiente} può offrire il supporto allo spostamento dei \emph{Nodi}.
 
                 \item[Regola di collegamento]\label{itm:linkr}
                     La \emph{Regola di collegamento} è una funzione dello stato corrente dell'\emph{Ambiente} che associa ad ogni \emph{Nodo} un \emph{Vicinato}.
@@ -66,7 +66,7 @@
                     \end{figure}
 
                 \item[Reazione]\label{itm:react}
-                    Il concetto di \emph{Reazione} è da considerarsi molto più elaborato di quello utilizzato in chimica: in questo caso, si può considerare com un insieme di \emph{Condizioni} sullo stato del sistema, che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{Azioni}.
+                    Il concetto di \emph{Reazione} è da considerarsi molto più elaborato di quello utilizzato in chimica: in questo caso, si può considerare come un insieme di \emph{Condizioni} sullo stato del sistema, che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{Azioni}.
 
                     Una \emph{Reazione} (di cui è si ha una rappresentazione grafica in \Cref{fig:react}) è dunque un qualsiasi evento che può cambiare lo stato dell’\emph{Ambiente} e si compone di un insieme di \emph{Condizioni}, una o più \emph{Azioni} e una distribuzione temporale.
 
@@ -106,7 +106,7 @@
             \subsubsection{Esperienza utente}\label{subsub:prevUx}
                 Un'interfaccia grafica (detta anche GUI, \engEmph{graphical user interface}~\cite{gui}) è l’insieme dei componenti grafici con i quali l'utente può interagire per impartire comandi ad un programma del computer, che si contrappone ad un altro metodo di interazione, l'interfaccia a riga di comando (o CLI, \engEmph{Command Line Interface}).
 
-                L'interfaccia grafica è stata ideata negli anni `80 a partire da un'esigenza di maggiore usabilità rispetto dalla riga di comando, derivante soprattuto dall'affermarsi degli studi di usabilità~\cite{norman1988} e di ergonomia cognitiva~\cite{cognitiveErgonomics} di quel periodo.
+                L'interfaccia grafica è stata ideata negli anni `80 a partire da un'esigenza di maggiore usabilità rispetto dalla riga di comando, derivante soprattutto dall'affermarsi degli studi di usabilità~\cite{norman1988} e di ergonomia cognitiva~\cite{cognitiveErgonomics} di quel periodo.
 
                 Più ampio e moderno è invece il concetto di esperienza utente~\cite{ux} (spesso abbreviata in UX, \engEmph{User eXperience}): l'ISO 9241-210~\cite{iso9241} la definisce come ``le percezioni e le reazioni di un utente che derivano dall’uso o dall’aspettativa d’uso di un prodotto, sistema o servizio''.
                 Di fatto, essa descrive la reazione dell'utente di fronte all'interazione con il programma o lo strumento in base a tre dimensioni:
@@ -240,7 +240,7 @@
                 \label{fig:jfxStage}
             \end{figure}
 
-                \item[\texttt{Scene}]\label{itm:scn} Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartentente a quello specifico \engEmph{scene graph}.
+                \item[\texttt{Scene}]\label{itm:scn} Il contenuto dello \texttt{Stage} è rappresentato dalla classe \texttt{javafx\dothyp scene\dothyp Scene}, che è a sua volta contenitore di ogni nodo appartenente a quello specifico \engEmph{scene graph}.
 
                 \item[\texttt{Pane}]\label{itm:pane} Come già affermato nella \Cref{sub:jfxIntro}, ogni elemento appartenente ad una \emph{scena} è detto \emph{nodo}. Il terzo livello è costituito da un particolare tipo di nodo, detto \emph{pannello} (modellato dalla classe \texttt{javafx\dothyp scene\dothyp layout\dothyp Pane}), che costituisce il contenuto di una scena e gestisce la disposizione dei nodi al suo interno sullo schermo; è possibile costruire una struttura gerarchica inserendo all'interno di un pannello radice altri pannelli.
 
@@ -270,7 +270,7 @@
             Escludendo il fatto di essere la libreria grafica non di terze parti più moderna per Java e il cosiddetto ``\engEmph{eye candy factor}'', JavaFX può vantare diversi vantaggi su Swing:
 
             \begin{description}
-                \item [FXML]\label{itm:fxml} L'utilizzo di un linguaggio di markup basato su XML per la definizione della componente di UI offre un approccio dichiarativo nel processo di costruzione che Swing non poteva offrire; inoltre, questo porta ad un incapsulamento della compionente \engEmph{View} dei pattern di progettazione MV* sostanzialmente ``automatico''.
+                \item [FXML]\label{itm:fxml} L'utilizzo di un linguaggio di markup basato su XML per la definizione della componente di UI offre un approccio dichiarativo nel processo di costruzione che Swing non poteva offrire; inoltre, questo porta ad un incapsulamento della componente \engEmph{View} dei pattern di progettazione MV* sostanzialmente ``automatico''.
 
                 Da non sottovalutare è anche la presenza di un software ufficiale per il design dell'interfaccia in FXML: \engEmph{Scene Builder}. Esso offre un'interfaccia \engEmph{drag'n'drop} per l'aggiunta dei componenti grafici, ed è integrato in tutti gli ambienti di sviluppo più utilizzati (Eclipse, Intellij IDEA, Netbeans).
                 La versione più recente del software creato da Oracle è distribuito da Gluon\footnote{\url{http://gluonhq.com/products/scene-builder}}.
@@ -279,7 +279,7 @@
 
                 \item[Supporto multimediale]\label{itm:media} Grazie a JavaFX Media, la piattaforma supporta nativamente i più comuni formati audio (MP3, AIFF, WAV, AAC) e video (FLV con compressione VP6, MP4 con compressione H.264/AVC) senza richiedere l'utilizzo di librerie esterne. Il supporto è incluso anche nella \engEmph{Webview}.
 
-                \item[Animazione]\label{itm:anim} Rispetto a Swing, il supporto alle animazioni (sia per quanto riguarda il movimento di componenti grafiche che gli effetti di transizione) è stato notevolmente allegerito; è stato inoltre introdotto il supporto alle alterazioni regolate dal tempo, precedentemente molto complesse da implementare a causa del paradigma di rappresentazione tramite doppio buffer di default.
+                \item[Animazione]\label{itm:anim} Rispetto a Swing, il supporto alle animazioni (sia per quanto riguarda il movimento di componenti grafiche che gli effetti di transizione) è stato notevolmente alleggerito; è stato inoltre introdotto il supporto alle alterazioni regolate dal tempo, precedentemente molto complesse da implementare a causa del paradigma di rappresentazione tramite doppio buffer di default.
 
                 \item[Supporto HTML]\label{itm:html} Completamente assente in Swing era la possibilità di rendering di contenuti HTML; con JavaFX è stato inserito il supporto completo a Javascript, HTML5 e CSS tramite motore di rendering WebKit (utilizzato da browser come Safari, Google Chrome e Opera) e nodi \texttt{Webview} dedicati.
 

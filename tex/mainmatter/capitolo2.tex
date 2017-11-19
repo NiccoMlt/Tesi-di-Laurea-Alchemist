@@ -27,7 +27,7 @@
             descrivono le funzionalità del sistema software, in termini di servizi che il sistema software deve fornire, di come il sistema software reagisce a specifici tipi di input e di come si comporta in situazioni particolari.
 
             \subsubsection{Rappresentazione dell'ambiente di simulazione}\label{subsub:seeEnv}
-                Essendo la componente grafica da reimplementare quella legata alla simulazione in escuzione, requisito fondamentale è che la GUI possa rappresentare l'ambiente con le maggiori possibilità di dettaglio possibile.
+                Essendo la componente grafica da reimplementare quella legata alla simulazione in esecuzione, requisito fondamentale è che la GUI possa rappresentare l'ambiente con le maggiori possibilità di dettaglio possibile.
 
                 Di conseguenza, deve essere presente uno spazio disegnabile in cui si possa avere una rappresentazione grafica di quanto accade, ma anche contatori che mostrino l'avanzamento della simulazione in termini di tempo (secondi) trascorso e passaggi (\engEmph{step}) effettuati.
 
@@ -98,7 +98,7 @@
             \subsubsection{Universe Sandbox}\label{subsub:universesandbox}
                 Altra serie di videogiochi simulativi analizzata è Universe Sandbox.
                 Dopo oltre 15 anni di sviluppo\footnote{Analisi di Alex Cox per il blog TechCrunch, 2008: \url{http://www.techradar.com/news/software/computing/how-one-man-created-his-own-universe-470870}}, il primo capitolo è stato rilasciato dallo sviluppatore e artista Dan Dixon nel 2008.
-                Il responso positivo lo ha portato a continurare lo sviluppo, tanto da fondare la compagnia Giant Army\footnote{attualmente composta da Dan Dixon, Christian Herold, Georg Steinröhder, Thomas Grønneløv, Eric Hilton, Naomi Goldenson e Chad Jenkins}, che ha rilasciato nel 2015 la seconda iterazione della saga, Universe Sandbox 2.
+                Il responso positivo lo ha portato a continuare lo sviluppo, tanto da fondare la compagnia Giant Army\footnote{attualmente composta da Dan Dixon, Christian Herold, Georg Steinröhder, Thomas Grønneløv, Eric Hilton, Naomi Goldenson e Chad Jenkins}, che ha rilasciato nel 2015 la seconda iterazione della saga, Universe Sandbox 2.
 
                 Per il design dell'interfaccia, è stato proprio il secondo capitolo a fungere da maggior fonte d'ispirazione. Essa va a riprendere la classica interfaccia utilizzata da videogiochi simulativi come il già citato SimCity, ma andando a rimuovere buona parte degli ornamenti grafici tipici delle GUI a scopo videoludico, andando a preferire uno stile molto più pulito e semplificato; il sistema di interazione a sviluppo verticale e a popup (\Cref{fig:simcity}) viene sostituito con uno sviluppo orizzontale di pannelli (definito \emph{Modello multi-paned}~\cite{multipanedmodel}) che vanno a raccogliere tutte le impostazioni e i parametri (\Cref{fig:universesandboxpanels}).
 
@@ -107,7 +107,7 @@
                 \begin{figure}[htbp]
                     \centering
                     \includegraphics[scale=0.32]{img/universesandboxpanels}
-                    \caption{Rappresentazione dell'interffaccia di Universe Sandbox 2 (2015), sviluppato e distribuito da Giant Army}
+                    \caption{Rappresentazione dell'interfaccia di Universe Sandbox 2 (2015), sviluppato e distribuito da Giant Army}
                     \label{fig:universesandboxpanels}
                 \end{figure}
 
@@ -117,7 +117,7 @@
 
             Prendendo come base l'interfaccia di Universe Sandbox 2 illustrata nella \Cref{subsub:universesandbox}, è possibile notare che il design di base sia estremamente ``\engEmph{flat}''; si è deciso di valutare i possibili design a cui adeguare la UX che si aveva intenzione di progettare.
 
-            La scelta è infine ricaduta sul Material Design sviluppato da Google: dal suo annuncio nel giugno del 2014 al Google I/O 2014 Keynote esso è stato almeno parzialmente adottatto in molte applicazioni web, mobile e desktop e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
+            La scelta è infine ricaduta sul Material Design sviluppato da Google: dal suo annuncio nel giugno del 2014 al Google I/O 2014 Keynote esso è stato almeno parzialmente adottato in molte applicazioni web, mobile e desktop e ben si si presta all'implementazione di un'interfaccia semplice e minimale.
 
             Si è deciso di utilizzare le icone\footnote{\url{https://material.io/icons/}} e le direttive in merito a dimensioni e palette di colore\footnote{\url{https://material.io/color/}} fornite da Google.
 
@@ -144,7 +144,7 @@
 
           \item[Gestione della velocità] Una barra a scorrimento permette di regolare la velocità di rappresentazione della simulazione.
 
-          \item[Gesione degli effetti] Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
+          \item[Gestione degli effetti] Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
 
           % Nelle \Crefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
           Nella \Cref{fig:mock:allEffects} è possibile osservare i diversi livelli del drawer laterale degli effetti.
@@ -248,18 +248,18 @@
             % \end{figure}
 
         \subsection{Nodi grafici come monitor per la simulazione}
-            Il canvas in cui vengono rappresentati gli effetti, il bottone che controlla l'avvio della simulazione e le etichette che mostrano il progresso della simulazione in termini di tempo e step sono indubbiamenti nodi grafici; in fase di progettazione, si è scelto però di modellarli anche come monitor per il motore della simulazione, sfruttando ancora una volta il pattern \engEmph{Observer} per mettere in ascolto gli elementi della GUI legati alla simulazione stessa al fine di ricevere comunicazione di doversi aggiornare ad ogni step eseguito che li riguardi.
+            Il canvas in cui vengono rappresentati gli effetti, il bottone che controlla l'avvio della simulazione e le etichette che mostrano il progresso della simulazione in termini di tempo e step sono indubbiamente nodi grafici; in fase di progettazione, si è scelto però di modellarli anche come monitor per il motore della simulazione, sfruttando ancora una volta il pattern \engEmph{Observer} per mettere in ascolto gli elementi della GUI legati alla simulazione stessa al fine di ricevere comunicazione di doversi aggiornare ad ogni step eseguito che li riguardi.
 
         \subsection{Costruzione e avvio dell'interfaccia}\label{sub:avvio}
             L'interfaccia classica gestiva l'avvio della GUI per la simulazione in tempo reale, costruendo l'interfaccia con componenti Swing specifici assemblati in base ai parametri richiesti.
 
             La nuova interfaccia grafica è progettata conservando l'impiego di pattern \engEmph{Builder}, presentando un oggetto adibito all'interpretazione dei parametri e alla semplificazione del processo di costruzione.
-            Si dfferenzia però per l'assenza di frammentazione della struttura: essa è modellata come un'unica applicazione JavaFX, con un layout predefinito, e il builder si occupa di modificare il comportamento e il tipo di canvas per adattarlo alla simulazione, oltre a caricare gli effetti e la simulazione stessa, ma non influenza l'aspetto della UI.
+            Si differenzia però per l'assenza di frammentazione della struttura: essa è modellata come un'unica applicazione JavaFX, con un layout predefinito, e il builder si occupa di modificare il comportamento e il tipo di canvas per adattarlo alla simulazione, oltre a caricare gli effetti e la simulazione stessa, ma non influenza l'aspetto della UI.
 
     \section{Dettagli implementativi}\label{sec:dettagli}
 
         \subsection{La barra inferiore}\label{sub:barra}
-            La barra inferiore (\Cref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della liberia JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
+            La barra inferiore (\Cref{fig:newBar}) è stata trasposta quasi perfettamente dal mockup al codice: si è utilizzato la classe \texttt{javafx\dothyp scene\dothyp control\dothyp ButtonBar} per modellare il layout della barra, mentre sono state impiegate le classi \texttt{JFXButton} e \texttt{JFXSlider} fornite nel package \texttt{com\dothyp jfoenix\dothyp controls} della libreria JFoenix per modellare i controlli mantenendoli sul prescelto stile del Material Design di Google.
             Il popup per la modifica del sistema di controllo è stato realizzato tramite la classe \texttt{org\dothyp controlsfx\dothyp control\dothyp PopOver} presente nella libreria ControlsFX.
 
             \begin{figure}[htbp]
@@ -364,7 +364,7 @@
 
                     \item[PMD\footnotemark]\footnotetext{\url{https://pmd.github.io}} è uno strumento di analisi del codice sorgente statico per Java e altri linguaggi che prevede un set di regole, personalizzabile dallo sviluppatore, per definire quando una parte di esso è errata.
 
-                    Generalmente, gli errori segnalati riguardano scelte implementative subottimali e imperfezioni nel codice, che non inficiano direttamente il funzionamento del programma ma per la maggiorparte il livello del sorgente.
+                    Generalmente, gli errori segnalati riguardano scelte implementative subottimali e imperfezioni nel codice, che non inficiano direttamente il funzionamento del programma ma per la maggior parte il livello del sorgente.
 
                     Componente importante è il \emph{Copy/Paste Detector} (CPD) che utilizza l'algoritmo di Rabin–Karp per la ricerca delle stringhe~\cite{RabinKarp}, che permette di identificare codice duplicato con elevata precisione.
 
