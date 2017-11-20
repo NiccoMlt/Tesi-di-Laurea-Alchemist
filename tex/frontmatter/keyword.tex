@@ -11,7 +11,9 @@
 % arara: biber
 % arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
-
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}%
+    \cleardoublepage}}
+\clearemptydoublepage
 \thispagestyle{empty}
 \vspace*{20ex}
 \begin{flushright}
@@ -36,3 +38,4 @@
     \end{normalsize}
 \end{flushright}
 \vfill
+\clearemptydoublepage
