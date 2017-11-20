@@ -117,7 +117,7 @@
 %% Definisce l'environment abstract per la classe book
 \newenvironment{abstract}%
     {\cleardoublepage%
-        % \thispagestyle{empty}%
+        \thispagestyle{empty}%
         \null \vfill\begin{center}%
             \bfseries \phantomsection%
             \addcontentsline{toc}{chapter}{\abstractname}%
@@ -170,14 +170,10 @@
     \input{tex/frontmatter/frontespizio.tex}
     \input{tex/frontmatter/keyword.tex}
     % \input{tex/frontmatter/dedica.tex}
-    \pagestyle{plain}
     \input{tex/frontmatter/abstract.tex}
     \tableofcontents
 
     \mainmatter
-    \pagestyle{plain}
-    \pagenumbering{arabic}
-    \setcounter{page}{1}
     \input{tex/mainmatter/capitolo1.tex}
     \input{tex/mainmatter/capitolo2.tex}
     \input{tex/mainmatter/capitolo3.tex}
