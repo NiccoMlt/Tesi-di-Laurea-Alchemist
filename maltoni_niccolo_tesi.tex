@@ -31,6 +31,19 @@
     titlepage           % opzione necessaria per il pacchetto frontespizio
 ]{book}
 % \usepackage[a-1b]{pdfx}
+
+% https://tex.stackexchange.com/a/136653
+\pdfminorversion 4
+\immediate\pdfobj stream attr{/N 3}  file{eciRGB/eciRGB_v2.icc}
+\pdfcatalog{%
+/OutputIntents [ <<
+/Type /OutputIntent
+/S/GTS_PDFA1
+/DestOutputProfile \the\pdflastobj\space 0 R
+/OutputConditionIdentifier (eciRGB v2)
+/Info(eciRGB v2)
+>> ]
+}
 \usepackage{a4wide}             % consente di avere più spazio nell'A4
 
 %% ORDINE IMPORTANTE INIZIO %%%%%%%%%%%%
@@ -145,16 +158,28 @@
 \setcounter{secnumdepth}{2}     % Numera fino alla sottosezione nel corpo del testo
 \setcounter{tocdepth}{3}        % Numera fino alla sotto-sottosezione nell'indice
 
-\usepackage{hyperref}
+\usepackage{hyperxmp}
+\usepackage{hyperref}           % Gestisce tutte le cose ipertestuali del pdf
 \hypersetup{%
-    pdfpagemode={UseOutlines},
+    pdfpagemode={UseOutlines},%
     hidelinks,          % nasconde i collegamenti (non vengono quadrettati)
+    hypertexnames=false,
     linktoc=all         % inserisce i link nell'indice
     bookmarks=true,
     bookmarksopen,
+    bookmarksopenlevel=3,
+    plainpages=false,
+    breaklinks,
     pdfstartview={FitH},
     pdfauthor={Niccolò Maltoni},
-    pdftitle={Progettazione object oriented di un’interfaccia grafica JavaFX per il simulatore Alchemist}
+    pdfcopyright={Copyright (C) 2017, Niccolò Maltoni},
+    pdftitle={Progettazione object oriented di un’interfaccia grafica JavaFX per il simulatore Alchemist},
+    pdfcontactcountry={Italy},
+    pdfcontactemail={niccolo.maltoni@studio.unibo.it},
+    pdflang={it},
+    pdfsubject={Subject},
+    pdfkeywords={Simulazione, JavaFX, Interfaccia grafica},
+    pdfa
 }
 \usepackage[all]{hypcap}        % sistema i problemi di hyperref
 
@@ -174,6 +199,7 @@
     \tableofcontents
 
     \mainmatter
+    \input{tex/mainmatter/capitolo0.tex}
     \input{tex/mainmatter/capitolo1.tex}
     \input{tex/mainmatter/capitolo2.tex}
     \input{tex/mainmatter/capitolo3.tex}

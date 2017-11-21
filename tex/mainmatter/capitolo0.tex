@@ -1,0 +1,19 @@
+%% Direttive TeXworks:
+% !TeX root = ../../maltoni_niccolo_tesi.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = arara
+% !TEX TS-program = arara
+% !TeX spellcheck = it-IT
+
+%% Direttive Arara:
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: frontespizio
+% arara: biber
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+
+\chapter{Introduzione}\label{ch:intro}
+
+\medskip
+
+La seguente trattazione è strutturata su tre capitoli: nel \Cref{ch:background} viene introdotto il contesto nel quale il lavoro descritto nella tesi ha preso parte, introducendo il simulatore Alchemist, la sua interfaccia grafica classica e il framework JavaFX; nel \Cref{ch:contributo} si espone l'intero contributo fornito al progetto, analizzando singolarmente le fasi di analisi dei requisiti, design e progettazione e in ultimo implementazione della nuova interfaccia; infine, il \Cref{ch:conclusioni} analizza i risultati ottenuti, interpretandoli anche in ottica di miglioramenti futuri.
