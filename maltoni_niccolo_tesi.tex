@@ -5,10 +5,10 @@
 % !TEX TS-program = arara
 % !TeX spellcheck = it-IT
 
-% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, draft: yes, options: "-halt-on-error" }
 % arara: frontespizio
 % arara: biber
-% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, draft: yes, options: "-halt-on-error" }
 % arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
 % \begin{filecontents*}{\jobname.xmpdata}
@@ -33,17 +33,17 @@
 % \usepackage[a-1b]{pdfx}
 
 % https://tex.stackexchange.com/a/136653
-\pdfminorversion 4
-\immediate\pdfobj stream attr{/N 3}  file{eciRGB/eciRGB_v2.icc}
-\pdfcatalog{%
-/OutputIntents [ <<
-/Type /OutputIntent
-/S/GTS_PDFA1
-/DestOutputProfile \the\pdflastobj\space 0 R
-/OutputConditionIdentifier (eciRGB v2)
-/Info(eciRGB v2)
->> ]
-}
+% \pdfminorversion 4
+% \immediate\pdfobj stream attr{/N 3}  file{eciRGB/eciRGB_v2.icc}
+% \pdfcatalog{%
+% /OutputIntents [ <<
+% /Type /OutputIntent
+% /S/GTS_PDFA1
+% /DestOutputProfile \the\pdflastobj\space 0 R
+% /OutputConditionIdentifier (eciRGB v2)
+% /Info(eciRGB v2)
+% >> ]
+% }
 \usepackage{a4wide}             % consente di avere più spazio nell'A4
 
 %% ORDINE IMPORTANTE INIZIO %%%%%%%%%%%%
@@ -117,15 +117,14 @@
 
 \onehalfspacing                 % Imposta interlinea a 1,5 ed equivale a \linespread{1,5}
 
-%% TODO capire e poi decidere se inserire o no
 %% produce un buon layout con fancyhdr %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\pagestyle{fancy}\addtolength{\headwidth}{20pt}
-%\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-%\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
-%\cfoot{}
-%
-%\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
-%\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\pagestyle{fancy}\addtolength{\headwidth}{20pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+\cfoot{}
+
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 
 %% Definisce l'environment abstract per la classe book
 \newenvironment{abstract}%
@@ -139,6 +138,9 @@
 
 % Definisco un nuovo comando per enfatizzare il testo in inglese
 \newcommand{\engEmph}[1] {\emph{\foreignlanguage{english}#1}}
+
+% Aggiunge pagine bianche vuote
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
 
 \usepackage[htt]{hyphenat}      % Enable hyphenation of TT text
 \hyphenation{                   % Permette di sillabare bene le parole
@@ -158,8 +160,9 @@
 \setcounter{secnumdepth}{2}     % Numera fino alla sottosezione nel corpo del testo
 \setcounter{tocdepth}{3}        % Numera fino alla sotto-sottosezione nell'indice
 
-\usepackage{hyperxmp}
+\usepackage{hyperxmp}           % Simile ad hyperref
 \usepackage{hyperref}           % Gestisce tutte le cose ipertestuali del pdf
+
 \hypersetup{%
     pdfpagemode={UseOutlines},%
     hidelinks,          % nasconde i collegamenti (non vengono quadrettati)
@@ -192,6 +195,7 @@
 \begin{document}
     \frontmatter
     \pagenumbering{Roman}
+    \pagestyle{empty}
     \input{tex/frontmatter/frontespizio.tex}
     \input{tex/frontmatter/keyword.tex}
     \input{tex/frontmatter/dedica.tex}
@@ -199,6 +203,8 @@
     \tableofcontents
 
     \mainmatter
+    \pagenumbering{arabic}
+    \pagestyle{fancy}
     \input{tex/mainmatter/capitolo0.tex}
     \input{tex/mainmatter/capitolo1.tex}
     \input{tex/mainmatter/capitolo2.tex}
