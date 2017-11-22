@@ -5,8 +5,38 @@
 % !TEX TS-program = arara
 % !TeX spellcheck = it-IT
 
-\chapter{Introduzione}\label{ch:intro}
+\chapter*{Introduzione}\label{ch:intro}
+\addcontentsline{toc}{chapter}{\nameref{ch:intro}}
+    Il lavoro illustrato in questa tesi è volto alla progettazione e all'implementazione di una nuova interfaccia grafica 2D per il simulatore Alchemist che possa sostituire quella già esistente.
 
-\medskip
+    Alchemist è un meta-simulatore estendibile completamente \engEmph{open-source} che esegue su \engEmph{Java~Virtual~Machine} (JVM);
+    nonostante tragga ispirazione dalla chimica stocastica, esso può essere utilizzato come framework di simulazione in differenti ambiti di ricerca a seconda dell'\emph{incarnazione} utilizzata.
+    La simulazione può essere lanciata ed eseguita sia da linea di comando (CLI, \engEmph{Command Line Interface}), senza coinvolgere in alcun aspetto l'interfaccia grafica, sia attraverso una GUI (\engEmph{graphical user interface});
+    in questo elaborato si tratterà unicamente di quest'ultima modalità.
 
-La seguente trattazione è strutturata su tre capitoli: nel \Cref{ch:background} viene introdotto il contesto nel quale il lavoro descritto nella tesi ha preso parte, introducendo il simulatore Alchemist, la sua interfaccia grafica classica e il framework JavaFX; nel \Cref{ch:contributo} si espone l'intero contributo fornito al progetto, analizzando singolarmente le fasi di analisi dei requisiti, design e progettazione e in ultimo implementazione della nuova interfaccia; infine, il \Cref{ch:conclusioni} analizza i risultati ottenuti, interpretandoli anche in ottica di miglioramenti futuri.
+    Con ``interfaccia grafica''~\cite{gui} (detta anche ``GUI'') si intende l'insieme dei componenti grafici attraverso i quali l'utente può interagire con il computer e, più nello specifico, con un determinato software che viene eseguito dalla macchina.
+    La caratteristica di maggiore importanza per un'interfaccia grafica, come per ogni mezzo di interazione con un oggetto quotidiano~\cite{norman1988}, sta nel riuscire a offrire le proprie funzionalità nel modo più intuitivo possibile, ossia l'usabilità.
+
+    A partire dagli anni `80, con l'affermarsi degli studi di ergonomia cognitiva~\cite{cognitiveErgonomics}, diventano altrettanto rilevanti anche le caratteristiche estetiche e simboliche che il sistema software mette a disposizione, andando a definire quella che viene definita ``esperienza utente'' (o ``UX'').
+
+    L'interfaccia classica di Alchemist non è in grado di offrire un'esperienza d'uso appagante e risulta poco \engEmph{user-friendly}, in quanto è difficile per l'utente intuirne le modalità d'uso:
+    nonostante Alchemist si presti ad essere utilizzato come framework di simulazione per ricerche in molti ambiti diversi (ad esempio, la chimica), l'interfaccia grafica è pensata per un utilizzatore avanzato, che predilige l'interazione da riga di comando e che, qualora dovesse necessitare della GUI, ne ha una conoscenza profonda e sa come richiamare rapidamente le funzionalità desiderate.
+    Questo causa una curva di apprendimento molto ripida, in quanto a primo impatto essa si presenta estremamente poco chiara e dunque poco utilizzabile;
+    ciò sta portando il simulatore ad avere problemi nella diffusione per l'utilizzo in ambito scientifico, della ricerca e della simulazione, poiché gli utenti che intendono utilizzare la GUI prediligono l'utilizzo di altri strumenti che offrono loro una maggiore semplicità.
+
+    Le difficoltà di utilizzo e l'aspetto grafico ormai datato hanno dunque portato alla necessità di progettare un'interfaccia grafica nuova: contributi recenti~\cite{casadio} hanno permesso un parziale rinnovamento limitato alla parte di ambiente integrato che accoglie l'utilizzatore che stia lanciando il simulatore senza una simulazione specificata e il lavoro illustrato in questa tesi mira a progettare una nuova interfaccia relativa all'ambiente di esecuzione della simulazione.
+
+    Durante la fase di progettazione si è deciso di ispirarsi alle GUI utilizzate da simulatori a scopo videoludico quali SimCity e Universe Sandbox, anziché allo stato dell'arte in ambito scientifico, poiché ritenuti maggiormente orientati all'immediatezza d'uso, requisito essenziale della fase di analisi.
+    Esteticamente, lo stile grafico al quale si è deciso di allinearsi è il Material Design di Google.
+
+    La struttura degli effetti è stata completamente riprogettata:
+    precedentemente un metodo per rappresentare proprietà dei singoli, la nuova tipologia di effetti diventa una funzione dall'intero ambiente alla rappresentazione grafica, offrendo una maggiore libertà allo sviluppatore che volesse implementare rendering complessi per simulazioni specifiche.
+
+    La libreria grafica utilizzata per l'implementazione è stata JavaFX.
+    La scelta è stata dettata dalle maggiori funzionalità messe a disposizione dal nuovo framework rispetto a Swing, che permettono di realizzare GUI nel contempo graficamente più leggere, esteticamente più moderne e progettualmente meglio incapsulate e modulari.
+
+    \bigskip
+
+    La seguente trattazione è strutturata su tre capitoli: nel \Cref{ch:background} viene introdotto il contesto nel quale il lavoro descritto nella tesi ha preso parte, introducendo il simulatore Alchemist, la sua interfaccia grafica classica e il framework JavaFX;
+    nel \Cref{ch:contributo} si espone l'intero contributo fornito al progetto, analizzando singolarmente le fasi di analisi dei requisiti, design e progettazione e in ultimo implementazione della nuova interfaccia;
+    infine, il \Cref{ch:conclusioni} analizza i risultati ottenuti, interpretandoli anche in ottica di miglioramenti futuri.
