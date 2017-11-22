@@ -13,8 +13,13 @@
         Al termine del lavoro illustrato in questa tesi, essa risulta essere in grado di caricare una simulazione, rappresentarla a schermo attraverso effetti importabili ed esportabili per mezzo di file JSON e controllarne il flusso d'esecuzione;
         l'impatto sulle performance di simulazione rispetto a un'esecuzione \engEmph{headless} è accettabile e nei margini di quanto previsto.
 
-        Nonostante il lavoro svolto abbia portato a un software correttamente funzionante, la mole di lavoro necessario non ha permesso di soddisfare tutti i requisiti e pertanto non può ancora sostituire completamente l'interfaccia classica.
+        Nonostante il lavoro svolto abbia portato a un software correttamente funzionante, la nuova interfaccia grafica non può ancora sostituire completamente quella classica a causa del mancato supporto ad ambienti con mappe di sfondo.
+        In particolare, non è stato intrapreso lo sviluppo di quest'ultima funzionalità in quanto la mole di lavoro necessaria non avrebbe permesso di mantenere i livelli attuali di ottimizzazione e stabilità.
+
         Nel paragrafo successivo sono illustrati i lavori futuri che possono essere apportati per rendere la GUI utilizzabile nel ramo stabile.
 
     \section{Lavori futuri}\label{sec:futuro}
-        \textbf{\texttt{[...]}}
+        Al termine del lavoro svolto, è rilevante valutare i possibili contributi futuri che possono essere forniti ad Alchemist a partire da ciò che è stato sviluppato per questa tesi.
+        In particolare, per portare sul canale stabile l'interfaccia grafica realizzata è importante implementare un monitor che sia in grado di rappresentare ambienti di simulazione con mappe di sfondo: ciò dovrebbe essere possibile estendendo dalla medesima classe astratta che costituisce la base del monitor utilizzato attualmente per il rendering dell'ambiente, \texttt{AbstractFXDisplay}, con una classe capace di interfacciarsi con distributori di mappe come Google Maps oppure OpenStreetMaps.
+
+        Ulteriori lavori potrebbero coinvolgere lo sviluppo di effetti più complessi e il miglioramento delle possibilità di interazione con gli elementi dell'ambiente.
