@@ -137,50 +137,54 @@
         Come è possibile vedere dalla \Cref{fig:mock:mainWindow}, si è scelto di adottare un'interfaccia composta da uno spazio disegnabile centrale, al quale viene sovrapposta nella parte inferiore una barra contenente dei controlli che permettono un'interazione semplice e diretta con le funzionalità di base:
 
         \begin{description}
-          \item [Play/Pausa] Partendo da destra, è presente un bottone che permette di avviare e mettere in pausa la simulazione.
+            \item [Play/Pausa]
+                Partendo da destra, è presente un bottone che permette di avviare e mettere in pausa la simulazione.
 
-          Esso funge anche da indicatore per lo stato attuale della simulazione:
-          qualora essa venga avviata o fermata da terminale o tramite una scorciatoia da tastiera, l'icona rappresentata sul bottone viene aggiornata per adeguarsi al nuovo stato.
+                Esso funge anche da indicatore per lo stato attuale della simulazione:
+                qualora essa venga avviata o fermata da terminale o tramite una scorciatoia da tastiera, l'icona rappresentata sul bottone viene aggiornata per adeguarsi al nuovo stato.
 
-          \item[Avanzamento in termini di tempo e step] Continuando verso sinistra, si trovano spazi dedicati al numero di secondi di simulazione rappresentati e di step effettuati;
-          essi vengono aggiornati durante tutto l'avanzamento del motore di simulazione.
+            \item[Avanzamento in termini di tempo e step]
+                Continuando verso sinistra, si trovano spazi dedicati al numero di secondi di simulazione rappresentati e di step effettuati;
+                essi vengono aggiornati durante tutto l'avanzamento del motore di simulazione.
 
-          \item[Gestione del sistema di controllo] Poiché l'interazione tramite mouse deve permettere sia di spostarsi nell'ambiente che selezionare i nodi e interagirvi, è presente un bottone che apre un pannello che permette di scegliere tra spostamento (\engEmph{pan}) e selezione.
+            \item[Gestione del sistema di controllo]
+                Poiché l'interazione tramite mouse deve permettere sia di spostarsi nell'ambiente che selezionare i nodi e interagirvi, è presente un bottone che apre un pannello che permette di scegliere tra spostamento (\engEmph{pan}) e selezione.
 
-          \item[Gestione della velocità] Una barra a scorrimento permette di regolare la velocità di rappresentazione della simulazione.
+            \item[Gestione della velocità]
+                Una barra a scorrimento permette di regolare la velocità di rappresentazione della simulazione.
 
-          \item[Gestione degli effetti] Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
+            \item[Gestione degli effetti]
+                Un bottone sul lato sinistro della barra permette di aprire un pannello sul medesimo lato della finestra per poter controllare gli effetti con i quali rappresentare cosa sta avvenendo nella simulazione.
 
-          % Nelle \Crefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
-          Nella \Cref{fig:mock:allEffects} è possibile osservare i diversi livelli del drawer laterale degli effetti.
+                % Nelle \Crefrange{fig:mock:groups}{fig:mock:properties} è possibile osservare i diversi livelli del drawer laterale degli effetti.
+                Nella \Cref{fig:mock:allEffects} è possibile osservare i diversi livelli del drawer laterale degli effetti.
 
-          \begin{figure}[htbp]
-              \centering%
-              \subfigure[%
-                  Vista dei singoli gruppi di effetti che compongono lo \engEmph{stack}%
-                  \label{fig:mock:groups}
-              ]{%
-                  \includegraphics[scale=0.5]{img/cropped/effectgroups_bar_open}
-              }%
-              \qquad{\LARGE$\Rightarrow$}\qquad
-              \subfigure[%
-                  Vista dei singoli effetti di un gruppo%
-                  \label{fig:mock:effects}%
-              ]{%
-                  \includegraphics[scale=0.5]{img/cropped/effects_bar_open}
-              }%
-              \qquad{\LARGE$\Rightarrow$}\qquad
-              \subfigure[%
-                  Vista delle proprietà di un effetto%
-                  \label{fig:mock:properties}%
-              ]{%
-                  \includegraphics[scale=0.5]{img/cropped/effect_properties_open}
-              }
-              \caption{Mockup del pannello laterale degli effetti nei diversi livelli\label{fig:mock:allEffects}}
-          \end{figure}
+                \begin{figure}[htbp]
+                    \centering%
+                    \subfigure[%
+                        Vista dei singoli gruppi di effetti che compongono lo \engEmph{stack}%
+                        \label{fig:mock:groups}
+                    ]{%
+                        \includegraphics[scale=0.5]{img/cropped/effectgroups_bar_open}
+                    }%
+                    \qquad{\LARGE$\Rightarrow$}\qquad
+                    \subfigure[%
+                        Vista dei singoli effetti di un gruppo%
+                        \label{fig:mock:effects}%
+                    ]{%
+                        \includegraphics[scale=0.5]{img/cropped/effects_bar_open}
+                    }%
+                    \qquad{\LARGE$\Rightarrow$}\qquad
+                    \subfigure[%
+                        Vista delle proprietà di un effetto%
+                        \label{fig:mock:properties}%
+                    ]{%
+                        \includegraphics[scale=0.5]{img/cropped/effect_properties_open}
+                    }
+                    \caption{Mockup del pannello laterale degli effetti nei diversi livelli\label{fig:mock:allEffects}}
+                \end{figure}
 
-          % TODO sistema altezza frecce
-
+                % TODO sistema altezza frecce
         \end{description}
 
     \section{Progettazione}\label{sec:progettazione}
@@ -194,20 +198,25 @@
                 ) rappresenta un oggetto completamente diverso:
 
                 \begin{itemize}
-                    \item[--]\label{itm:eFXEnv} esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente;
-                    in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
+                    \item[--]\label{itm:eFXEnv}
+                        esso non si relaziona più con il singolo nodo, del quale può considerare le proprietà, bensì con l'intero ambiente;
+                        in questo modo, l'effetto agisce in blocco su un determinato tipo di entità allo stesso modo, garantendo una migliore uniformità di applicazione.
 
-                    \item[--]\label{itm:eFXName} esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe;
-                    questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l'interfaccia grafica, una moltitudine di effetti.
+                    \item[--]\label{itm:eFXName}
+                        esso ha un \emph{nome} che lo identifica dalle altre istanze della medesima classe;
+                        questo permette all'utente di identificarlo con più semplicità e gestirlo in modo più naturale, soprattutto nel caso si trovi a gestire, attraverso l'interfaccia grafica, una moltitudine di effetti.
 
-                    \item[--]\label{itm:eFXVis} esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti.
+                    \item[--]\label{itm:eFXVis}
+                        esso possiede un campo di \emph{visibilità} individuale, che permette di nasconderlo temporaneamente, aumentando le possibilità di rappresentazione anche per blocchi di effetti predefiniti.
 
-                    \item[--]\label{itm:eFXobservable} le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{Observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
+                    \item[--]\label{itm:eFXobservable}
+                        le proprietà peculiari di ciascun effetto sono pensate per implementare il pattern \engEmph{Observer}~\cite{observer}, permettendo di effettuare collegamenti con l'interfaccia in modo trasparente ed ottimizzato, in quanto gestito completamente dal framework di JavaFX.
 
-                    \item[--]\label{itm:eFXjson} infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
+                    \item[--]\label{itm:eFXjson}
+                        infine, l'effetto viene serializzato in formato \engEmph{human-readable}, il quale facilita la creazione e la modifica anche al di fuori dell'interfaccia di Alchemist.
 
-                    Si è scelto di utilizzare il formato JSON\footnote{\url{https://www.json.org/index.html}} (\engEmph{JavaScript Object Notation}~\cite{json}), un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine;
-                    è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
+                        Si è scelto di utilizzare il formato JSON\footnote{\url{https://www.json.org/index.html}} (\engEmph{JavaScript Object Notation}~\cite{json}), un formato di testo per la serializzazione dei dati strutturati, basato sugli oggetti JavaScript, che risulta essere facile da leggere e scrivere per le persone e facile da generare e analizzarne la sintassi per le macchine;
+                        è un formato di testo indipendente dal linguaggio di programmazione, ma utilizza convenzioni riconosciute dalla maggior parte dei programmatori di linguaggi.
 
                 \end{itemize}
 
@@ -228,14 +237,16 @@
             \subsubsection{I gruppi di effetti e l'interfaccia \texttt{EffectGroup}}\label{subsubsec:effectGroup}
                 L'esigenza di permettere all'utente di poter realizzare rappresentazioni complesse con numerosi effetti ha portato alla definizione di una classe collezione specifica:
                 \begin{itemize}
-                    \item[--]\label{itm:eFXgIterator} la classe, secondo il contratto classico definito dall'interfaccia \texttt{Collection} di Java, è pensata per essere iterabile~\cite{iterator} e per permettere l'applicazione in blocco degli effetti che la compongono;
+                    \item[--]\label{itm:eFXgIterator}
+                        la classe, secondo il contratto classico definito dall'interfaccia \texttt{Collection} di Java, è pensata per essere iterabile~\cite{iterator} e per permettere l'applicazione in blocco degli effetti che la compongono;
 
-                    \item[--]\label{itm:eFXgName} anche il gruppo di effetti è definito da un nome che lo distingue dagli altri, permettendo all'utente di distinguerli in modo più immediato;
+                    \item[--]\label{itm:eFXgName}
+                        anche il gruppo di effetti è definito da un nome che lo distingue dagli altri, permettendo all'utente di distinguerli in modo più immediato;
 
-                    \item[--]\label{itm:eFXgVis} altra proprietà che accomuna la collezione con gli oggetti che è stata pensata per contenere è la visibilità:
-                    essa permette di mostrare e nascondere in blocco tutti i suoi effetti senza andare a modificare la visibilità di ciascuno degli effetti;
-                    l'interfaccia consente comunque di agire anche singolarmente sulla visibilità dei singoli nodi.
-
+                    \item[--]\label{itm:eFXgVis}
+                        altra proprietà che accomuna la collezione con gli oggetti che è stata pensata per contenere è la visibilità:
+                        essa permette di mostrare e nascondere in blocco tutti i suoi effetti senza andare a modificare la visibilità di ciascuno degli effetti;
+                        l'interfaccia consente comunque di agire anche singolarmente sulla visibilità dei singoli nodi.
                 \end{itemize}
 
             \subsubsection{Caricamento, salvataggio e modifica di gruppi di effetti}\label{subsubsec:serializzazione}
@@ -322,22 +333,27 @@
 
             La struttura di un drawer è costituita dagli elementi seguenti:
             \begin{itemize}
-                \item[--] una opzionale barra superiore, che va a rappresentare il nome dell'elemento di cui si va a modificare il contenuto (ed è dunque assente nella vista di tutti i gruppi di effetti caricati);
+                \item[--]
+                    una opzionale barra superiore, che va a rappresentare il nome dell'elemento di cui si va a modificare il contenuto (ed è dunque assente nella vista di tutti i gruppi di effetti caricati);
 
-                \item[--] una barra inferiore, che fornisce possibili interazioni:
-                \begin{itemize}
-                    \item[$\bullet$] tornare al drawer precedente nello stack;
-                    questa funzionalità è presente su ogni livello tranne il primo.
-                    \item[$\bullet$] aggiungere nuovi effetti o gruppi di effetti, andando a cercare tramite \engEmph{reflection} quelli presenti all'interno del classpath;
-                    questa funzionalità è assente nel drawer che mostra le proprietà di uno specifico effetto.
-                    \item[$\bullet$] salvare e caricare gruppi di effetti da file;
-                    questa funzionalità è disponibile solo nel primo drawer.
-                \end{itemize}
+                \item[--]
+                    una barra inferiore, che fornisce possibili interazioni:
+                    \begin{itemize}
+                        \item[$\bullet$]
+                            tornare al drawer precedente nello stack;
+                            questa funzionalità è presente su ogni livello tranne il primo.
+                        \item[$\bullet$]
+                            aggiungere nuovi effetti o gruppi di effetti, andando a cercare tramite \engEmph{reflection} quelli presenti all'interno del classpath;
+                            questa funzionalità è assente nel drawer che mostra le proprietà di uno specifico effetto.
+                        \item[$\bullet$]
+                            salvare e caricare gruppi di effetti da file;
+                            questa funzionalità è disponibile solo nel primo drawer.
+                    \end{itemize}
 
-                \item[--] la parte centrale del drawer, che può essere costituita da una \texttt{ListView} di \texttt{EffectFX} o di \texttt{EffectGroup}, o da una rappresentazione delle proprietà dell'effetto costruita a tempo di esecuzione sfruttando la \engEmph{reflection} per identificare quale nodo di controllo utilizzare.
+                \item[--]
+                    la parte centrale del drawer, che può essere costituita da una \texttt{ListView} di \texttt{EffectFX} o di \texttt{EffectGroup}, o da una rappresentazione delle proprietà dell'effetto costruita a tempo di esecuzione sfruttando la \engEmph{reflection} per identificare quale nodo di controllo utilizzare.
 
-                Nel caso della lista, le celle sono state personalizzate per poter essere riordinate tramite \engEmph{drag'n'drop} e per permettere la modifica della visibilità tramite un \texttt{JFXToggleButton}.% e del nome tramite doppio click sulla relativa \texttt{Label}.
-
+                    Nel caso della lista, le celle sono state personalizzate per poter essere riordinate tramite \engEmph{drag'n'drop} e per permettere la modifica della visibilità tramite un \texttt{JFXToggleButton}.% e del nome tramite doppio click sulla relativa \texttt{Label}.
             \end{itemize}
 
             % TODO inserire immagini
@@ -378,21 +394,23 @@
                 Il progetto Alchemist utilizza i seguenti strumenti:
 
                 \begin{description}
-                    \item[FindBugs\footnotemark]\footnotetext{\url{http://findbugs.sourceforge.net}} è un analizzatore di codice statico \engEmph{open-source} che rileva possibili bug all'interno del codice Java realizzato da Bill Pugh e David Hovemeyer e marchio registrato dall'Università del Maryland.
+                    \item[FindBugs\label{itm:FindBugs}\footnotemark]\footnotetext{\url{http://findbugs.sourceforge.net}}
+                        è un analizzatore di codice statico \engEmph{open-source} che rileva possibili bug all'interno del codice Java realizzato da Bill Pugh e David Hovemeyer e marchio registrato dall'Università del Maryland.
 
-                    Classifica i potenziali errori in categorie, per dare un'idea migliore allo sviluppatore di quale potrebbe essere il loro impatto sul software;
-                    opera direttamente sul bytecode di Java.
+                        Classifica i potenziali errori in categorie, per dare un'idea migliore allo sviluppatore di quale potrebbe essere il loro impatto sul software;
+                        opera direttamente sul bytecode di Java.
 
-                    \item[Checkstyle\footnotemark]\footnotetext{\url{http://checkstyle.sourceforge.net}} è un analizzatore di codice statico \engEmph{open-source} per diversi linguaggi di programmazione che verifica che il codice scritto aderisca a un determinato stile di codifica.
+                    \item[Checkstyle\label{itm:Checkstyle}\footnotemark]\footnotetext{\url{http://checkstyle.sourceforge.net}}
+                        è un analizzatore di codice statico \engEmph{open-source} per diversi linguaggi di programmazione che verifica che il codice scritto aderisca a un determinato stile di codifica.
 
-                    Esso effettua un controllo sulla presentazione e non sul contenuto, dunque non permette di assicurare la correttezza e la completezza del software.
+                        Esso effettua un controllo sulla presentazione e non sul contenuto, dunque non permette di assicurare la correttezza e la completezza del software.
 
-                    \item[PMD\footnotemark]\footnotetext{\url{https://pmd.github.io}} è uno strumento di analisi del codice sorgente statico per Java e altri linguaggi che prevede un set di regole, personalizzabile dallo sviluppatore, per definire quando una parte di esso è errata.
+                    \item[PMD\label{itm:PMD}\footnotemark]\footnotetext{\url{https://pmd.github.io}}
+                        è uno strumento di analisi del codice sorgente statico per Java e altri linguaggi che prevede un set di regole, personalizzabile dallo sviluppatore, per definire quando una parte di esso è errata.
 
-                    Generalmente, gli errori segnalati riguardano scelte implementative subottimali e imperfezioni nel codice, che non inficiano direttamente il funzionamento del programma ma per la maggior parte il livello del sorgente.
+                        Generalmente, gli errori segnalati riguardano scelte implementative subottimali e imperfezioni nel codice, che non inficiano direttamente il funzionamento del programma ma per la maggior parte il livello del sorgente.
 
-                    Componente importante è il \emph{Copy/Paste Detector} (CPD) che utilizza l'algoritmo di Rabin–Karp per la ricerca delle stringhe~\cite{RabinKarp}, che permette di identificare codice duplicato con elevata precisione.
-
+                        Componente importante è il \emph{Copy/Paste Detector} (CPD) che utilizza l'algoritmo di Rabin–Karp per la ricerca delle stringhe~\cite{RabinKarp}, che permette di identificare codice duplicato con elevata precisione.
                 \end{description}
 
             \subsubsection{Controllo di versione}\label{subsubsec:hosting}
@@ -402,15 +420,16 @@
                 Alchemist si avvale di Gradle per il processo di \engEmph{build automation} e di Travis CI per la fase di test in \engEmph{continuous integration} dopo l'aggiunta del codice al repository ufficiale su GitHub.
 
                 \begin{description}
-                    \item[Gradle\footnotemark]\footnotetext{\url{https://gradle.org}} è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy.
-                    Pensato per i linguaggi che compilano per JVM, questo sistema permette di avere una gestione controllata delle dipendenze (\engEmph{dependency management}), le quali vengono scaricate dai vari repository Maven durante la fase di compilazione.
+                    \item[Gradle\footnotemark]\footnotetext{\url{https://gradle.org}}
+                        è un sistema per l'automazione dello sviluppo, nato per includere tutte le caratteristiche provenienti da Apache Ant, Maven e Ivy attraverso la definizione di \engEmph{buildscript} in Groovy.
+                        Pensato per i linguaggi che compilano per JVM, questo sistema permette di avere una gestione controllata delle dipendenze (\engEmph{dependency management}), le quali vengono scaricate dai vari repository Maven durante la fase di compilazione.
 
-                    \item[Travis CI\footnotemark]\footnotetext{\url{https://travis-ci.org}} è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub;
-                    è gratuito per progetti \engEmph{open-source}.
+                    \item[Travis CI\footnotemark]\footnotetext{\url{https://travis-ci.org}}
+                        è un sistema di integrazione continua distribuito, utilizzato per la compilazione e il test di progetti caricati su repository GitHub;
+                        è gratuito per progetti \engEmph{open-source}.
 
-                    Il comportamento è definibile attraverso un file YAML;
-                    Alchemist richiede di effettuare una procedura di \engEmph{building} completa con Gradle ad ogni commit su repository.
-
+                        Il comportamento è definibile attraverso un file YAML;
+                        Alchemist richiede di effettuare una procedura di \engEmph{building} completa con Gradle ad ogni commit su repository.
                 \end{description}
 
             \subsubsection{Ambiente di sviluppo integrato}\label{subsubsec:IDE}
@@ -424,7 +443,18 @@
 
         \section{Test e valutazione}\label{sec:test}
             \subsection{Unit testing e valutazione del codice}
-                Durante lo sviluppo del codice si è prestato particolare attenzione alla qualità dello stesso: come detto \
+                Durante lo sviluppo del codice si è prestata particolare attenzione alla qualità dello stesso: come detto \Cref{subsubsec:codeQuality}, sono stati utilizzati strumenti di analisi statica del codice (quali \emph{Checkstyle}, \emph{PMD} e \emph{FindBugs}) che potessero garantire una buona attinenza alle convenzioni e una riduzione delle possibilità di bug.
+
+                Per garantire il corretto funzionamento delle funzionalità più cruciali non riguardanti strettamente collegate a elementi di interazione grafica, sono state create classi dedicate allo \engEmph{unit testing} attraverso la libreria JUnit\footnote{\url{http://junit.org}}, nella sua versione \href{http://junit.org/junit4/}{4.12}.
+
+                In particolare, è stato testato a fondo il comportamento delle classi relative agli effetti, alla loro serializzazione e alle proprietà osservabili e serializzabili implementate: i risultati forniti dallo strumento di analisi della \engEmph{coverage} messo a disposizione da Intellij IDEA per i package \texttt{it\dothyp unibo\dothyp alchemist\dothyp boundary\dothyp gui\dothyp effects} e \texttt{it\dothyp unibo\dothyp alchemist\dothyp boundary\dothyp gui\dothyp view\dothyp properties}, ad esclusione delle classi precedenti annotate come deprecate, sono visibili in \Cref{fig:coverage}.
+
+                \begin{figure}[htbp]
+                    \centering
+                    \includegraphics[scale=0.58]{img/filteredCoverage}
+                    \caption{Coverage per le classi relative agli effetti, alla loro serializzazione e alle proprietà osservabili e serializzabili implementate}
+                    \label{fig:coverage}
+                \end{figure}
 
             \subsection{Valutazione dell'interfaccia}
                 % TODO
