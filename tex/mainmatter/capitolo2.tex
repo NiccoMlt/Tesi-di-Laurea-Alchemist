@@ -442,7 +442,7 @@
                 In congiunzione ai due IDE per lo sviluppo del codice Java è stato utilizzato anche Gluon Scene Builder\footnote{\url{https://gluonhq.com/products/scene-builder}} per una prima definizione dei file FXML di layout.
 
         \section{Test e valutazione}\label{sec:test}
-            \subsection{Unit testing e valutazione del codice}
+            \subsection{Unit testing e valutazione del codice}\label{subsec:junit}
                 Durante lo sviluppo del codice si è prestata particolare attenzione alla qualità dello stesso: come detto \Cref{subsubsec:codeQuality}, sono stati utilizzati strumenti di analisi statica del codice (quali \emph{Checkstyle}, \emph{PMD} e \emph{FindBugs}) che potessero garantire una buona attinenza alle convenzioni e una riduzione delle possibilità di bug.
 
                 Per garantire il corretto funzionamento delle funzionalità più cruciali non riguardanti strettamente collegate a elementi di interazione grafica, sono state create classi dedicate allo \engEmph{unit testing} attraverso la libreria JUnit\footnote{\url{http://junit.org}}, nella sua versione \href{http://junit.org/junit4/}{4.12}.
@@ -451,10 +451,57 @@
 
                 \begin{figure}[htbp]
                     \centering
-                    \includegraphics[scale=0.58]{img/filteredCoverage}
+                    \frame{\includegraphics[scale=0.58]{img/filteredCoverage}}
                     \caption{Coverage per le classi relative agli effetti, alla loro serializzazione e alle proprietà osservabili e serializzabili implementate}
                     \label{fig:coverage}
                 \end{figure}
 
-            \subsection{Valutazione dell'interfaccia}
-                % TODO
+            \subsection{Valutazione dell'interfaccia}\label{subsec:valutazione}
+                L'interfaccia grafica risulta essere, per le funzionalità implementate, conforme ai requisiti concordati nella fase di analisi:
+
+                \begin{itemize}
+                  \item[--]
+                      L'ambiente di simulazione è stato rinnovato, ed è in grado di renderizzare correttamente gli effetti applicati per una simulazione.
+                      Inoltre, l'utente è in grado di visualizzare in tempo reale l'avanzamento della simulazione in termini di tempo e step tramite contatori dedicati.
+
+                  \item[--]
+                      La gestione degli effetti, accuratamente testata come specificato nella %\Cref{subsec:junit}
+                      Sezione precedente, risulta immediata all'utilizzo, con bottoni dedicati al salvataggio e al caricamento dei file JSON (\Cref{fig:impl:groups}, barra inferiore) che aprono l'interfaccia fornita dal \engEmph{file manager} del sistema operativo per la scelta del file.
+
+                      È possibile modificare l'ordine di effetti e gruppi di effetti nella pila con un semplice \engEmph{drag'n'drop} (\Cref{fig:simWithDnD}).
+
+                      \begin{figure}[htbp]
+                          \centering
+                          \includegraphics[scale=0.44]{img/withNodes/simWithDnD}
+                          \caption{Gestione \engEmph{drag'n'drop} degli effetti}
+                          \label{fig:simWithDnD}
+                      \end{figure}
+
+                  \item[--]
+                      Sono stati realizzati effetti standard per la rappresentazione di nodi e collegamenti, che possono essere utilizzati da altri sviluppatori come punto di partenza per realizzare rappresentazioni più complesse e flessibili (\Cref{fig:simWithEff}).
+
+                      \begin{figure}[htbp]
+                          \centering
+                          \includegraphics[scale=0.44]{img/withNodes/simWithEff}
+                          \caption{Drawer laterale degli effetti aperto}
+                          \label{fig:simWithEff}
+                      \end{figure}
+
+                  \item[--]
+                      Le performance sono pienamente sufficienti: l'aumento di carico sulle risorse dovuto alla presenza di un'interfaccia grafica da renderizzare rientra in quanto preventivato nella fase di analisi.
+                  \item[--]
+                      L'interfaccia non utilizza valori di misura assoluti e scala perfettamente su diversi tipi di risoluzione e densità di pixel.
+                  \item[--]
+                      Le possibilità di interazione con l'ambiente di simulazione tramite mouse e tastiera sono presenti, ma limitate: è possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato tramite scroll.
+
+                      Non è possibile, al momento, spostarsi nell'ambiente tramite \engEmph{drag'n'drop}.
+                \end{itemize}
+
+                \begin{figure}[htbp]
+                    \centering
+                    \includegraphics[scale=0.44]{img/withNodes/simWithNodes}
+                    \caption{Simulazione in corso di esecuzione}
+                    \label{fig:simWithNodes}
+                \end{figure}
+
+                A causa della mole di lavoro necessario, non è stato possibile implementare la rappresentazione di ambienti con mappe di sfondo.
