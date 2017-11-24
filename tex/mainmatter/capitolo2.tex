@@ -445,7 +445,7 @@
             \subsection{Unit testing e valutazione del codice}\label{subsec:junit}
                 Durante lo sviluppo del codice si è prestata particolare attenzione alla qualità dello stesso: come detto \Cref{subsubsec:codeQuality}, sono stati utilizzati strumenti di analisi statica del codice (quali \emph{Checkstyle}, \emph{PMD} e \emph{FindBugs}) che potessero garantire una buona attinenza alle convenzioni e una riduzione delle possibilità di bug.
 
-                Per garantire il corretto funzionamento delle funzionalità più cruciali non riguardanti strettamente collegate a elementi di interazione grafica, sono state create classi dedicate allo \engEmph{unit testing} attraverso la libreria JUnit\footnote{\url{http://junit.org}}, nella sua versione \href{http://junit.org/junit4/}{4.12}.
+                Per garantire il corretto funzionamento delle componenti più cruciali non strettamente collegate a elementi di interazione grafica, sono state create classi dedicate allo \engEmph{unit testing} attraverso la libreria JUnit\footnote{\url{http://junit.org}}, nella sua versione \href{http://junit.org/junit4/}{4.12}.
 
                 In particolare, è stato testato a fondo il comportamento delle classi relative agli effetti, alla loro serializzazione e alle proprietà osservabili e serializzabili implementate: i risultati forniti dallo strumento di analisi della \engEmph{coverage} messo a disposizione da Intellij IDEA per i package \texttt{it\dothyp unibo\dothyp alchemist\dothyp boundary\dothyp gui\dothyp effects} e \texttt{it\dothyp unibo\dothyp alchemist\dothyp boundary\dothyp gui\dothyp view\dothyp properties}, ad esclusione delle classi precedenti annotate come deprecate, sono visibili in \Cref{fig:coverage}.
 
