@@ -472,7 +472,7 @@
 
                       \begin{figure}[htbp]
                           \centering
-                          \includegraphics[scale=0.44]{new/effects_dnd}
+                          \includegraphics[scale=0.39]{new/effects_dnd}
                           \caption{Gestione \engEmph{drag'n'drop} degli effetti}
                           \label{fig:simWithDnD}
                       \end{figure}
@@ -480,17 +480,20 @@
                   \item[--]
                       Sono stati realizzati effetti standard per la rappresentazione di nodi e collegamenti, che possono essere utilizzati da altri sviluppatori come punto di partenza per realizzare rappresentazioni più complesse e flessibili (\Cref{fig:simWithEff}).
 
+                  \item[--]
+                      L'aumento di carico sulle risorse dovuto alla presenza di un'interfaccia grafica da renderizzare è pienamente accettabile:
+                      in particolare, una simulazione di test (YAML ed Effetti utilizzati in \Cref{app:yaml,app:json}) nell'incarnazione \emph{protelis} con 500 nodi disposti in cerchio, connessi tra loro se sufficientemente vicini e che si muovono di moto browniano, con gli effetti standard è in grado di eseguire mediamente 1 step ogni $1,29ms$ circa.
+
                       \begin{figure}[htbp]
                           \centering
-                          \includegraphics[scale=0.44]{new/groups}
+                          \includegraphics[scale=0.39]{new/groups}
                           \caption{Il drawer laterale aperto mostra i gruppi di effetti}
                           \label{fig:simWithEff}
                       \end{figure}
 
                   \item[--]
-                      Le performance sono pienamente sufficienti: l'aumento di carico sulle risorse dovuto alla presenza di un'interfaccia grafica da renderizzare rientra in quanto preventivato nella fase di analisi.
-                  \item[--]
                       L'interfaccia non utilizza valori di misura assoluti e scala perfettamente su diversi tipi di risoluzione e densità di pixel.
+
                   \item[--]
                       Le possibilità di interazione con l'ambiente di simulazione tramite mouse e tastiera sono presenti, ma limitate: è possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato tramite scroll.
 
@@ -499,7 +502,7 @@
 
                 \begin{figure}[htbp]
                     \centering
-                    \includegraphics[scale=0.44]{new/window_all}
+                    \includegraphics[scale=0.39]{new/window_all}
                     \caption{Simulazione in corso di esecuzione}
                     \label{fig:simWithNodes}
                 \end{figure}

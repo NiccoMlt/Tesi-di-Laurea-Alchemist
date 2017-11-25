@@ -5,11 +5,11 @@
 % !TEX TS-program = arara
 % !TeX spellcheck = it-IT
 
-% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: true, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
 % arara: frontespizio
 % arara: biber
-% arara: pdflatex: { shell: yes, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
-% arara: pdflatex: { shell: yes, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: true, synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { shell: true, synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
 % \begin{filecontents*}{\jobname.xmpdata}
 % \Title{Progettazione object oriented di un'interfaccia grafica JavaFX per il simulatore Alchemist}
@@ -65,6 +65,39 @@
 \usepackage{fancyhdr}           % serve per impaginare bene la tesi
 \usepackage{xcolor}             % serve per la gestione dei colori nel testo
 \usepackage{graphicx}           % serve per includere immagini e grafici
+
+%% Configurazioni orribili, ma funzionano %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}           % serve ad inserire blocchi di codice
+\lstdefinelanguage{yaml}{
+    basicstyle=\scriptsize\sffamily\color{black},
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+    commentstyle=\color{blue},
+    frame=single,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=1
+}
+\lstdefinelanguage{json}{
+    basicstyle=\scriptsize\sffamily\color{black},
+    string=[s]{"}{"},
+    stringstyle=\color{black},
+    comment=[l]{:},
+    commentstyle=\color{blue},
+    frame=single,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=1
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \usepackage{subfigure}          % serve a creare sottofigure
 \usepackage{wrapfig}            % serve per includere figure "wrapped" nel testo
 \usepackage[%
@@ -213,7 +246,7 @@
     \input{tex/mainmatter/capitolo2.tex}
     \input{tex/mainmatter/capitolo3.tex}
 
-    % \input{tex/appendice.tex}
+    \input{tex/appendice.tex}
 
     \backmatter
     \input{tex/backmatter/bibliografia.tex}
