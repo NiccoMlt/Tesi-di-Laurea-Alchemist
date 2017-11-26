@@ -183,8 +183,6 @@
                     }
                     \caption{Mockup del pannello laterale degli effetti nei diversi livelli\label{fig:mock:allEffects}}
                 \end{figure}
-
-                % TODO sistema altezza frecce
         \end{description}
 
     \section{Progettazione}\label{sec:progettazione}
@@ -327,14 +325,13 @@
                 \caption{Vista del drawer laterale degli effetti nei diversi livelli\label{fig:impl:allEffects}}
             \end{figure}
 
-            % TODO sistema altezza frecce
-
             L'impiego dei drawer, elemento tipico del Material Design, è stato possibile, ancora una volta, grazie alle classi \texttt{JFXDrawer} e \texttt{JFXDrawersStack} forniti da JFoenix.
 
             La struttura di un drawer è costituita dagli elementi seguenti:
             \begin{itemize}
                 \item[--]
                     una opzionale barra superiore, che va a rappresentare il nome dell'elemento di cui si va a modificare il contenuto (ed è dunque assente nella vista di tutti i gruppi di effetti caricati);
+                    un doppio click sulla barra permette di modificare tale nome.
 
                 \item[--]
                     una barra inferiore, che fornisce possibili interazioni:
@@ -353,17 +350,15 @@
                 \item[--]
                     la parte centrale del drawer, che può essere costituita da una \texttt{ListView} di \texttt{EffectFX} o di \texttt{EffectGroup}, o da una rappresentazione delle proprietà dell'effetto costruita a tempo di esecuzione sfruttando la \engEmph{reflection} per identificare quale nodo di controllo utilizzare.
 
-                    Nel caso della lista, le celle sono state personalizzate per poter essere riordinate tramite \engEmph{drag'n'drop} e per permettere la modifica della visibilità tramite un \texttt{JFXToggleButton}.% e del nome tramite doppio click sulla relativa \texttt{Label}.
+                    Nel caso della lista, le celle sono state personalizzate per poter essere riordinate tramite \engEmph{drag'n'drop} e per permettere la modifica della visibilità tramite un \texttt{JFXToggleButton}.
             \end{itemize}
-
-            % TODO inserire immagini
 
         \subsection{Librerie esterne utilizzate}\label{subsec:lib}
             Per realizzare questa interfaccia grafica è stato necessario utilizzare delle librerie esterne che forniscono ulteriori funzionalità.
             Le librerie esterne utilizzate sono le seguenti.
 
             \subsubsection{ControlsFX}\label{subsubsec:controlsfx}
-                Controlsfx\footnote{\url{http://fxexperience.com/controlsfx}} è una libreria \engEmph{open-source} per JavaFX, fornita da FX Experience e sponsorizzata da Gluon, che mette a disposizione controlli per interfacce di alta qualità e altri strumenti complementari a quelli distribuiti con JavaFX.
+                ControlsFX\footnote{\url{http://fxexperience.com/controlsfx}} è una libreria \engEmph{open-source} per JavaFX, fornita da FX Experience e sponsorizzata da Gluon, che mette a disposizione controlli per interfacce di alta qualità e altri strumenti complementari a quelli distribuiti con JavaFX.
                 È stata sviluppata per JavaFX 8 e successivi.
 
                 È stata utilizzata per alcuni nodi ed elementi di layout.
@@ -484,6 +479,13 @@
                       L'aumento di carico sulle risorse dovuto alla presenza di un'interfaccia grafica da renderizzare è pienamente accettabile:
                       in particolare, una simulazione di test (YAML ed Effetti utilizzati in \Cref{app:yaml,app:json}) nell'incarnazione \emph{protelis} con 500 nodi disposti in cerchio, connessi tra loro se sufficientemente vicini e che si muovono di moto browniano, con gli effetti standard è in grado di eseguire mediamente 1 step ogni $1,29ms$ circa.
 
+                      L'interfaccia grafica precedente, utilizzando la medesima simulazione, il medesimo ambiente hardware e software\footnote{CPU: AMD FX-8320E; GPU: AMD Radeon R9 280; RAM: 8GB DDR3; OS: Linux Mint KDE 18.2; JRE: 1.8.0\_151} e con effetti equivalenti\footnote{rappresentazione dei nodi abilitata ed effetto \texttt{DrawShape} minimale (codice del file AES in \Cref{app:aes})}, è in grado di eseguire mediamente 1 step ogni $1,13ms$ circa.
+                      La differenza di prestazioni è con tutta probabilità dovuta all'effetto di rappresentazione dei collegamenti tra i nodi: nell'interfaccia classica, a differenza di quanto accade in quella realizzata con questa tesi, la loro rappresentazione non è un effetto, bensì una funzionalità del monitor che si occupa di rappresentarli.
+
+                      Disabilitando la rappresentazione dei collegamenti (per la precisione, non attivandola nell'interfaccia classica e rimuovendo l'effetto ``\engEmph{Draw the links}'' dallo stack di effetti in \Cref{app:json} per quanto riguarda la nuova GUI) si ottiene un risultato differente: la nuova interfaccia è in grado di eseguire mediamente 1 step ogni $0,30ms$ circa, contro il valore di $0,70ms$ circa realizzato dall'interfaccia classica.
+
+                      Si può dunque considerare che una maggiore ottimizzazione dell'effetto di rappresentazione dei collegamenti potrebbe migliorare ulteriormente le prestazioni attuali già accettabili.
+
                       \begin{figure}[htbp]
                           \centering
                           \includegraphics[scale=0.39]{new/groups}
@@ -495,7 +497,7 @@
                       L'interfaccia non utilizza valori di misura assoluti e scala perfettamente su diversi tipi di risoluzione e densità di pixel.
 
                   \item[--]
-                      Le possibilità di interazione con l'ambiente di simulazione tramite mouse e tastiera sono presenti, ma limitate: è possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato tramite scroll.
+                      Le possibilità di interazione con l'ambiente di simulazione tramite mouse e tastiera sono presenti, ma limitate: è possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato eseguendo uno scroll.
 
                       Non è possibile, al momento, spostarsi nell'ambiente tramite \engEmph{drag'n'drop}.
                 \end{itemize}
