@@ -5,7 +5,8 @@
 % !TEX TS-program = arara
 % !TeX spellcheck = it-IT
 
-\appendix
+% \appendix
+\begin{appendices}
     \chapter{Simulazione di prova}\label{app:test}
         \section{YAML della simulazione}\label{app:yaml}
             \lstinputlisting[language=yaml]{data/simulation.yml}
@@ -17,7 +18,7 @@
 
         \section{AES degli effetti}\label{app:aes}
             \lstinputlisting[language=json]{data/effects.aes}
-            
+\end{appendices}
     % \chapter{Codice relativo all'interfaccia classica}\label{app:old}
         % \section{L'interfaccia \texttt{Effect}}\label{app:effect}
             % TODO codice
