@@ -26,7 +26,7 @@ public class FXTimeMonitor<T> extends NumericLabelMonitor<Time, T> {
     @Override
     public void initialized(final Environment<T> environment) {
         super.initialized(environment);
-        t = System.currentTimeMillis();
+        t = System.nanoTime();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class FXTimeMonitor<T> extends NumericLabelMonitor<Time, T> {
         update(time);
 
         if (step < 2500) {
-            final long ct = System.currentTimeMillis();
+            final long ct = System.nanoTime();
             if (t > 0) {
                 System.out.println(ct - t);
             }
