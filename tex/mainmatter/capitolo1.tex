@@ -239,7 +239,7 @@
             \end{figure}
             \footnotetext{\url{https://docs.oracle.com/javase/8/javase-clienttechnologies.htm}}
 
-            Il terzo livello è costituito dal sopra citato \engEmph{Glass Windowing Toolkit}, che rappresenta il livello più basso del \engEmph{JavaFX graphics stack}.
+            Il terzo livello è costituito dal sopra citato \engEmph{Glass Windowing Toolkit}, che rappresenta il livello più basso del \engEmph{JavaFX Graphics Stack}.
             Esso si occupa di gestire i servizi nativi forniti dai sistemi operativi per la gestione delle finestre e delle code degli eventi;
             costituisce la parte \engEmph{platform-dependent} di JavaFX.
 
@@ -260,7 +260,7 @@
             Il metodo \texttt{start()} è il punto di ingresso principale:
             lanciando una JavaFX Application attraverso il metodo \texttt{launch()} della classe di supporto \texttt{javafx\dothyp application\dothyp Platform}, verrà inizializzato il framework e poi verranno chiamati in ordine i metodi \texttt{init()} e \texttt{start(javafx\dothyp stage\dothyp Stage)}, che rappresentano di fatto il ciclo di inizializzazione ideale dell'applicazione.
             Il metodo \texttt{main()} non deve essere necessariamente implementato perché l'applicazione possa essere avviata:
-            esso viene infatti creato dal \engEmph{JavaFX Packager tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
+            esso viene infatti creato dal \engEmph{JavaFX Packager Tool} durante l'inserimento del \engEmph{JavaFX Launcher} nel file JAR.
 
             Il layout con cui un'applicazione JavaFX è costituita a livello grafico si struttura gerarchicamente su tre sezioni principali, visibili in \Cref{fig:jfxStage}:
 
