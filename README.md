@@ -1,5 +1,4 @@
 # Tesi di laurea: JavaFX GUI per Alchemist #
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/it/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/it/88x31.png" /></a><br />Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/it/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 3.0 Italia</a>.
 
 Progettazione object oriented di un’interfaccia grafica JavaFX per il simulatore [Alchemist](http://alchemistsimulator.github.io/):
 
@@ -41,3 +40,6 @@ Poiché ero inizialmente poco familiare con LaTeX, sono stati molto utili i cons
     - [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
     - Wikipedia: [IT](https://it.wikipedia.org/wiki/JavaFX), [EN](https://en.wikipedia.org/wiki/JavaFX)
     - [Gluon Scene Builder](http://gluonhq.com/products/scene-builder/)
+    
+## Licenza ##
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/it/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/it/88x31.png" /></a><br />Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/it/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 3.0 Italia</a>.
