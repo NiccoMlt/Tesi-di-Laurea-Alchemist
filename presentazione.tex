@@ -1,0 +1,93 @@
+%% Direttive TeXworks:
+% !TeX root = ./presentazione.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = arara
+% !TEX TS-program = arara
+% !TeX spellcheck = it-IT
+
+% arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+%! arara: frontespizio
+%! arara: biber
+%! arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+%! arara: pdflatex: { synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+
+\documentclass[%
+    % handout,      % serve per generare la versione stampabile
+    % italian
+]{beamer}
+
+%% ORDINE IMPORTANTE INIZIO %%%%%%%%%%%%
+\usepackage[T1]{fontenc}        % serve per impostare la codifica di output del font
+\usepackage{textcomp}           % serve per fornire supporto ai Text Companion fonts
+\usepackage[utf8]{inputenc}     % serve per impostare la codifica di input del font
+\usepackage[
+    english,        % utilizza l'inglese come lingua secondaria
+    italian         % utlizza l'italiano come lingua primaria
+]{%
+    babel,                      % serve per scrivere Indice, Capitolo, etc in Italiano
+    varioref                    % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
+}
+\usepackage{lmodern}            % carica una variante Latin Modern prodotto dal GUST
+%% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
+\usepackage{xcolor}             % serve per la gestione dei colori nel testo
+\usepackage{graphicx}           % serve per includere immagini e grafici
+
+\usetheme{CambridgeUS}          % serve per scegliere il layout generale dei frame
+% \useinnertheme{<tema interno>}
+% \useoutertheme{<tema esterno>}
+% \usecolortheme[named=<nome colore>]{structure}
+% \usecolortheme{<schema di colori>}
+% \usefonttheme{<schema di font>}
+
+\usepackage{pgf}
+% \usepackage{pgfpages}         % serve per mettere più slide in una pagina
+% \pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
+
+\title{%
+    Progettazione object-oriented di un'interfaccia grafica %
+    JavaFX per il simulatore Alchemist
+}
+\subtitle{Tesi in Programmazione ad Oggetti}
+\author[vlr]{Niccolò~Maltoni}
+% \author[%
+%     Niccolò~Maltoni \hspace{0.1\textwidth} \insertframenumber\,/\,\inserttotalframenumber%
+% ]{%
+%     Niccolò~Maltoni%
+%     \\ \vspace{10pt} \small{Realtore: Prof.~Mirko~Viroli \\Correlatore: Prof.~Danilo~Pianini}%
+% }
+\date{13~dicembre~2017}
+\institute[Unibo]{%
+     Alma Mater Studiorum - Università di Bologna \\%
+     Campus di Cesena%
+}
+
+\begin{document}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    % \begin{frame}
+    %     \frametitle{Indice}
+    %     \tableofcontents
+    % \end{frame}
+
+    % \chapter{Prova}
+    % \section{Prova}
+    % \begin{frame}
+    %     \frametitle{Titolo}
+    %     \framesubtitle{Sottotitolo}
+    %     Prova
+    % \end{frame}
+
+    % \section{Introduzione}
+    %     \begin{frame}
+    %         % \frametitle{Introduzione}
+    %         % \framesubtitle{\emph{Overlays}}
+    %         % \begin{itemize}
+    %         %     \item<1-> \`E facilissimo\ldots
+    %         %     \item<2-> \ldots fare\ldots
+    %         %     \item<3-> \ldots \emph{overlays}\/!
+    %         % \end{itemize}
+    %     \end{frame}
+
+\end{document}
