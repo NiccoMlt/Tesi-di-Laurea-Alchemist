@@ -32,39 +32,202 @@
 \usepackage{xcolor}             % serve per la gestione dei colori nel testo
 \usepackage{graphicx}           % serve per includere immagini e grafici
 
-\usetheme{CambridgeUS}          % serve per scegliere il layout generale dei frame
+%% Configurazione listings orribile, ma funziona %%%%%%%%%%%%%%%%%%%%
+\usepackage{listings}           % serve ad inserire blocchi di codice
+\lstdefinelanguage{yaml}{
+    basicstyle=\scriptsize\sffamily\color{black},
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+    commentstyle=\color{blue},
+    frame=single,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=1
+}
+\lstdefinelanguage{json}{
+    basicstyle=\scriptsize\sffamily\color{black},
+    string=[s]{"}{"},
+    stringstyle=\color{black},
+    comment=[l]{:},
+    commentstyle=\color{blue},
+    frame=single,
+    numbers=left,
+    numbersep=5pt,
+    numberstyle=\tiny\color{gray},
+    showspaces=false,
+    showstringspaces=false,
+    tabsize=1
+}
+
+\usepackage{subfigure}          % serve a creare sottofigure
+\usepackage[%
+    strict,             % rende tutti gli warning degli errori
+    autostyle,          % imposta lo stile in base al linguaggio specificato in babel
+    english=american,   % imposta lo stile per l'inglese
+    italian=guillemets  % imposta lo stile per l'italiano
+]{csquotes}                     % serve a impostare lo stile delle virgolette
+% \usepackage[%
+%     maxcitenames=2,   % massimo numero di nomi nelle citazioni
+%     mincitenames=2,   % minimo numero di nomi nelle citazioni
+%     maxbibnames=99,   % massimo numero di nomi nella blibliografia
+%     minbibnames=99,   % minimo numero di nomi nella blibliografia
+%     style=numeric,
+%     giveninits=true,
+%     backend=biber     % specifica il backend per la bibliografia
+% ]{biblatex}                   % si interfaccia con bibtex e biber per la bibliografia
+% \addbibresource{biblio.bib}
+% \usepackage[%
+%     %notbib,          % rimuove la bibliografia dall'indice
+%     notindex,         % rimuove l'indice dall'indice
+%     nottoc,           % rimuove la Table of Contents dall'indice
+%     notlot,           % rimuove la lista delle tabelle dall'indice
+%     notlof,           % rimuove la lista delle figure dall'indice
+%     %chapter,         % "Use chapter-level headings, if possible"
+%     %section,         % "Use section-level headings, if possible"
+%     %numbib           % numera il capitolo della bibliografia
+%     %numindex         % numera il capitolo dell'indice
+% ]{tocbibind}                  % aggiunge cose all'indice
+
+% \usetheme{CambridgeUS}        % TODO decidi quale usare
+\usetheme{Boadilla}             % serve per scegliere il layout generale dei frame
 % \useinnertheme{<tema interno>}
 % \useoutertheme{<tema esterno>}
 % \usecolortheme[named=<nome colore>]{structure}
-% \usecolortheme{<schema di colori>}
+\usecolortheme{beaver}
 % \usefonttheme{<schema di font>}
 
 \usepackage{pgf}
 % \usepackage{pgfpages}         % serve per mettere più slide in una pagina
 % \pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
 
-\title{%
+% \usepackage[htt]{hyphenat}      % Enable hyphenation of TT text
+\hyphenation{                   % Permette di sillabare bene le parole
+    JavaFX
+    Swing
+    Micro-systems
+    Script
+    script
+    Pack-age
+    pack-age
+    Manage-ment
+    manage-ment
+    Com-munity
+    com-munity
+}
+
+\setcounter{secnumdepth}{2}     % Numera fino alla sottosezione nel corpo del testo
+\setcounter{tocdepth}{3}        % Numera fino alla sotto-sottosezione nell'indice
+
+\graphicspath{{img/}}
+
+%% Definisco un nuovo comando per enfatizzare il testo in inglese %%%%%%%%%%%
+\newcommand{\engEmph}[1] {\emph{\foreignlanguage{english}#1}}
+
+%% ORDINE IMPORTANTE INIZIO %%%%%%%%%%%%
+% hyperref va caricato il più tardi possibile
+\usepackage{hyperxmp}           % Simile ad hyperref
+\usepackage{hyperref}           % Gestisce tutte le cose ipertestuali del pdf
+\hypersetup{%
+    pdfpagemode={UseOutlines},
+    hidelinks,          % nasconde i collegamenti (non vengono quadrettati)
+    hypertexnames=false,
+    linktoc=all,        % inserisce i link nell'indice
+    bookmarks=true,
+    bookmarksopen,
+    bookmarksopenlevel=3,
+    plainpages=false,
+    breaklinks,
+    pdfstartview={FitH},
+    pdfauthor={Niccolò Maltoni},
+    pdfcopyright={Copyright (C) 2017, Niccolò Maltoni},
+    pdftitle={Progettazione object-oriented di un'interfaccia grafica JavaFX per il simulatore Alchemist},
+    pdfcontactcountry={Italy},
+    pdfcontactemail={niccolo.maltoni@studio.unibo.it},
+    pdflang={it},
+    pdfsubject={Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore Alchemist. La nuova interfaccia permette di interagire con la simulazione a tempo di esecuzione e di vedere chiaramente rappresentate informazioni su di essa. In particolare, è supportata una struttura modulare di effetti che rende facilmente osservabili determinate entità del sistema ed eventuali loro proprietà: rispetto alla classe di effetti dell'interfaccia classica, la nuova tipologia di effetti non è più una funzione dal singolo nodo alla rappresentazione grafica, bensì fa riferimento all'intero ambiente, permettendo di costruire rendering complessi facilmente esportabili tramite file JSON. Si è scelto di mantenere un'interfaccia il più possibile user-friendly, mantenendo un design più simile ai simulatori a scopo videoludico per favorire l'utilizzo da parte di utenti inesperti. Lo stile estetico al quale si è deciso di allinearsi è il Material Design di Google e la libreria grafica utilizzata per l'implementazione è stata JavaFX.},
+    pdfkeywords={Progettazione object-oriented, Simulazione, Java, JavaFX, Interfaccia grafica},
+    pdfa
+}
+
+% cleveref va anche dopo hyperref
+\usepackage[%
+    english,italian,    % definizione delle lingue da usare
+    nameinlink          % inserisce i link nei riferimenti
+]{cleveref}                     % permette di usare riferimenti migliori dei \ref e dei varioref
+%% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
+
+\title[Nuova GUI Alchemist in JavaFX]{%
     Progettazione object-oriented di un'interfaccia grafica %
     JavaFX per il simulatore Alchemist
 }
 \subtitle{Tesi in Programmazione ad Oggetti}
-\author[vlr]{Niccolò~Maltoni}
+\author[Niccolò~Maltoni]{Niccolò~Maltoni\\0000719734}
 % \author[%
 %     Niccolò~Maltoni \hspace{0.1\textwidth} \insertframenumber\,/\,\inserttotalframenumber%
 % ]{%
 %     Niccolò~Maltoni%
 %     \\ \vspace{10pt} \small{Realtore: Prof.~Mirko~Viroli \\Correlatore: Prof.~Danilo~Pianini}%
 % }
-\date{13~dicembre~2017}
-\institute[Unibo]{%
-     Alma Mater Studiorum - Università di Bologna \\%
-     Campus di Cesena%
+\date{%
+    % TODO
+}
+\institute[%
+    % Unibo
+]{%
+    Alma Mater Studiorum - Università di Bologna\\%
+    Campus di Cesena%
 }
 
 \begin{document}
     \begin{frame}
         \titlepage
     \end{frame}
+
+    % \chapter{Background}\label{ch:background}
+    \section{Introduzione}\label{sec:intro}
+    \begin{frame}
+        \frametitle{Introduzione}
+        Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}.
+
+        \medskip % non soono sicuro sia la soluzione più corretta, am funziona
+        \pause
+
+        La nuova interfaccia permette di interagire con la simulazione a tempo di esecuzione e di vedere chiaramente rappresentate informazioni su di essa.
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Introduzione}
+        In particolare, è supportata una \emph{struttura modulare di effetti} che rende facilmente osservabili determinate entità del sistema ed eventuali loro proprietà:
+
+        \pause
+
+        \begin{itemize}
+            \item<1->
+                l'effetto non fa più riferimento al singolo nodo, bensì costituisce una funzione dall'intero ambiente alla rappresentazione grafica.
+            \item<2->
+                gli \engEmph{stack} di effetti realizzati possono essere serializzati su file di testo in formato JSON.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{Introduzione}
+        Si è scelto di mantenere un'interfaccia il più possibile \engEmph{user-friendly}, mantenendo un design più simile ai simulatori a scopo videoludico per favorire l'utilizzo da parte di utenti inesperti.
+
+        \medskip
+        \pause
+
+        Lo stile estetico al quale si è deciso di allinearsi è il \emph{Material Design} di Google e la libreria grafica utilizzata per l'implementazione è stata \emph{JavaFX}.
+    \end{frame}
+
+    % \begin{frame}
+    %     \begin{block}{Prova}
+    %         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    %     \end{block}
+    % \end{frame}
 
     % \begin{frame}
     %     \frametitle{Indice}
