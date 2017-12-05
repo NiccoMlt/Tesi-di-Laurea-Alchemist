@@ -5,10 +5,7 @@
 % !TEX TS-program = arara
 % !TeX spellcheck = it-IT
 
-% arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
-%! arara: biber
-%! arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
-%! arara: pdflatex: { synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+% arara: pdflatex: { synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
 \documentclass[%
     % handout,      % serve per generare la versione stampabile
@@ -22,69 +19,18 @@
 \usepackage[
     english,        % utilizza l'inglese come lingua secondaria
     italian         % utlizza l'italiano come lingua primaria
-]{%
-    babel,                      % serve per scrivere Indice, Capitolo, etc in Italiano
-    % varioref                    % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
-}
+]{babel}                        % serve per scrivere Indice, Capitolo, etc in Italiano
 \usepackage{lmodern}            % carica una variante Latin Modern prodotto dal GUST
 %% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
 \usepackage{xcolor}             % serve per la gestione dei colori nel testo
 \usepackage{graphicx}           % serve per includere immagini e grafici
 
-%% Configurazione listings orribile, ma funziona %%%%%%%%%%%%%%%%%%%%
-\usepackage{listings}           % serve ad inserire blocchi di codice
-% \lstdefinelanguage{yaml}{
-%     basicstyle=\scriptsize\sffamily\color{black},
-%     string=[s]{"}{"},
-%     stringstyle=\color{blue},
-%     comment=[l]{:},
-%     commentstyle=\color{blue},
-%     frame=single,
-%     numbers=left,
-%     numbersep=5pt,
-%     numberstyle=\tiny\color{gray},
-%     showspaces=false,
-%     showstringspaces=false,
-%     tabsize=1
-% }
-\lstdefinelanguage{json}{
-    basicstyle=\scriptsize\sffamily\color{black},
-    string=[s]{"}{"},
-    stringstyle=\color{black},
-    comment=[l]{:},
-    commentstyle=\color{blue},
-    frame=single,
-    numbers=left,
-    numbersep=5pt,
-    numberstyle=\tiny\color{gray},
-    showspaces=false,
-    showstringspaces=false,
-    tabsize=1
-}
-
-\usepackage{subfigure}          % serve a creare sottofigure
 \usepackage[%
     strict,             % rende tutti gli warning degli errori
     autostyle,          % imposta lo stile in base al linguaggio specificato in babel
     english=american,   % imposta lo stile per l'inglese
     italian=guillemets  % imposta lo stile per l'italiano
 ]{csquotes}                     % serve a impostare lo stile delle virgolette
-
-% \usepackage{silence}    % silenzia warning
-% \usepackage[%
-%     maxcitenames=2,     % massimo numero di nomi nelle citazioni
-%     mincitenames=2,     % minimo numero di nomi nelle citazioni
-%     maxbibnames=99,     % massimo numero di nomi nella blibliografia
-%     minbibnames=99,     % minimo numero di nomi nella blibliografia
-%     style=numeric,
-%     giveninits=true,
-%     backend=biber       % specifica il backend per la bibliografia
-% ]{biblatex}                     % si interfaccia con bibtex e biber per la bibliografia
-% \addbibresource{biblio.bib}
-% %% Poiché il warning inutile di BibLaTeX non può essere rimosso, lo silenzio
-% %% https://tex.stackexchange.com/a/202994
-% \WarningFilter{biblatex}{Patching footnotes failed}
-% \setbeamertemplate{bibliography item}[text]
 
 % \usetheme{CambridgeUS}        % TODO decidi quale usare
 \usetheme{Boadilla}             % serve per scegliere il layout generale dei frame
@@ -93,9 +39,6 @@
 \usepackage{pgf}
 % \usepackage{pgfpages}         % serve per mettere più slide in una pagina
 % \pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
-
-% \usepackage{multimedia}
-% \usepackage{media9}
 
 % \usepackage[htt]{hyphenat}      % Enable hyphenation of TT text
 \hyphenation{                   % Permette di sillabare bene le parole
@@ -120,7 +63,6 @@
 %% Definisco un nuovo comando per enfatizzare il testo in inglese %%%%%%%%%%%
 \newcommand{\engEmph}[1] {\emph{\foreignlanguage{english}#1}}
 
-%% ORDINE IMPORTANTE INIZIO %%%%%%%%%%%%
 % hyperref va caricato il più tardi possibile
 \usepackage{hyperxmp}           % Simile ad hyperref
 \usepackage{hyperref}           % Gestisce tutte le cose ipertestuali del pdf
@@ -145,12 +87,6 @@
     pdfkeywords={Progettazione object-oriented, Simulazione, Java, JavaFX, Interfaccia grafica},
     pdfa
 }
-% cleveref va anche dopo hyperref
-% \usepackage[%
-%     english,italian,    % definizione delle lingue da usare
-%     nameinlink          % inserisce i link nei riferimenti
-% ]{cleveref}                     % permette di usare riferimenti migliori dei \ref e dei varioref
-%% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
 
 \title[Nuova GUI Alchemist in JavaFX]{%
     Progettazione object-oriented di un'interfaccia grafica %
@@ -164,12 +100,8 @@
 %     Niccolò~Maltoni%
 %     \\ \vspace{10pt} \small{Realtore: Prof.~Mirko~Viroli \\Correlatore: Prof.~Danilo~Pianini}%
 % }
-\date{%
-    % TODO
-}
-\institute[%
-    % Unibo
-]{%
+\date{12 dicembre 2017}
+\institute[]{%
     Alma Mater Studiorum - Università di Bologna\\%
     Campus di Cesena%
 }
@@ -191,7 +123,7 @@
     \begin{frame}
         \frametitle{\insertsection}
 
-        Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}. % TODO ~\cite{alchemist2013}.
+        Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}.
 
         \medskip % non soono sicuro sia la soluzione più corretta, am funziona
         \pause
@@ -230,14 +162,12 @@
         \frametitle{\insertsection}
         \framesubtitle{\insertsubsection}
 
-        Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}}
-        % TODO ~\cite{alchemist2013}
-         è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
+        Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}} è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
 
         \medskip
         \pause
 
-        L'idea dietro al progetto è quello di riuscire ad avere un framework di simulazione il più possibile generico, in grado di simulare sistemi di tipologia e complessità diverse, mantenendo le prestazioni dei simulatori non generici (come ad esempio quelli impiegati in ambito chimico.% TODO ~\cite{gillespie1976}).
+        L'idea dietro al progetto è quello di riuscire ad avere un framework di simulazione il più possibile generico, in grado di simulare sistemi di tipologia e complessità diverse, mantenendo le prestazioni dei simulatori non generici (come ad esempio quelli impiegati in ambito chimico.
     \end{frame}
 
     \subsection{Il modello di Alchemist}\label{subsec:alchModel}
@@ -248,14 +178,6 @@
         \centering
         \includegraphics[scale=.34]{fig/alchemist_model}
     \end{frame}
-
-    % \begin{frame}
-    %     \frametitle{\insertsection}
-    %     \framesubtitle{\insertsubsection}
-    %
-    %     \centering
-    %     \includegraphics[scale=.25]{fig/alchemist_reaction}
-    % \end{frame}
 
     \begin{frame}
         \frametitle{\insertsection}
@@ -321,12 +243,8 @@
 
     \begin{frame}
         \frametitle{\insertsection}
-        % \begin{figure}[htbp]
-            \centering
-            \frame{\includegraphics[scale=.29]{old/window_stopped_circle}}
-            % \caption{Vista principale di una simulazione con l'interfaccia classica}
-            % \label{fig:oldMain}
-        % \end{figure}
+        \centering
+        \frame{\includegraphics[scale=.29]{old/window_stopped_circle}}
     \end{frame}
 
     \begin{frame}
@@ -346,18 +264,6 @@
     \end{frame}
 
     \section{L'interfaccia implementata}\label{sec:new}
-
-    % \begin{frame}
-    %     \frametitle{\insertsection}
-    %     \centering
-    %     \frame{\includemedia[
-    %         width=0.4\linewidth,
-    %         height=0.3\linewidth,
-    %         activate=pageopen,
-    %         addresource=./maltoni.mp4,
-    %         flashvars={source=./maltoni.mp4}
-    %     ]{}{VPlayer.swf}}
-    % \end{frame}
 
     \begin{frame}
         \frametitle{\insertsection}
@@ -415,22 +321,4 @@
             \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6841ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6696ms$} \\ \cline{1-2} \cline{4-5}
         \end{tabular}
     \end{frame}
-
-    % \item
-    %     \begin{itemize}
-    %       \item[$\bullet$]
-    %           abilitando la rappresentazione dei soli nodi, la nuova interfaccia è in grado mediamente di computare 1 step in $0,30ms$ circa (dei quali circa $0,29ms$ sono necessari per i calcoli relativi al modello e a direttive grafiche dell'effetto), mentre l'interfaccia classica richiede mediamente $0,68ms$ circa (dei quali anche in questo caso i tempi di rendering sono trascurabili).
-    %
-    %       \item[$\bullet$]
-    %           rappresentando sia i nodi che i collegamenti tra loro, la GUI implementata mediamente è in grado di eseguire 1 step in $1,32ms$ circa ($1,26ms$ al netto del rendering), mentre la soluzione grafica precedente necessita di $1,11ms$ circa, dei quali poco meno della metà ($0,45ms$) sono utilizzati da Swing per la rappresentazione.
-    %     \end{itemize}
-
-    % \section*{Bibliografia}\label{sec:bib}
-    % \begin{frame}
-    %     \frametitle{\insertsection}
-    %     % per quanto non citato esplicitamente, Effective Java (2nd Edition) di Joshua Bloch ha dato il suo contributo alla scrittura del codice
-    %     \nocite{Bloch:2008:EJ:1377533}
-    %     \printbibliography
-    % \end{frame}
-
 \end{document}
