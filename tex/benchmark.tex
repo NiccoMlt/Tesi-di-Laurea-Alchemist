@@ -1,0 +1,19 @@
+%% Direttive TeXworks:
+% !TeX root = ../presentazione.tex
+% !TEX encoding = UTF-8 Unicode
+% !TEX program = arara
+% !TEX TS-program = arara
+% !TeX spellcheck = it-IT
+
+\centering
+\begin{tabular}{ccccc}
+    \multicolumn{2}{c}{\textbf{Con render}} &  & \multicolumn{2}{c}{\textbf{Senza render}} \\
+     &  &  &  &  \\ \cline{1-2} \cline{4-5}
+    \multicolumn{2}{|c|}{\textbf{Nuova GUI}} & \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Nuova GUI}} \\ \cline{1-2} \cline{4-5}
+    \multicolumn{1}{|c|}{Nodi + Link:} & \multicolumn{1}{c|}{$1,3153ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Nodi + Link:} & \multicolumn{1}{c|}{1,2648ms} \\ \cline{1-2} \cline{4-5}
+    \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,3041ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,2855ms$} \\ \cline{1-2} \cline{4-5}
+     &  &  &  &  \\ \cline{1-2} \cline{4-5}
+    \multicolumn{2}{|c|}{\textbf{Vecchia GUI}} & \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Vecchia GUI}} \\ \cline{1-2} \cline{4-5}
+    \multicolumn{1}{|c|}{Nodi + Link:} & \multicolumn{1}{c|}{$1,1059ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Nodi + Link:} & \multicolumn{1}{c|}{$0,6584ms$} \\ \cline{1-2} \cline{4-5}
+    \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6841ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6696ms$} \\ \cline{1-2} \cline{4-5}
+\end{tabular}
