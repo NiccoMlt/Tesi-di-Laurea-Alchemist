@@ -19,6 +19,8 @@ Enrico Gregorio ne ha scritto una [guida introduttiva](http://profs.sci.univr.it
 
 Poiché ero inizialmente poco familiare con LaTeX, sono stati molto utili i consigli fornitimi da relatore e correlatore della tesi e le guide fornite dal [GuIT](https://www.guitex.org/home/it/doc).
 
+I file di grandi dimensioni (MP4, PDF che includono video) sono tracciati attraverso [Git LFS](https://git-lfs.github.com/).
+
 ## [Requisiti](http://corsi.unibo.it/laurea/ingegneriascienzeinformatiche/Pagine/la-prova-finale.aspx) ##
 - È vietato riprodurre il logo dell'Ateneo di Bologna su qualunque parte dell'elaborato;
 - Il file non dovrà superare i 30Mb;
@@ -40,6 +42,6 @@ Poiché ero inizialmente poco familiare con LaTeX, sono stati molto utili i cons
     - [OpenJFX](https://wiki.openjdk.java.net/display/OpenJFX/Main)
     - Wikipedia: [IT](https://it.wikipedia.org/wiki/JavaFX), [EN](https://en.wikipedia.org/wiki/JavaFX)
     - [Gluon Scene Builder](http://gluonhq.com/products/scene-builder/)
-    
+
 ## Licenza ##
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/it/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/3.0/it/88x31.png" /></a><br />Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/it/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 3.0 Italia</a>.
