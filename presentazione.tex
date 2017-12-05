@@ -6,9 +6,9 @@
 % !TeX spellcheck = it-IT
 
 % arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
-% arara: biber
-% arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
-% arara: pdflatex: { synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
+%! arara: biber
+%! arara: pdflatex: { synctex: yes, action: batchmode, options: "-halt-on-error -file-line-error-style" }
+%! arara: pdflatex: { synctex: yes, action: nonstopmode, options: "-halt-on-error -file-line-error-style" }
 
 \documentclass[%
     % handout,      % serve per generare la versione stampabile
@@ -24,7 +24,7 @@
     italian         % utlizza l'italiano come lingua primaria
 ]{%
     babel,                      % serve per scrivere Indice, Capitolo, etc in Italiano
-    varioref                    % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
+    % varioref                    % introduce il comando \vref da usarsi nello stesso modo del comune \ref per i riferimenti
 }
 \usepackage{lmodern}            % carica una variante Latin Modern prodotto dal GUST
 %% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
@@ -70,33 +70,21 @@
     italian=guillemets  % imposta lo stile per l'italiano
 ]{csquotes}                     % serve a impostare lo stile delle virgolette
 
-\usepackage{silence}    % silenzia warning
-\usepackage[%
-    maxcitenames=2,     % massimo numero di nomi nelle citazioni
-    mincitenames=2,     % minimo numero di nomi nelle citazioni
-    maxbibnames=99,     % massimo numero di nomi nella blibliografia
-    minbibnames=99,     % minimo numero di nomi nella blibliografia
-    style=numeric,
-    giveninits=true,
-    backend=biber       % specifica il backend per la bibliografia
-]{biblatex}                     % si interfaccia con bibtex e biber per la bibliografia
-\addbibresource{biblio.bib}
-%% Poiché il warning inutile di BibLaTeX non può essere rimosso, lo silenzio
-%% https://tex.stackexchange.com/a/202994
-\WarningFilter{biblatex}{Patching footnotes failed}
-\setbeamertemplate{bibliography item}[text]
-
+% \usepackage{silence}    % silenzia warning
 % \usepackage[%
-%     %notbib,          % rimuove la bibliografia dall'indice
-%     notindex,         % rimuove l'indice dall'indice
-%     nottoc,           % rimuove la Table of Contents dall'indice
-%     notlot,           % rimuove la lista delle tabelle dall'indice
-%     notlof,           % rimuove la lista delle figure dall'indice
-%     %chapter,         % "Use chapter-level headings, if possible"
-%     %section,         % "Use section-level headings, if possible"
-%     %numbib           % numera il capitolo della bibliografia
-%     %numindex         % numera il capitolo dell'indice
-% ]{tocbibind}                  % aggiunge cose all'indice
+%     maxcitenames=2,     % massimo numero di nomi nelle citazioni
+%     mincitenames=2,     % minimo numero di nomi nelle citazioni
+%     maxbibnames=99,     % massimo numero di nomi nella blibliografia
+%     minbibnames=99,     % minimo numero di nomi nella blibliografia
+%     style=numeric,
+%     giveninits=true,
+%     backend=biber       % specifica il backend per la bibliografia
+% ]{biblatex}                     % si interfaccia con bibtex e biber per la bibliografia
+% \addbibresource{biblio.bib}
+% %% Poiché il warning inutile di BibLaTeX non può essere rimosso, lo silenzio
+% %% https://tex.stackexchange.com/a/202994
+% \WarningFilter{biblatex}{Patching footnotes failed}
+% \setbeamertemplate{bibliography item}[text]
 
 % \usetheme{CambridgeUS}        % TODO decidi quale usare
 \usetheme{Boadilla}             % serve per scegliere il layout generale dei frame
@@ -105,6 +93,8 @@
 \usepackage{pgf}
 % \usepackage{pgfpages}         % serve per mettere più slide in una pagina
 % \pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
+% \usepackage{multimedia}
+\usepackage{media9}
 
 % \usepackage[htt]{hyphenat}      % Enable hyphenation of TT text
 \hyphenation{                   % Permette di sillabare bene le parole
@@ -155,10 +145,10 @@
     pdfa
 }
 % cleveref va anche dopo hyperref
-\usepackage[%
-    english,italian,    % definizione delle lingue da usare
-    nameinlink          % inserisce i link nei riferimenti
-]{cleveref}                     % permette di usare riferimenti migliori dei \ref e dei varioref
+% \usepackage[%
+%     english,italian,    % definizione delle lingue da usare
+%     nameinlink          % inserisce i link nei riferimenti
+% ]{cleveref}                     % permette di usare riferimenti migliori dei \ref e dei varioref
 %% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
 
 \title[Nuova GUI Alchemist in JavaFX]{%
@@ -200,7 +190,7 @@
     \begin{frame}
         \frametitle{\insertsection}
 
-        Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}~\cite{alchemist2013}.
+        Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}. % TODO ~\cite{alchemist2013}.
 
         \medskip % non soono sicuro sia la soluzione più corretta, am funziona
         \pause
@@ -239,12 +229,14 @@
         \frametitle{\insertsection}
         \framesubtitle{\insertsubsection}
 
-        Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}}~\cite{alchemist2013} è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
+        Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}}
+        % TODO ~\cite{alchemist2013}
+         è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
 
         \medskip
         \pause
 
-        L'idea dietro al progetto è quello di riuscire ad avere un framework di simulazione il più possibile generico, in grado di simulare sistemi di tipologia e complessità diverse, mantenendo le prestazioni dei simulatori non generici (come ad esempio quelli impiegati in ambito chimico~\cite{gillespie1976}).
+        L'idea dietro al progetto è quello di riuscire ad avere un framework di simulazione il più possibile generico, in grado di simulare sistemi di tipologia e complessità diverse, mantenendo le prestazioni dei simulatori non generici (come ad esempio quelli impiegati in ambito chimico.% TODO ~\cite{gillespie1976}).
     \end{frame}
 
     \subsection{Il modello di Alchemist}\label{subsec:alchModel}
@@ -255,6 +247,14 @@
         \centering
         \includegraphics[scale=.34]{fig/alchemist_model}
     \end{frame}
+
+    % \begin{frame}
+    %     \frametitle{\insertsection}
+    %     \framesubtitle{\insertsubsection}
+    %
+    %     \centering
+    %     \includegraphics[scale=.25]{fig/alchemist_reaction}
+    % \end{frame}
 
     \begin{frame}
         \frametitle{\insertsection}
@@ -302,7 +302,7 @@
     \section{L'interfaccia classica}\label{sec:old}
     \begin{frame}
         \frametitle{\insertsection}
-        L'architettura di Alchemist è progettata con paradigma \engEmph{Model-View-Controller}~\cite{mvc} (MVC), di conseguenza la suddivisione tra componente grafica (\engEmph{View}) e il blocco ``logico'' composto da \engEmph{Model} e \engEmph{Controller} è netta.
+        L'architettura di Alchemist è progettata con paradigma \engEmph{Model-View-Controller} (MVC), di conseguenza la suddivisione tra componente grafica (\engEmph{View}) e il blocco ``logico'' composto da \engEmph{Model} e \engEmph{Controller} è netta.
 
         \medskip
         \pause
@@ -331,15 +331,37 @@
     \begin{frame}
         \frametitle{\insertsection}
 
-        
+        L'interfaccia utente classica di Alchemist è caratterizzata da un'usabilità appena sufficiente, funzionale alle necessità di un utilizzatore esperto, ma non adeguata a fornire un'esperienza completa e \engEmph{user-friendly} ad un utente ``standard''.
+        In particolare:
+
+        \begin{itemize}[<+(1)->]
+          \item
+              Il sistema di controllo non è intuitivo: non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zona in cui viene rappresentato l'ambiente, bensì scorciatoie da tastiera.
+          \item
+              L'aspetto estetico è datato e non aderisce ad alcun design grafico conosciuto, né ne definisce uno proprio.
+          \item
+              Le capacità di rappresentazione, rappresentate dagli effetti, sono legate strettamente ai nodi e limitano la libertà di rappresentazione di ciò che avviene nella simulazione.
+        \end{itemize}
     \end{frame}
 
-    \section*{Bibliografia}\label{sec:bib}
+    \section{L'interfaccia implementata}\label{sec:new}
     \begin{frame}
         \frametitle{\insertsection}
-        % per quanto non citato esplicitamente, Effective Java (2nd Edition) di Joshua Bloch ha dato il suo contributo alla scrittura del codice
-        \nocite{Bloch:2008:EJ:1377533}
-        \printbibliography
+        \centering
+        \frame{\includemedia[
+            width=0.4\linewidth,
+            height=0.3\linewidth,
+            activate=pageopen,
+            addresource=./maltoni.mp4,
+            flashvars={source=./maltoni.mp4}
+        ]{}{VPlayer.swf}}
     \end{frame}
+    % \section*{Bibliografia}\label{sec:bib}
+    % \begin{frame}
+    %     \frametitle{\insertsection}
+    %     % per quanto non citato esplicitamente, Effective Java (2nd Edition) di Joshua Bloch ha dato il suo contributo alla scrittura del codice
+    %     \nocite{Bloch:2008:EJ:1377533}
+    %     \printbibliography
+    % \end{frame}
 
 \end{document}
