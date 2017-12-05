@@ -457,53 +457,53 @@
                 L'interfaccia grafica risulta essere, per le funzionalità implementate, conforme ai requisiti concordati nella fase di analisi:
 
                 \begin{itemize}
-                  \item[--]
-                      L'ambiente di simulazione è stato rinnovato ed è in grado di renderizzare correttamente gli effetti applicati per una simulazione.
-                      Inoltre, l'utente è in grado di visualizzare in tempo reale l'avanzamento della simulazione in termini di tempo e step tramite contatori dedicati.
+                    \item[--]
+                        L'ambiente di simulazione è stato rinnovato ed è in grado di renderizzare correttamente gli effetti applicati per una simulazione.
+                        Inoltre, l'utente è in grado di visualizzare in tempo reale l'avanzamento della simulazione in termini di tempo e step tramite contatori dedicati.
 
-                  \item[--]
-                      La gestione degli effetti, accuratamente testata come specificato nella %\Cref{subsec:junit}
-                      Sezione precedente, risulta immediata all'utilizzo, con bottoni dedicati al salvataggio e al caricamento dei file JSON (\Cref{fig:impl:groups}, barra inferiore) che aprono l'interfaccia fornita dal \engEmph{file manager} del sistema operativo per la scelta del file.
+                    \item[--]
+                        La gestione degli effetti, accuratamente testata come specificato nella %\Cref{subsec:junit}
+                        Sezione precedente, risulta immediata all'utilizzo, con bottoni dedicati al salvataggio e al caricamento dei file JSON (\Cref{fig:impl:groups}, barra inferiore) che aprono l'interfaccia fornita dal \engEmph{file manager} del sistema operativo per la scelta del file.
 
-                      È possibile modificare l'ordine di effetti e gruppi di effetti nella pila con un semplice \engEmph{drag'n'drop} (\Cref{fig:simWithDnD}).
+                        È possibile modificare l'ordine di effetti e gruppi di effetti nella pila con un semplice \engEmph{drag'n'drop} (\Cref{fig:simWithDnD}).
 
-                      \begin{figure}[htbp]
-                          \centering
-                          \includegraphics[scale=0.45]{new/effects_dnd}
-                          \caption{Gestione \engEmph{drag'n'drop} degli effetti}
-                          \label{fig:simWithDnD}
-                      \end{figure}
+                        \begin{figure}[htbp]
+                            \centering
+                            \includegraphics[scale=0.45]{new/effects_dnd}
+                            \caption{Gestione \engEmph{drag'n'drop} degli effetti}
+                            \label{fig:simWithDnD}
+                        \end{figure}
 
-                  \item[--]
-                      Sono stati realizzati effetti standard per la rappresentazione di nodi e collegamenti, che possono essere utilizzati da altri sviluppatori come punto di partenza per realizzare rappresentazioni più complesse e flessibili (\Cref{fig:simWithEff}).
+                    \item[--]
+                        Sono stati realizzati effetti standard per la rappresentazione di nodi e collegamenti, che possono essere utilizzati da altri sviluppatori come punto di partenza per realizzare rappresentazioni più complesse e flessibili (\Cref{fig:simWithEff}).
 
-                      \begin{figure}[htbp]
-                          \centering
-                          \includegraphics[scale=0.45]{new/groups}
-                          \caption{Il drawer laterale aperto mostra i gruppi di effetti}
-                          \label{fig:simWithEff}
-                      \end{figure}
+                        \begin{figure}[htbp]
+                            \centering
+                            \includegraphics[scale=0.45]{new/groups}
+                            \caption{Il drawer laterale aperto mostra i gruppi di effetti}
+                            \label{fig:simWithEff}
+                        \end{figure}
 
-                  \item[--]
-                      Sono state analizzate le performance e possono essere considerate pienamente accettabili; in particolare, utilizzando il medesimo ambiente hardware e software\footnote{CPU: AMD FX-8320E; GPU: AMD Radeon R9 280; RAM: 8GB DDR3; OS: Linux Mint KDE 18.2; JRE: 1.8.0\_151}, la medesima simulazione\footnote{simulazione nell'incarnazione \emph{protelis} con 500 nodi disposti in cerchio, connessi tra loro se sufficientemente vicini e che si muovono di moto browniano} (codice in \Cref{app:yaml}) ed effetti equivalenti\footnote{l'effetto \texttt{DrawShape} è stato utilizzato come corrispettivo dell'effetto \texttt{DrawDot} della nuova interfaccia, mentre è stata utilizzata la rappresentazione dei collegamenti interna all'\texttt{OutputMonitor} grafico per la rappresentazione dei nodi (effetto \texttt{DrawLinks}), non essendo possibile un effetto corrispettivo nell'architettura \engEmph{legacy}} (codice in \Cref{app:json,app:aes}):
+                    \item[--]
+                        Sono state analizzate le performance e possono essere considerate pienamente accettabili; in particolare, utilizzando il medesimo ambiente hardware e software\footnote{CPU: AMD FX-8320E; GPU: AMD Radeon R9 280; RAM: 8GB DDR3; OS: Linux Mint KDE 18.2; JRE: 1.8.0\_151}, la medesima simulazione\footnote{simulazione nell'incarnazione \emph{protelis} con 500 nodi disposti in cerchio, connessi tra loro se sufficientemente vicini e che si muovono di moto browniano} (codice in \Cref{app:yaml}) ed effetti equivalenti\footnote{l'effetto \texttt{DrawShape} è stato utilizzato come corrispettivo dell'effetto \texttt{DrawDot} della nuova interfaccia, mentre è stata utilizzata la rappresentazione dei collegamenti interna all'\texttt{OutputMonitor} grafico per la rappresentazione dei nodi (effetto \texttt{DrawLinks}), non essendo possibile un effetto corrispettivo nell'architettura \engEmph{legacy}} (codice in \Cref{app:json,app:aes}):
 
-                      \begin{itemize}
-                        \item[$\bullet$]
-                            abilitando la rappresentazione dei soli nodi, la nuova interfaccia è in grado mediamente di computare 1 step in $0,30ms$ circa (dei quali circa $0,29ms$ sono necessari per i calcoli relativi al modello e a direttive grafiche dell'effetto), mentre l'interfaccia classica richiede mediamente $0,68ms$ circa (dei quali anche in questo caso i tempi di rendering sono trascurabili).
+                        \begin{itemize}
+                          \item[$\bullet$]
+                              abilitando la rappresentazione dei soli nodi, la nuova interfaccia è in grado mediamente di computare 1 step in $0,30ms$ circa (dei quali circa $0,29ms$ sono necessari per i calcoli relativi al modello e a direttive grafiche dell'effetto), mentre l'interfaccia classica richiede mediamente $0,68ms$ circa (dei quali anche in questo caso i tempi di rendering sono trascurabili).
 
-                        \item[$\bullet$]
-                            rappresentando sia i nodi che i collegamenti tra loro, la GUI implementata mediamente è in grado di eseguire 1 step in $1,32ms$ circa ($1,26ms$ al netto del rendering), mentre la soluzione grafica precedente necessita di $1,11ms$ circa, dei quali poco meno della metà ($0,45ms$) sono utilizzati da Swing per la rappresentazione.
-                      \end{itemize}
+                          \item[$\bullet$]
+                              rappresentando sia i nodi che i collegamenti tra loro, la GUI implementata mediamente è in grado di eseguire 1 step in $1,32ms$ circa ($1,26ms$ al netto del rendering), mentre la soluzione grafica precedente necessita di $1,11ms$ circa, dei quali poco meno della metà ($0,45ms$) sono utilizzati da Swing per la rappresentazione.
+                        \end{itemize}
 
-                      Le prestazioni leggermente peggiori nel secondo caso possono essere imputate all'effetto dedicato al disegno dei nodi: l'architettura con cui è realizzato (concettualmente differente dall'implementazione \engEmph{legacy}), lo mette sullo stesso piano degli altri effetti e una maggiore ottimizzazione della struttura dati utilizzata per il calcolo delle istruzioni grafiche potrebbe permettere anche in questo caso alla nuova interfaccia di gravare meno della precedente sul motore di simulazione.
+                        Le prestazioni leggermente peggiori nel secondo caso possono essere imputate all'effetto dedicato al disegno dei nodi: l'architettura con cui è realizzato (concettualmente differente dall'implementazione \engEmph{legacy}), lo mette sullo stesso piano degli altri effetti e una maggiore ottimizzazione della struttura dati utilizzata per il calcolo delle istruzioni grafiche potrebbe permettere anche in questo caso alla nuova interfaccia di gravare meno della precedente sul motore di simulazione.
 
-                  \item[--]
-                      L'interfaccia non utilizza valori di misura assoluti e scala senza problemi su diversi tipi di risoluzione e densità di pixel.
+                    \item[--]
+                        L'interfaccia non utilizza valori di misura assoluti e scala senza problemi su diversi tipi di risoluzione e densità di pixel.
 
-                  \item[--]
-                      Le possibilità di interazione con l'ambiente di simulazione tramite mouse e tastiera sono presenti, ma limitate: è possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato eseguendo uno scroll.
+                    \item[--]
+                        Le possibilità di interazione con l'ambiente di simulazione tramite mouse e tastiera sono presenti, ma limitate: è possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato eseguendo uno scroll.
 
-                      Non è possibile, al momento, effettuare il \engEmph{pan} per spostarsi nell'ambiente. % TODO rimuovere ???
+                        Non è possibile, al momento, effettuare il \engEmph{pan} per spostarsi nell'ambiente.
                 \end{itemize}
 
                 A causa della mole di lavoro necessaria, non è stato possibile implementare la rappresentazione di ambienti con mappe di sfondo.

@@ -93,8 +93,9 @@
 \usepackage{pgf}
 % \usepackage{pgfpages}         % serve per mettere più slide in una pagina
 % \pgfpagesuselayout{4 on 1}[a4paper, border shrink=5mm, landscape]
+
 % \usepackage{multimedia}
-\usepackage{media9}
+% \usepackage{media9}
 
 % \usepackage[htt]{hyphenat}      % Enable hyphenation of TT text
 \hyphenation{                   % Permette di sillabare bene le parole
@@ -345,17 +346,85 @@
     \end{frame}
 
     \section{L'interfaccia implementata}\label{sec:new}
+
+    % \begin{frame}
+    %     \frametitle{\insertsection}
+    %     \centering
+    %     \frame{\includemedia[
+    %         width=0.4\linewidth,
+    %         height=0.3\linewidth,
+    %         activate=pageopen,
+    %         addresource=./maltoni.mp4,
+    %         flashvars={source=./maltoni.mp4}
+    %     ]{}{VPlayer.swf}}
+    % \end{frame}
+
     \begin{frame}
         \frametitle{\insertsection}
         \centering
-        \frame{\includemedia[
-            width=0.4\linewidth,
-            height=0.3\linewidth,
-            activate=pageopen,
-            addresource=./maltoni.mp4,
-            flashvars={source=./maltoni.mp4}
-        ]{}{VPlayer.swf}}
+        \includegraphics[scale=0.27]{img/new/window_all}
     \end{frame}
+
+    \subsection{Caratteristiche}\label{subsec:feature}
+    \begin{frame}
+        \frametitle{\insertsection}
+        \framesubtitle{\insertsubsection}
+        \begin{itemize}[<+(1)->]
+            \item
+                La libreria utilizzata per la nuova interfaccia è JavaFX.
+            \item
+                L'ambiente di simulazione è stato rinnovato ed è in grado di renderizzare correttamente gli effetti applicati per una simulazione.
+                Inoltre, l'utente è in grado di visualizzare in tempo reale l'avanzamento della simulazione in termini di tempo e step tramite contatori dedicati.
+
+            \item
+                La gestione degli effetti risulta immediata all'utilizzo, con bottoni dedicati al salvataggio e al caricamento dei file JSON che aprono l'interfaccia fornita dal \engEmph{file manager} del sistema operativo per la scelta del file.
+
+                È possibile modificare l'ordine di effetti e gruppi di effetti nella pila con un semplice \engEmph{drag'n'drop}.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{\insertsection}
+        \framesubtitle{\insertsubsection}
+        \begin{itemize}[<+(1)->]
+            \item
+                Sono stati realizzati effetti standard per la rappresentazione di nodi e collegamenti, che possono essere utilizzati da altri sviluppatori come punto di partenza per realizzare rappresentazioni più complesse e flessibili.
+
+            \item
+                L'interfaccia non utilizza valori di misura assoluti e scala senza problemi su diversi tipi di risoluzione e densità di pixel.
+
+            \item
+                È possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato eseguendo uno scroll.
+        \end{itemize}
+    \end{frame}
+
+    \subsection{Prestazioni}\label{subsec:benchmark}
+    \begin{frame}
+        \frametitle{\insertsection}
+        \framesubtitle{\insertsubsection}
+        \centering
+        \begin{tabular}{ccccc}
+            \multicolumn{2}{c}{\textbf{Con render}} &  & \multicolumn{2}{c}{\textbf{Senza render}} \\
+             &  &  &  &  \\ \cline{1-2} \cline{4-5}
+            \multicolumn{2}{|c|}{\textbf{Nuova GUI}} & \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Nuova GUI}} \\ \cline{1-2} \cline{4-5}
+            \multicolumn{1}{|c|}{Nodi + Link:} & \multicolumn{1}{c|}{$1,3153ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Nodi + Link:} & \multicolumn{1}{c|}{1,2648ms} \\ \cline{1-2} \cline{4-5}
+            \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,3041ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,2855ms$} \\ \cline{1-2} \cline{4-5}
+             &  &  &  &  \\ \cline{1-2} \cline{4-5}
+            \multicolumn{2}{|c|}{\textbf{Vecchia GUI}} & \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Vecchia GUI}} \\ \cline{1-2} \cline{4-5}
+            \multicolumn{1}{|c|}{Nodi + Link:} & \multicolumn{1}{c|}{$1,1059ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Nodi + Link:} & \multicolumn{1}{c|}{$0,6584ms$} \\ \cline{1-2} \cline{4-5}
+            \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6841ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6696ms$} \\ \cline{1-2} \cline{4-5}
+        \end{tabular}
+    \end{frame}
+
+    % \item
+    %     \begin{itemize}
+    %       \item[$\bullet$]
+    %           abilitando la rappresentazione dei soli nodi, la nuova interfaccia è in grado mediamente di computare 1 step in $0,30ms$ circa (dei quali circa $0,29ms$ sono necessari per i calcoli relativi al modello e a direttive grafiche dell'effetto), mentre l'interfaccia classica richiede mediamente $0,68ms$ circa (dei quali anche in questo caso i tempi di rendering sono trascurabili).
+    %
+    %       \item[$\bullet$]
+    %           rappresentando sia i nodi che i collegamenti tra loro, la GUI implementata mediamente è in grado di eseguire 1 step in $1,32ms$ circa ($1,26ms$ al netto del rendering), mentre la soluzione grafica precedente necessita di $1,11ms$ circa, dei quali poco meno della metà ($0,45ms$) sono utilizzati da Swing per la rappresentazione.
+    %     \end{itemize}
+
     % \section*{Bibliografia}\label{sec:bib}
     % \begin{frame}
     %     \frametitle{\insertsection}
