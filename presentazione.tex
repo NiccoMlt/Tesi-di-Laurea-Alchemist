@@ -120,54 +120,26 @@
     \end{frame}
 
     \section{Introduzione}\label{sec:intro}
+
+    \subsection{Obiettivo}\label{subsec:obiettivo}
     \begin{frame}
         \frametitle{\insertsection}
+        \framesubtitle{\insertsubsection}
 
         Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}.
-
-        \medskip % non soono sicuro sia la soluzione più corretta, am funziona
-        \pause
-
-        La nuova interfaccia permette di interagire con la simulazione a tempo di esecuzione e di vedere chiaramente rappresentate informazioni su di essa.
-    \end{frame}
-
-    \begin{frame}
-        \frametitle{\insertsection}
-
-        In particolare, è supportata una \emph{struttura modulare di effetti} che rende facilmente osservabili determinate entità del sistema ed eventuali loro proprietà:
-
-        \begin{itemize}[<+(1)->]
-            \item
-                l'effetto non fa più riferimento al singolo nodo, bensì costituisce una funzione dall'intero ambiente alla rappresentazione grafica.
-            \item
-                gli \engEmph{stack} di effetti realizzati possono essere serializzati su file di testo in formato JSON.
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}
-        \frametitle{\insertsection}
-
-        Si è scelto di mantenere un'interfaccia il più possibile \engEmph{user-friendly}, mantenendo un design più simile ai simulatori a scopo videoludico per favorire l'utilizzo da parte di utenti inesperti.
 
         \medskip
         \pause
 
-        Lo stile estetico al quale si è deciso di allinearsi è il \emph{Material Design} di Google\only<2->{\footnote{\url{https://material.io}}} e la libreria grafica utilizzata per l'implementazione è stata \emph{JavaFX}.
+        La nuova interfaccia permette di interagire con la simulazione a tempo di esecuzione e di vedere chiaramente rappresentate informazioni su di essa attraverso un'interfaccia il più possibile \engEmph{user-friendly}.
     \end{frame}
 
-    \section{Alchemist}\label{sec:alchemist}
-
-    \subsection{Introduzione ad Alchemist}\label{subsec:alchIntro}
+    \subsection{Alchemist}\label{subsec:alchemist}
     \begin{frame}
         \frametitle{\insertsection}
         \framesubtitle{\insertsubsection}
 
         Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}} è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
-
-        \medskip
-        \pause
-
-        L'idea dietro al progetto è quello di riuscire ad avere un framework di simulazione il più possibile generico, in grado di simulare sistemi di tipologia e complessità diverse, mantenendo le prestazioni dei simulatori non generici (come ad esempio quelli impiegati in ambito chimico.
     \end{frame}
 
     \subsection{Il modello di Alchemist}\label{subsec:alchModel}
@@ -183,43 +155,6 @@
         \frametitle{\insertsection}
         \framesubtitle{\insertsubsection}
 
-        \begin{description}[<+->]
-            \item[Molecola]\label{itm:mol}
-                Una \emph{Molecola} rappresenta il nome dato ad un particolare dato all'interno di un \emph{Nodo}, del quale ne astrae parte dello stato.
-
-            \item[Concentrazione]\label{itm:conc}
-                La \emph{Concentrazione} di una \emph{Molecola} è il valore associato alla proprietà rappresentata dalla \emph{Molecola}.
-
-            \item[Nodo]\label{itm:node}
-                Il \emph{Nodo} è un contenitore di \emph{Molecole} e \emph{Reazioni} che risiede all'interno di un \emph{Ambiente} e che astrae una singola entità.
-
-            \item[Ambiente]\label{itm:env}
-                L'\emph{Ambiente} è l'astrazione che rappresenta lo spazio nella simulazione ed è l'entità che contiene i \emph{Nodi}.
-
-            \item[Regola di collegamento]\label{itm:linkr}
-                La \emph{Regola di collegamento} è una funzione dello stato corrente dell'\emph{Ambiente} che associa ad ogni \emph{Nodo} un \emph{Vicinato}.
-        \end{description}
-    \end{frame}
-
-    \begin{frame}
-        \frametitle{\insertsection}
-        \framesubtitle{\insertsubsection}
-
-        \begin{description}[<+->]
-            \item[Vicinato]\label{itm:neigh}
-                Un \emph{Vicinato} è un'entità costituita da un \emph{Nodo} detto ``centro'' e da un insieme di altri \emph{Nodi} (i ``vicini'').
-
-            \item[Reazione]\label{itm:react}
-                Una \emph{Reazione} è un insieme di \emph{Condizioni} sullo stato del sistema che qualora dovessero risultare vere innescherebbero l'esecuzione di un insieme di \emph{Azioni}.
-
-                Ogni \emph{Nodo} è costituito da un insieme (anche vuoto) di \emph{Reazioni}.
-
-            \item[Condizione]\label{itm:cond}
-                Una \emph{Condizione} è una funzione che associa un valore numerico e un valore booleano allo stato corrente di un \emph{Ambiente}.
-
-            \item[Azione]\label{itm:act}
-                Un'\emph{Azione} è una procedura che provoca una modifica allo stato dell'\emph{Ambiente}.
-        \end{description}
     \end{frame}
 
     \section{L'interfaccia classica}\label{sec:old}
@@ -253,13 +188,18 @@
         L'interfaccia utente classica di Alchemist è caratterizzata da un'usabilità appena sufficiente, funzionale alle necessità di un utilizzatore esperto, ma non adeguata a fornire un'esperienza completa e \engEmph{user-friendly} ad un utente ``standard''.
         In particolare:
 
-        \begin{itemize}[<+(1)->]
+        \begin{itemize}[<+->]
           \item
-              Il sistema di controllo non è intuitivo: non sono presenti bottoni di interazione per, ad esempio, avviare o fermare la simulazione o per cambiare la modalità di interazione con la zona in cui viene rappresentato l'ambiente, bensì scorciatoie da tastiera.
+              Il sistema di controllo non è intuitivo.
           \item
-              L'aspetto estetico è datato e non aderisce ad alcun design grafico conosciuto, né ne definisce uno proprio.
+              L'aspetto estetico è:
+              \begin{itemize}[<+(1)->]
+                  \item datato;
+                  \item non aderisce ad alcun design grafico in particolare;
+                  \item definisce un proprio design originale.
+              \end{itemize}
           \item
-              Le capacità di rappresentazione, rappresentate dagli effetti, sono legate strettamente ai nodi e limitano la libertà di rappresentazione di ciò che avviene nella simulazione.
+              Le capacità di rappresentazione, rappresentate dagli effetti, sono legate strettamente ai nodi e limitano la libertà di rappresentazione.
         \end{itemize}
     \end{frame}
 
@@ -279,13 +219,17 @@
             \item
                 La libreria utilizzata per la nuova interfaccia è JavaFX.
             \item
-                L'ambiente di simulazione è stato rinnovato ed è in grado di renderizzare correttamente gli effetti applicati per una simulazione.
-                Inoltre, l'utente è in grado di visualizzare in tempo reale l'avanzamento della simulazione in termini di tempo e step tramite contatori dedicati.
+                L'ambiente di simulazione è stato rinnovato e permette di avere rappresentazione:
+                \begin{itemize}[<+(1)->]
+                    \item delle proprietà di tutto l'ambiente attraverso gli \emph{effetti};
+                    \item dell'avanzamento della simulazione in termini di tempo e step;
+                    \item dello stato corrente della simulazione.
+                \end{itemize}
 
-            \item
-                La gestione degli effetti risulta immediata all'utilizzo, con bottoni dedicati al salvataggio e al caricamento dei file JSON che aprono l'interfaccia fornita dal \engEmph{file manager} del sistema operativo per la scelta del file.
-
-                È possibile modificare l'ordine di effetti e gruppi di effetti nella pila con un semplice \engEmph{drag'n'drop}.
+            % \item
+            %     La gestione degli effetti risulta immediata all'utilizzo, con bottoni dedicati al salvataggio e al caricamento dei file JSON che aprono l'interfaccia fornita dal \engEmph{file manager} del sistema operativo per la scelta del file.
+            %
+            %     È possibile modificare l'ordine di effetti e gruppi di effetti nella pila con un semplice \engEmph{drag'n'drop}.
         \end{itemize}
     \end{frame}
 
@@ -294,13 +238,16 @@
         \framesubtitle{\insertsubsection}
         \begin{itemize}[<+(1)->]
             \item
-                Sono stati realizzati effetti standard per la rappresentazione di nodi e collegamenti, che possono essere utilizzati da altri sviluppatori come punto di partenza per realizzare rappresentazioni più complesse e flessibili.
+                Sono stati realizzati effetti standard di base per la rappresentazione di nodi e collegamenti.
 
             \item
                 L'interfaccia non utilizza valori di misura assoluti e scala senza problemi su diversi tipi di risoluzione e densità di pixel.
 
             \item
-                È possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera ed è possibile effettuare uno zoom nell'ambiente rappresentato eseguendo uno scroll.
+                È possibile controllarne il flusso di esecuzione sia tramite la pressione del tasto ``play/pausa'' che attraverso una scorciatoia da tastiera.
+
+            \item
+                È possibile effettuare uno zoom nell'ambiente rappresentato eseguendo uno scroll.
         \end{itemize}
     \end{frame}
 
@@ -308,17 +255,6 @@
     \begin{frame}
         \frametitle{\insertsection}
         \framesubtitle{\insertsubsection}
-        \centering
-        \begin{tabular}{ccccc}
-            \multicolumn{2}{c}{\textbf{Con render}} &  & \multicolumn{2}{c}{\textbf{Senza render}} \\
-             &  &  &  &  \\ \cline{1-2} \cline{4-5}
-            \multicolumn{2}{|c|}{\textbf{Nuova GUI}} & \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Nuova GUI}} \\ \cline{1-2} \cline{4-5}
-            \multicolumn{1}{|c|}{Nodi + Link:} & \multicolumn{1}{c|}{$1,3153ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Nodi + Link:} & \multicolumn{1}{c|}{1,2648ms} \\ \cline{1-2} \cline{4-5}
-            \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,3041ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,2855ms$} \\ \cline{1-2} \cline{4-5}
-             &  &  &  &  \\ \cline{1-2} \cline{4-5}
-            \multicolumn{2}{|c|}{\textbf{Vecchia GUI}} & \multicolumn{1}{c|}{} & \multicolumn{2}{c|}{\textbf{Vecchia GUI}} \\ \cline{1-2} \cline{4-5}
-            \multicolumn{1}{|c|}{Nodi + Link:} & \multicolumn{1}{c|}{$1,1059ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Nodi + Link:} & \multicolumn{1}{c|}{$0,6584ms$} \\ \cline{1-2} \cline{4-5}
-            \multicolumn{1}{|c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6841ms$} & \multicolumn{1}{c|}{} & \multicolumn{1}{c|}{Solo Nodi:} & \multicolumn{1}{c|}{$0,6696ms$} \\ \cline{1-2} \cline{4-5}
-        \end{tabular}
+        \input{tex/benchmark}
     \end{frame}
 \end{document}
