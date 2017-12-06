@@ -25,6 +25,9 @@
 %% ORDINE IMPORTANTE FINE %%%%%%%%%%%%%%
 \usepackage{xcolor}             % serve per la gestione dei colori nel testo
 \usepackage{graphicx}           % serve per includere immagini e grafici
+\usepackage{wrapfig}            % serve per includere figure "wrapped" nel testo
+\usepackage[labelformat=empty]{caption}
+\usepackage{subcaption}
 
 \usepackage[%
     strict,             % rende tutti gli warning degli errori
@@ -107,7 +110,7 @@
     Campus di Cesena%
 }
 
-% Permette di inserire l'outline prima di ogni sezione
+%% Permette di inserire l'outline prima di ogni sezione
 \AtBeginSection[]{%
     \begin{frame}<beamer>
         \frametitle{Outline}
@@ -126,14 +129,58 @@
                 \frametitle{\insertsection}
                 \framesubtitle{\insertsubsection}
                 Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}.
+
                 \medskip
                 \pause
-                La nuova interfaccia permette di interagire con la simulazione a tempo di esecuzione e di vedere rappresentate informazioni su di essa attraverso un'interfaccia il più possibile \engEmph{user-friendly}.
+
+                La nuova interfaccia ha come obiettivo l'interazione con la simulazione a tempo di esecuzione e la rappresentazione di informazioni su di essa attraverso una GUI il più possibile \engEmph{user-friendly}.
             \end{frame}
+
         \subsection{Alchemist}\label{subsec:alchemist}
+            \begin{frame}
+                \frametitle{\insertsection}
+                \framesubtitle{\insertsubsection}
+
+                Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}} è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
+            \end{frame}
+
     \section{Analisi}\label{sec:analisi}
         \subsection{L'interfaccia classica di Alchemist}\label{subsec:oldgui}
-        \subsection{Requisiti}\label{subsec:requisiti}
+            % \begin{frame}
+            %     \frametitle{\insertsection}
+            %     L'architettura di Alchemist è progettata con paradigma \engEmph{Model-View-Controller} (MVC), di conseguenza la suddivisione tra componente grafica (\engEmph{View}) e il blocco ``logico'' composto da \engEmph{Model} e \engEmph{Controller} è netta.
+            % \end{frame}
+
+            \begin{frame}
+                \frametitle{\insertsection}
+                \framesubtitle{\insertsubsection}
+                \centering
+                \frame{\includegraphics[scale=.27]{old/window_stopped_circle}}
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{\insertsection}
+                \framesubtitle{\insertsubsection}
+                L'interfaccia utente classica di Alchemist ha diverse criticità:
+
+                \begin{itemize}[<+(1)->]
+                  \item
+                      Il sistema di controllo non è intuitivo;
+                  \item
+                      L'aspetto estetico è datato e non aderisce ad alcun design grafico in particolare;
+                  \item
+                      Le capacità di rappresentazione, rappresentate dagli effetti, sono legate strettamente ai nodi e limitano la libertà di rappresentazione.
+                \end{itemize}
+            \end{frame}
+
+        \subsection{Requisiti \& Casi d'uso}\label{subsec:requisiti}
+            \begin{frame}
+                \frametitle{\insertsection}
+                \framesubtitle{\insertsubsection}
+                \centering
+                \includegraphics[scale=0.40]{uml/useCaseBeamer}
+            \end{frame}
+
     \section{Design \& Mockup}\label{sec:mockup}
         \subsection{Stato dell'arte e fonti d'ispirazione}\label{subsec:sota}
             \begin{frame}
@@ -158,12 +205,72 @@
                 \includegraphics[scale=0.415]{mock/withNodes/window}
             \end{frame}
 
+            \begin{frame}
+                \begin{figure}[htbp]
+                    \captionsetup[subfigure]{labelformat=empty}
+                    \centering%
+                    \begin{subfigure}{.2\textwidth}
+                        \includegraphics[scale=0.4]{mock/crop/groups}
+                        \caption{Gruppi di effetti dello \engEmph{stack}}
+                        \label{fig:mock:groups}
+                    \end{subfigure}
+                    \qquad{\LARGE$\Rightarrow$}\qquad
+                    \pause
+                    \begin{subfigure}{.2\textwidth}
+                        \includegraphics[scale=0.4]{mock/crop/effects}
+                        \caption{Effetti di un gruppo}
+                        \label{fig:mock:effects}
+                    \end{subfigure}
+                    \qquad{\LARGE$\Rightarrow$}\qquad
+                    \pause
+                    \begin{subfigure}{.2\textwidth}
+                        \includegraphics[scale=0.4]{mock/crop/properties}
+                        \caption{Proprietà di un effetto}
+                        \label{fig:mock:properties}
+                    \end{subfigure}
+                \end{figure}
+            \end{frame}
+
     \section{L'interfaccia implementata}\label{sec:newgui}
-        \subsection{Caratteristiche}\label{subsec:feature}
+        \subsection{Caratteristiche e miglioramenti}\label{subsec:feature}
             \begin{frame}
                 \frametitle{\insertsection}
                 \framesubtitle{\insertsubsection}
-                \centering \huge TODO % TODO inserisci screenshot
+                \centering \huge TODO immagine% TODO inserisci screenshot
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{\insertsection}
+                \framesubtitle{\insertsubsection}
+                \begin{columns}[onlytextwidth]
+                    \begin{column}{.4\textwidth}
+                    \begin{itemize}
+                        \item<1->
+                            è stata riprogettata l'architettura degli effetti;
+                        \item<2->
+                            è stato introdotto l'uso di proprietà specifiche per gli effetti;
+                        \item<3->
+                            sono stati implementati diversi monitor per la rappresentazione grafica:
+                            \begin{itemize}
+                              \item<4->
+                                  dello stato;
+                              \item<5->
+                                  dell'avanzamento;
+                              \item<6->
+                                  degli effetti.
+                            \end{itemize}
+                    \end{itemize}
+                    \end{column}
+                    \begin{column}{.6\textwidth}
+                        \centering
+                        \only<1>{\includegraphics[scale=0.35]{uml/EffectFXUMLsimple}}
+                        \only<2>{Due}
+                        \only<3>{Tre}
+                        \only<4>{Quattro}
+                        \only<5>{Cinque}
+                        \only<6>{Sei}
+                    \end{column}
+                \end{columns}
             \end{frame}
 
             % TODO Caratteristiche a testo ?
