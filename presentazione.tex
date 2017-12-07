@@ -39,6 +39,8 @@
 % \usetheme{CambridgeUS}        % TODO decidi quale usare
 \usetheme{Boadilla}             % serve per scegliere il layout generale dei frame
 \usecolortheme{beaver}          % Per il colore va comunque bene questo
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamerfont{block body}{size=\small}
 
 \usepackage{pgf}
 % \usepackage{pgfpages}         % serve per mettere più slide in una pagina
@@ -97,13 +99,12 @@
     JavaFX per il simulatore Alchemist
 }
 \subtitle{Tesi in Programmazione ad Oggetti}
-\author[Niccolò~Maltoni]{Niccolò~Maltoni\\0000719734}
-% \author[%
-%     Niccolò~Maltoni \hspace{0.1\textwidth} \insertframenumber\,/\,\inserttotalframenumber%
-% ]{%
-%     Niccolò~Maltoni%
-%     \\ \vspace{10pt} \small{Realtore: Prof.~Mirko~Viroli \\Correlatore: Prof.~Danilo~Pianini}%
-% }
+% \author[Niccolò~Maltoni]{Niccolò~Maltoni\\0000719734}
+\author[Niccolò~Maltoni (0000719734)]{%
+    Niccolò~Maltoni%
+    \\ \small{Matricola: 0000719734}%
+    \\ \vspace{10pt} \small{Realtore: Prof.~Mirko~Viroli \\Correlatore: Prof.~Danilo~Pianini}%
+}
 \date{12 dicembre 2017}
 \institute[]{%
     Alma Mater Studiorum - Università di Bologna\\%
@@ -128,29 +129,15 @@
             \begin{frame}
                 \frametitle{\insertsection}
                 \framesubtitle{\insertsubsection}
-                Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D per il simulatore \emph{Alchemist}.
+                Lo scopo di questa tesi è la progettazione e la successiva implementazione di un'interfaccia grafica 2D più moderna e usabile per il simulatore \emph{Alchemist}.
 
                 \medskip
-                \pause
 
-                La nuova interfaccia ha come obiettivo l'interazione con la simulazione a tempo di esecuzione e la rappresentazione di informazioni su di essa attraverso una GUI il più possibile \engEmph{user-friendly}.
-            \end{frame}
-
-        \subsection{Alchemist}\label{subsec:alchemist}
-            \begin{frame}
-                \frametitle{\insertsection}
-                \framesubtitle{\insertsubsection}
-
-                Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}} è un meta-simulatore estendibile completamente open-source che esegue su Java Virtual Machine (JVM), nato all’interno dell’Università di Bologna e reperibile su GitHub\only<1->{\footnote{\url{https://github.com/AlchemistSimulator/Alchemist}}}.
+                Alchemist\only<1->{\footnote{\url{http://alchemistsimulator.github.io}}} è un meta-simulatore estendibile completamente open-source che esegue su JVM, nato all’interno dell’Università di Bologna.
             \end{frame}
 
     \section{Analisi}\label{sec:analisi}
         \subsection{L'interfaccia classica di Alchemist}\label{subsec:oldgui}
-            % \begin{frame}
-            %     \frametitle{\insertsection}
-            %     L'architettura di Alchemist è progettata con paradigma \engEmph{Model-View-Controller} (MVC), di conseguenza la suddivisione tra componente grafica (\engEmph{View}) e il blocco ``logico'' composto da \engEmph{Model} e \engEmph{Controller} è netta.
-            % \end{frame}
-
             \begin{frame}
                 \frametitle{\insertsection}
                 \framesubtitle{\insertsubsection}
@@ -164,12 +151,14 @@
                 L'interfaccia utente classica di Alchemist ha diverse criticità:
 
                 \begin{itemize}[<+(1)->]
-                  \item
-                      Il sistema di controllo non è intuitivo;
-                  \item
-                      L'aspetto estetico è datato e non aderisce ad alcun design grafico in particolare;
-                  \item
-                      Le capacità di rappresentazione, rappresentate dagli effetti, sono legate strettamente ai nodi e limitano la libertà di rappresentazione.
+                    \item
+                        è implementato con il framework Swing, soluzione ormai considerata \engEmph{legacy} e sostituita da JavaFX
+                    \item
+                        il sistema di controllo non è intuitivo
+                    \item
+                        l'aspetto estetico è datato e non aderisce ad alcun design grafico in particolare
+                    \item
+                        le capacità di rappresentazione, rappresentate dagli effetti, sono legate strettamente ai nodi e limitano la libertà di rappresentazione
                 \end{itemize}
             \end{frame}
 
@@ -181,7 +170,7 @@
                 \includegraphics[scale=0.40]{uml/useCaseBeamer}
             \end{frame}
 
-    \section{Design \& Mockup}\label{sec:mockup}
+    \section{Interfaccia grafica}\label{sec:mockup}
         \subsection{Stato dell'arte e fonti d'ispirazione}\label{subsec:sota}
             \begin{frame}
                 \frametitle{\insertsection}
@@ -191,9 +180,9 @@
                     \item
                         Poiché l'obiettivo era semplificare quanto più possibile l'interazione, non sono state considerate le interfacce dei simulatori a scopo scientifico costituenti lo stato dell'arte \ldots
                     \item
-                        \ldots bensì si è preferito ispirarsi a famosi simulatori videoludici, quali ad esempio Universe Sandbox.
+                        \ldots bensì si è preferito ispirarsi a famosi simulatori videoludici, quali ad esempio Universe Sandbox
                     \item
-                        Lo stile grafico è basato sul Material Design di Google.
+                        Lo stile grafico è basato sul Material Design di Google
                 \end{itemize}
             \end{frame}
 
@@ -231,7 +220,7 @@
                 \end{figure}
             \end{frame}
 
-    \section{L'interfaccia implementata}\label{sec:newgui}
+    \section{Design e implementazione}\label{sec:newgui}
         \subsection{Caratteristiche e miglioramenti}\label{subsec:feature}
             \begin{frame}
                 \frametitle{\insertsection}
@@ -247,27 +236,42 @@
                     \begin{column}{.4\textwidth}
                     \begin{itemize}
                         \item<1->
-                            è stata riprogettata l'architettura degli effetti;
+                            La libreria utilizzata è JavaFX
                         \item<2->
-                            è stato introdotto l'uso di proprietà specifiche per gli effetti;
+                            è stata riprogettata l'architettura degli effetti
                         \item<3->
+                            è stato introdotto l'uso di proprietà specifiche per gli effetti
+                        \item<4->
                             sono stati implementati diversi monitor per la rappresentazione grafica:
                             \begin{itemize}
-                              \item<4->
-                                  dello stato;
                               \item<5->
-                                  dell'avanzamento;
+                                  dello stato
                               \item<6->
-                                  degli effetti.
+                                  dell'avanzamento
+                              \item<7->
+                                  degli effetti
                             \end{itemize}
                     \end{itemize}
                     \end{column}
                     \begin{column}{.6\textwidth}
                         \centering
-                        \only<1>{\includegraphics[scale=0.35]{uml/EffectsBeamer}}
-                        \only<2>{\includegraphics[scale=0.35]{uml/PropertiesSerializableBeamer}}
-                        % \only<3>{}
-                        \only<4>{
+                        \only<1>{%
+                            \begin{block}{\centering JavaFX}
+                                JavaFX è un framework che permette di costruire interfacce grafiche a partire da file FXML di layout e codice Java di controllo; rispetto a Swing:
+                                \begin{itemize}
+                                  \item
+                                      si presta di più al pattern MVC
+                                  \item
+                                      scala meglio su differenti densità di pixel
+                                  \item
+                                      le performance sono generalmente migliori
+                                \end{itemize}
+                            \end{block}
+                        }
+                        \only<2>{\includegraphics[scale=0.4]{uml/EffectsBeamer}}
+                        \only<3>{\includegraphics[scale=0.35]{uml/PropertiesSerializableBeamer}}
+                        % \only<4>{}
+                        \only<5>{
                             \begin{figure}[htbp]
                                 \captionsetup[subfigure]{labelformat=empty}
                                 \centering%
@@ -282,14 +286,14 @@
                                 \end{subfigure}
                             \end{figure}
                         }
-                        \only<5>{
+                        \only<6>{
                             \includegraphics[scale=0.55]{img/new/crop/TimeStep}
 
                             \bigskip
 
                             \includegraphics[scale=0.45]{uml/FXTimeStepMonitor}
                         }
-                        \only<6>{
+                        \only<7>{
                             \includegraphics[scale=0.2]{img/new/crop/Canvas}
 
                             \bigskip
@@ -299,18 +303,6 @@
                     \end{column}
                 \end{columns}
             \end{frame}
-
-            % TODO Caratteristiche a testo ?
-            % \begin{frame}
-            %     \frametitle{\insertsection}
-            %     \framesubtitle{\insertsubsection}
-            % \end{frame}
-
-            % TODO UML ?
-            % \begin{frame}
-            %     \frametitle{\insertsection}
-            %     \framesubtitle{\insertsubsection}
-            % \end{frame}
 
         \subsection{Coverage}\label{subsec:coverage}
             \begin{frame}
@@ -327,4 +319,14 @@
                 \centering
                 \input{tex/benchmark}
             \end{frame}
+    \section{Conclusioni}\label{sec:conclusioni}
+        \begin{frame}
+            \frametitle{\insertsection}
+            \framesubtitle{\insertsubsection}
+            L'obiettivo della tesi è stato per la maggior parte raggiunto: le funzionalità implementate adempiono al loro compito e l'impatto sulle performance è accettabile.
+
+            \bigskip
+
+            Per portare sul canale stabile il lavoro svolto è ancora necessario implementare un monitor che sia in grado di rappresentare ambienti di simulazione con mappe di sfondo e aumentare le possibilità di interazione con l'ambiente.
+        \end{frame}
 \end{document}
