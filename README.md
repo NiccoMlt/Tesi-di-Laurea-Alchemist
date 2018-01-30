@@ -37,6 +37,10 @@ Poiché ero inizialmente poco familiare con LaTeX, sono stati molto utili i cons
 
 I file di grandi dimensioni (MP4, PDF che includono video) sono tracciati attraverso [Git LFS](https://git-lfs.github.com/).
 
+### Struttura del repository ###
+
+Nel repository è presente il codice sia del documento della tesi ([``maltoni_niccolo_tesi.tex``](./maltoni_niccolo_tesi.tex) e cartelle [``tex``](./tex), [``data``](./data) e [``img``](./img)), sia della presentazione ([``presentazione.tex``](./presentazione.tex)).
+
 ## References ##
 1. Alchemist
     - [Sito ufficiale](http://alchemistsimulator.github.io/)
