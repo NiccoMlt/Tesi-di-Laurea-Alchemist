@@ -5,6 +5,16 @@ Progettazione object oriented di un’interfaccia grafica JavaFX per il simulato
 - [repository ufficiale](https://github.com/AlchemistSimulator/Alchemist)
 - [fork personale](https://github.com/NiccoMlt/Alchemist)
 
+## [Requisiti della tesi](http://corsi.unibo.it/laurea/ingegneriascienzeinformatiche/Pagine/la-prova-finale.aspx) ##
+- È vietato riprodurre il logo dell'Ateneo di Bologna su qualunque parte dell'elaborato;
+- Il file non dovrà superare i 30Mb;
+- pagine di 32-35 righe, ciascuna di 65-70 caratteri di tipo prestabilito (Times, Courier o Helvetica);
+- frontespizio conforme al [fac-simile](http://corsi.unibo.it/laurea/ingegneriascienzeinformatiche/Documents/Frontespizio%20ISI.pdf);
+- figure e tavole in formato UNI (A4 e A3);
+- formato PDF.
+
+## Dettagli sulla stesura del documento ##
+
 La tesi è scritta in LaTeX, ed è compilata attraverso [arara](https://github.com/cereda/arara).
 
 Enrico Gregorio ne ha scritto una [guida introduttiva](http://profs.sci.univr.it/~gregorio/introarara.pdf), mentre per la documentazione ufficiale è possibile visualizzarla [qui](texdoc.net/show.php?pkg=arara) o eseguendo direttamente da terminale:
@@ -16,18 +26,16 @@ Enrico Gregorio ne ha scritto una [guida introduttiva](http://profs.sci.univr.it
 - per MikTeX:
 
     ```mthelp arara```
+    
+Il codice LaTeX è stato scritto attraverso la IDE [Atom](https://atom.io) con il pacchetto [atom-latex](https://atom.io/packages/atom-latex) configurato per utilizzare _arara_ come **custom toolchain**:
+
+```arara %DOC --log --verbose```
+
+Per maggiori dettagli, vedere [questo commento](https://github.com/James-Yu/Atom-LaTeX/issues/4#issuecomment-280690169).
 
 Poiché ero inizialmente poco familiare con LaTeX, sono stati molto utili i consigli fornitimi da relatore e correlatore della tesi e le guide fornite dal [GuIT](https://www.guitex.org/home/it/doc).
 
 I file di grandi dimensioni (MP4, PDF che includono video) sono tracciati attraverso [Git LFS](https://git-lfs.github.com/).
-
-## [Requisiti](http://corsi.unibo.it/laurea/ingegneriascienzeinformatiche/Pagine/la-prova-finale.aspx) ##
-- È vietato riprodurre il logo dell'Ateneo di Bologna su qualunque parte dell'elaborato;
-- Il file non dovrà superare i 30Mb;
-- pagine di 32-35 righe, ciascuna di 65-70 caratteri di tipo prestabilito (Times, Courier o Helvetica);
-- frontespizio conforme al [fac-simile](http://corsi.unibo.it/laurea/ingegneriascienzeinformatiche/Documents/Frontespizio%20ISI.pdf);
-- figure e tavole in formato UNI (A4 e A3);
-- formato PDF.
 
 ## References ##
 1. Alchemist
